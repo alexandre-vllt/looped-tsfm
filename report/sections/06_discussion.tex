@@ -44,11 +44,19 @@ $96$--$97\,\%$ throughput.
 
 \subsection{Threats to validity}
 
-\paragraph{Reproduction gap.} Our baseline is \ReproGap\,\% behind the
-published checkpoint. If the gap is caused by something that interacts with
-depth --- corpus composition, schedule length --- then conclusions about
-looping could change at the published operating point. This is the single
-largest threat and we cannot currently rule it out.
+\paragraph{Reproduction gap.} Our baseline is \ReproGap\,\% behind the published
+checkpoint \emph{in our harness}, on 15--20\,\% of the paper's compute. If the
+gap is caused by something that interacts with depth --- corpus composition,
+schedule length --- then conclusions about looping could change at the
+published operating point. This is the single largest threat and we cannot
+currently rule it out.
+
+\paragraph{Harness scale.} Separately, our absolute MASE is a factor of
+$1.419$ above the paper's for the \emph{same} checkpoint
+(\S\ref{sec:background}). We argue this is an aggregation convention and show
+that it cancels in every ratio we report, but the argument is algebra, not a
+measurement; the measurement is pending. Until it is done, no absolute number
+here should be read next to a published leaderboard.
 
 \paragraph{Single seeds.} Only $k=4$ has two seeds. The lever arms are
 single-seed, so the $1.70$--$3.41\,\%$ figures are larger than the $k=1$ seed

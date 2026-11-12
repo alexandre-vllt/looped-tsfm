@@ -322,3 +322,68 @@ copy. That halves peak disk.
   `test_chunk_a100.sh`, `nala_recon.sh`, `gift_fetch.py`.
 - **izar deadline**: `reverso_fast/` and the eval CSVs must be rescued before the
   `/scratch` purge around **28 October**.
+
+## 11. The report is part of every result, not a thing written at the end
+
+A benchmark number that is read and not written down does not exist. In the
+same session a new score is read:
+
+1. add the row to `report/data/arms.csv` (and `levers.csv` / `cost.csv` if it
+   belongs there) — the raw MASE and the per-horizon values, nothing derived;
+2. run `python analysis/make_tables.py`, which recomputes every percentage from
+   the raw values and **exits non-zero** if one disagrees;
+3. commit both the CSV and the regenerated `report/tables/*.tex` together.
+
+**Never type a number into a `.tex` file, and never edit `report/tables/*.tex`
+by hand.** They are generated. CI refuses a stale table, so a CSV corrected
+without regenerating turns the badge red.
+
+Each `TO WRITE` box in the PDF carries a date and names an experiment. When
+that experiment lands, the box is replaced by prose in the same commit that
+adds its number. A box that outlives its experiment is a broken promise, not a
+placeholder.
+
+The report also gets the *interpretation* while it is fresh. A result recorded
+in `done.md` and not reflected in `report/sections/` is half a result: `done.md`
+is the log, `report/` is the argument.
+
+## 12. Our absolute MASE is not on the paper's scale — never put them side by side
+
+The paper reports `Reverso-Nano` at **0.757** on full GIFT-Eval. Our harness
+scores **their own published checkpoint** at **1.0742** — a factor of 1.419 on
+identical weights. No training difference explains that; it is a property of
+the harness.
+
+The likely cause is the aggregation convention: GIFT-Eval's leaderboard divides
+each row's MASE by the seasonal-naive baseline's before taking the geometric
+mean, and an average seasonal-naive MASE of 1.42 is ordinary. If so, every
+*relative* number we report is untouched, because a per-row divisor cancels in
+a ratio of geometric means: `geo(A/S)/geo(B/S) = geo(A)/geo(B)`.
+
+Until that is **measured** — divide our 97 per-row `NANO_pub` values by
+GIFT-Eval's seasonal-naive scores and check the geometric mean lands on 0.757 —
+the rule is absolute: state percentages against baselines we trained ourselves,
+and never print one of our MASE values next to a number from the paper or from
+a leaderboard. `done.md` once rationalised this gap ("MASE > 1 is a property of
+the metric/protocol pair") instead of diagnosing it; that sentence was wrong to
+accept.
+
+Hardware is **not** a candidate explanation for a 42 % gap: our fp32 identity
+tests hold to 1.9e-9. We have only ever run on A100-SXM4-40GB (nala) and V100
+(izar); no H100 has ever been touched, and the paper mentions them only as a
+unit of budget. Comparing the same checkpoint across two card types remains a
+legitimate cheap check, but it is not where this discrepancy comes from.
+
+## 13. Never pass `--delete` to rsync against a copy you have not diffed first
+
+On 12 November 2026 an `rsync -av --delete nala: → Mac` destroyed 38 files that
+existed only on the Mac. Twenty-five of them existed nowhere else — not on
+nala, and the Mac had no Time Machine snapshot. They were recovered only
+because an earlier session had copied them to the assistant's output store.
+
+Before any `rsync --delete`, run it with `--dry-run` and read the `deleting`
+lines, or do not pass `--delete` at all. A one-way mirror is only safe when the
+source is known to be a superset, and a stale working copy usually is not.
+
+The repository is the real fix: once a file is committed and pushed, a deletion
+is a `git checkout`.

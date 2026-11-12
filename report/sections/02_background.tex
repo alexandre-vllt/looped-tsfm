@@ -13,11 +13,44 @@ normalised per window, and the output projection therefore lives in normalised
 space --- a detail that matters in \S\ref{sec:method:quantile}.
 
 We work with the \texttt{nano} configuration. All comparisons in this report are
-\emph{internal}: a baseline trained by us with one variable changed. We do not
-compare against the published checkpoint as if it were a baseline, because our
-reproduction is \ReproGap\,\% behind it (Table~\ref{tab:arms}); closing that gap
-is not what this project is about, and mixing the two comparisons would make
-every number meaningless.
+\emph{internal}: a baseline trained by us with one variable changed, scored by
+our own harness. Two separate reasons make that discipline necessary.
+
+First, our training budget is not theirs. The paper reports compute as
+$\{10, 20, 40\}$ H100-hours for its three sizes, so \texttt{nano} is
+$10$ H100-hours; our $k{=}1$ arm is about four A100-40GB-hours, i.e.\ roughly
+$1.5$--$2$ H100-equivalent hours, so we train \texttt{nano} at
+\textbf{15--20\,\% of the paper's compute}. Our reproduction scores
+\ReproGap\,\% behind their published checkpoint in our harness
+(Table~\ref{tab:arms}), and closing that gap is not what this project is about.
+
+Second, and more importantly, \textbf{our absolute MASE is not on the same
+scale as the paper's}. The paper reports \texttt{Reverso-Nano} at $0.757$ on
+full GIFT-Eval; our harness scores \emph{their own published checkpoint} at
+$1.0742$ --- a factor of $1.419$ on identical weights, which no training
+difference can explain. The likely cause is the aggregation convention:
+GIFT-Eval's leaderboard divides each row's MASE by the seasonal-naive
+baseline's before taking the geometric mean, while we report raw MASE, and an
+average seasonal-naive MASE of $1.42$ is entirely ordinary.
+
+If that is the explanation, then every \emph{relative} number in this report is
+untouched, because a per-row divisor cancels in a ratio of geometric means:
+with $\mathrm{MASE}_{\text{norm}} = \mathrm{MASE}/S$ we have
+$\operatorname{geo}(A/S) = \operatorname{geo}(A)/\operatorname{geo}(S)$, so
+\[
+  \frac{\operatorname{geo}(A/S)}{\operatorname{geo}(B/S)}
+  \;=\; \frac{\operatorname{geo}(A)}{\operatorname{geo}(B)} .
+\]
+Only the level is affected, never a comparison. We therefore report no absolute
+number alongside the paper's, and state percentages against baselines we
+trained ourselves.
+
+\todo{before the final report}{%
+  Confirm the factor directly: divide our $97$ per-row \texttt{NANO\_pub} MASE
+  values by GIFT-Eval's seasonal-naive scores and check that the geometric mean
+  lands on $0.757$. If it does not, the harness differs from the benchmark's in
+  some other way and that becomes the project's first priority. The check costs
+  minutes and no GPU.}
 
 \subsection{The delta rule and its spectrum}
 
