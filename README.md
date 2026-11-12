@@ -1,5 +1,8 @@
 # Looped Time Series Foundation Models
 
+[![report](https://github.com/alexandre-vllt/looped-tsfm/actions/workflows/report.yml/badge.svg)](https://github.com/alexandre-vllt/looped-tsfm/actions/workflows/report.yml)
+[![latest PDF](https://img.shields.io/badge/report-latest%20PDF-1F4E79)](https://github.com/alexandre-vllt/looped-tsfm/releases/download/report-latest/main.pdf)
+
 Semester project (12 ECTS) — MSc Data Science, EPFL.
 LIONS, Prof. Volkan Cevher. Supervision: Arber Zela, David Berghaus.
 
@@ -77,16 +80,31 @@ matches; the hash is printed at the end of every launch log. This is the
 contract that lets a composed arm be verified as differing from its components
 in exactly one respect.
 
-## Regenerating the report tables
+## The report
 
-Every number in the report is derived from `report/data/*.csv`:
+The report lives in `report/` and is **built by CI, not by hand**. Every push
+that touches it recompiles it and publishes the PDF twice: as the artifact of
+the run, and as the rolling `report-latest` release linked in the badge above.
+There is no PDF in git -- the badge is always the current one.
+
+The build is also a check on the numbers. Every figure in the report is derived
+from `report/data/*.csv`:
 
 ```bash
-python analysis/make_tables.py     # writes report/tables/*.tex, fails on any
-                                   # percentage that disagrees with the raw MASE
+python analysis/make_tables.py     # writes report/tables/*.tex
 ```
 
-Never edit `report/tables/*.tex` by hand.
+The script recomputes each reported percentage from the raw MASE values, and
+each per-horizon decomposition's geometric mean against the reported total, and
+**exits non-zero if any of them disagrees**. CI then refuses a `report/tables`
+that is out of date with respect to the CSVs, an unresolved reference or
+citation, and any model weight that has crept into git. So a wrong number
+cannot reach the PDF, and a corrected CSV cannot be forgotten.
+
+Never edit `report/tables/*.tex` by hand: change the CSV and rerun the script.
+
+Dated `TO WRITE` boxes in the PDF mark what the final report still needs; they
+are commitments, not placeholders, and none should survive to submission.
 
 ## Attribution
 

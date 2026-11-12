@@ -1,0 +1,85 @@
+# Compile the report on every push that touches it, and publish the PDF.
+#
+# The build is also a check on the numbers: analysis/make_tables.py recomputes
+# every reported percentage from the raw MASE values and exits non-zero if one
+# disagrees, so a typo in a result cannot reach the PDF. The job then refuses a
+# stale table, an unresolved reference and a committed model weight.
+name: report
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'report/**'
+      - 'analysis/make_tables.py'
+      - '.github/workflows/report.yml'
+  pull_request:
+    paths:
+      - 'report/**'
+      - 'analysis/make_tables.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No weights or datasets in git
+        run: |
+          if git ls-files | grep -E '\.(pth|pt|npy|npz|arrow|parquet|safetensors)$'; then
+            echo "::error::model weights or datasets are tracked in git"
+            exit 1
+          fi
+          echo "ok: no weights tracked"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate the tables from report/data/*.csv
+        run: python analysis/make_tables.py
+
+      - name: Tables must match the CSVs
+        run: |
+          if ! git diff --quiet -- report/tables; then
+            echo "::error::report/tables is stale -- run python analysis/make_tables.py and commit the result"
+            git --no-pager diff -- report/tables
+            exit 1
+          fi
+          echo "ok: tables match the CSVs"
+
+      - name: Compile
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: report
+          root_file: main.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
+
+      - name: No unresolved references or citations
+        run: |
+          if grep -qE 'There were undefined (references|citations)|Citation .* undefined|Reference .* undefined' report/main.log; then
+            echo "::error::unresolved references or citations"
+            grep -nE 'undefined|Citation' report/main.log | head -20
+            exit 1
+          fi
+          echo "ok: everything resolved"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: looped-tsfm-report
+          path: report/main.pdf
+          if-no-files-found: error
+
+      - name: Publish the rolling 'report-latest' release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: report-latest
+          name: Report (latest build)
+          body: 'Built from ${{ github.sha }}.'
+          files: report/main.pdf
+          prerelease: true
