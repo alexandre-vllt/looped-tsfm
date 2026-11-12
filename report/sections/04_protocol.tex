@@ -1,0 +1,79 @@
+\section{Experimental protocol}
+\label{sec:protocol}
+
+Most of this section exists because of mistakes. Each subsection is a rule we
+now follow and the experiment that forced it.
+
+\subsection{Two corpora, and why arms are not freely comparable}
+
+The \emph{v1} corpus pairs a real collection (49 sources) with a synthetic
+generator, mixed per sample at \texttt{--p-real 0.5} and weighted across
+sources by \texttt{--real-alpha 0.5}. Real and synthetic are interleaved at the
+sample level, never in blocks: a blocked curriculum would simply teach the
+model the second half of the schedule.
+
+The \emph{v2} corpus changes the source mixture and the sampler
+(\S\ref{sec:method:levers}). Consequently a v2 arm must \emph{never} be
+compared against the v1 baseline \texttt{R0}: the correct reference for every
+v2 arm is \texttt{D1}, which is v2 corpus with everything else held at
+baseline. Table~\ref{tab:arms} reports both references, and
+Table~\ref{tab:levers} uses only \texttt{D1}.
+
+\subsection{The noise floor}
+
+Two seeds at $k=1$ differed by $0.77\,\%$, and for several weeks we treated
+that as the resolution of the experiment. It is not: the relevant floor is the
+seed spread \emph{at the configuration being tested}. Two seeds at $k=4$
+differ by \NoiseFloorKFour\,\% (\texttt{R1\_k4} vs \texttt{R1S1}), which is
+larger than most of the effects in Table~\ref{tab:arms}. Every claim in
+\S\ref{sec:results} is stated against this floor, and single-seed differences
+below it are reported as not resolved.
+
+\subsection{Model selection: the held-out loss is the wrong signal}
+
+The natural early-stopping signal is the held-out loss on the training corpus.
+It is actively misleading here. Across arms it is \emph{anti}-correlated with
+benchmark rank, $\rho = -0.90$: \texttt{D1}'s held-out loss is $0.0557$ against
+$0.0501$ for \texttt{R0}, which reads as $-11\,\%$, while \texttt{D1}'s
+benchmark MASE is $0.79\,\%$ \emph{better}. The two quantities are computed on
+different distributions and the held-out one moves with the corpus.
+
+The GIFT-Eval \texttt{validation} split --- the \texttt{prediction\_length}
+block immediately preceding the test window, one window per series --- ranks
+arms like the benchmark does, $\rho = +0.918$. All model selection uses it.
+
+\subsection{The learning-rate schedule and where to anneal}
+
+Runs use a warmup--stable--decay schedule. Because the decay changes the model,
+the annealing point cannot be chosen by trying several on one run. Instead one
+run is held in the stable phase to the end with a snapshot every $10\,000$
+steps; each snapshot is scored on the validation split; and the decay is then
+\emph{forked} from the chosen step, costing only the $20\,\%$ of additional
+steps that the decay itself occupies. The rule is the earliest step within one
+jitter of the curve's minimum.
+
+\todo{before the final report}{%
+  \texttt{V2M} inherited its annealing point ($110\,000$) from \texttt{V2A}'s
+  curve rather than measuring \texttt{V2L}'s own. The fifteen snapshots exist;
+  the measurement is cheap and must be reported, since \texttt{V2M} is the
+  arm that carries the ``looping does not survive the v2 pipeline'' claim.}
+
+\subsection{Evaluating a looped checkpoint at the wrong \texorpdfstring{$k$}{k}}
+
+Evaluating a checkpoint at a $k$ other than the one it was trained at does not
+degrade it gracefully; it makes it a different function. A $k=8$ checkpoint
+evaluated at $k=1$ produced a MASE of $793$ on the long-horizon subset. Every
+evaluation script now reads $k$ and $\beta$ from the run's own
+\texttt{meta.json} and refuses to run on a tag it does not recognise, rather
+than falling back to a default.
+
+\subsection{What counts as a result}
+
+A launched job is not a running job, a running job is not a finished job, and a
+filter that matches nothing is not a success. Three results in this project
+were lost to variants of this: an arm that died after $25$ seconds and was
+discovered $17$ hours later because the launcher checked for a \texttt{tmux}
+session rather than for a written \texttt{meta.json}; two evaluation sweeps
+that printed ``0 running'' and exited zero because the tag was absent from a
+hard-coded list. Launchers now wait for the artefact and exit non-zero on an
+unknown tag.

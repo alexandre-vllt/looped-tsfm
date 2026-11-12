@@ -1,0 +1,31 @@
+\begin{abstract}
+\noindent
+Weight-tied looping --- applying the same transformer block $k$ times instead of
+stacking $k$ distinct blocks --- has become a standard way to add depth without
+adding parameters, and a standard claim in the latent-reasoning literature.
+This project asks whether it buys anything in a \emph{zero-shot time-series
+foundation model}, where the cost of depth is paid again at every inference and
+the task has no obvious iterative structure. We implement looping with a
+$\beta$-residual inside Reverso, a DeltaNet-style forecasting foundation model,
+and evaluate on GIFT-Eval.
+
+Our headline finding is negative and, we argue, informative. Looping at $k=4$
+improves the geometric-mean MASE by \LoopGain\,\% over an identically trained
+$k=1$ baseline, against a \emph{measured two-seed noise floor of
+\NoiseFloorKFour\,\%} --- the effect barely clears the noise. It costs
+\CostRatio$\times$ the training wall-clock and $k\times$ the inference compute.
+And it does not survive a better data pipeline: on our second-generation
+corpus and sampler, $k=4$ is \VtwoLoopPenalty\,\% \emph{worse} than $k=1$.
+
+To test whether the gain is specific to looping or is generic regularisation,
+we built three interventions that add no architectural depth: window
+augmentation, allowing negative eigenvalues in the delta-rule transition
+($\beta\in(0,2)$), and an exact-once epoch sampler. Measured against the same
+reference, each one beats looping, at between $0$ and $3\,\%$ of its compute
+cost. Only one of them --- the negative-eigenvalue gate --- shows a gain that
+\emph{grows with horizon}, which was pre-registered as the signature of a
+genuine representational change rather than a regularisation effect, and which
+connects directly to recent work on complex-eigenvalue linear attention.
+The remainder of the semester tests whether the three levers compose and
+whether the eigenvalue spectrum, not the loop count, is where the headroom is.
+\end{abstract}

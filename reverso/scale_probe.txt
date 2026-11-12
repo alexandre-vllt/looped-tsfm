@@ -1,0 +1,105 @@
+
+======================================================================
+ MIX  (p_real=0.50, alpha=0.50) -- WHAT TRAINING SEES  (20480 windows)
+======================================================================
+  x_range (per-window context min-max span)
+    p0=1e-05  p1=5.943e-05  p25=6.199  p50=36.1  p75=180.8  p99=3.553e+04  p99.9=2.217e+05  p100=4.975e+06
+    spread p99.9/p50 = 6140x
+
+  RAW-unit MAE of the `last` baseline -- this is Reverso's loss
+    total MAE mass 1.584e+06 over 20480 windows
+    top   0.1% of windows (   20) carry  47.3% of the loss
+    top   1.0% of windows (  205) carry  68.2% of the loss
+    top  10.0% of windows ( 2048) carry  92.1% of the loss
+    mean per-window MAE 77.34, median 2.101  (mean/median = 36.8x)
+
+  NORMALISED-unit MAE of the same baseline, same windows
+    total MAE mass 2263 over 20480 windows
+    top   0.1% of windows (   20) carry   0.8% of the loss
+    top   1.0% of windows (  205) carry   5.7% of the loss
+    top  10.0% of windows ( 2048) carry  33.2% of the loss
+    mean per-window MAE 0.1105, median 0.07821  (mean/median = 1.4x)
+
+  the two objectives side by side
+    raw        mean 77.34   p99.9 8981
+    normalised mean 0.1105   p99.9 0.7627
+
+======================================================================
+ SYNTHETIC only  (20480 windows)
+======================================================================
+  x_range (per-window context min-max span)
+    p0=6.056e-05  p1=0.7855  p25=5.045  p50=34.98  p75=212.3  p99=2024  p99.9=4356  p100=9.145e+07
+    spread p99.9/p50 = 124.5x
+
+  RAW-unit MAE of the `last` baseline -- this is Reverso's loss
+    total MAE mass 2.998e+05 over 20480 windows
+    top   0.1% of windows (   20) carry   6.3% of the loss
+    top   1.0% of windows (  205) carry  18.3% of the loss
+    top  10.0% of windows ( 2048) carry  66.6% of the loss
+    mean per-window MAE 14.64, median 1.271  (mean/median = 11.5x)
+
+  NORMALISED-unit MAE of the same baseline, same windows
+    total MAE mass 2080 over 20480 windows
+    top   0.1% of windows (   20) carry   0.8% of the loss
+    top   1.0% of windows (  205) carry   6.3% of the loss
+    top  10.0% of windows ( 2048) carry  36.2% of the loss
+    mean per-window MAE 0.1016, median 0.06372  (mean/median = 1.6x)
+
+  the two objectives side by side
+    raw        mean 14.64   p99.9 318.5
+    normalised mean 0.1016   p99.9 0.7586
+
+======================================================================
+ REAL only (GEP-L, alpha=0.50)  (20480 windows)
+======================================================================
+  x_range (per-window context min-max span)
+    p0=1e-05  p1=1e-05  p25=10.69  p50=37.1  p75=121  p99=7.343e+04  p99.9=3.815e+05  p100=4.975e+06
+    spread p99.9/p50 = 1.028e+04x
+
+  RAW-unit MAE of the `last` baseline -- this is Reverso's loss
+    total MAE mass 2.265e+06 over 20480 windows
+    top   0.1% of windows (   20) carry  26.1% of the loss
+    top   1.0% of windows (  205) carry  60.6% of the loss
+    top  10.0% of windows ( 2048) carry  92.6% of the loss
+    mean per-window MAE 110.6, median 3.291  (mean/median = 33.6x)
+
+  NORMALISED-unit MAE of the same baseline, same windows
+    total MAE mass 2462 over 20480 windows
+    top   0.1% of windows (   20) carry   0.7% of the loss
+    top   1.0% of windows (  205) carry   5.1% of the loss
+    top  10.0% of windows ( 2048) carry  30.8% of the loss
+    mean per-window MAE 0.1202, median 0.09151  (mean/median = 1.3x)
+
+  the two objectives side by side
+    raw        mean 110.6   p99.9 2.151e+04
+    normalised mean 0.1202   p99.9 0.7551
+
+======================================================================
+ SUMMARY -- the decision numbers, so they do not scroll away
+======================================================================
+  corpus                               top1%   top10%  mean/med
+  MIX  (p_real=0.50, alpha=0.50) --    68.2%    92.1%     36.8x   RAW
+                                        5.7%    33.2%      1.4x   scale-free
+  SYNTHETIC only                       18.3%    66.6%     11.5x   RAW
+                                        6.3%    36.2%      1.6x   scale-free
+  REAL only (GEP-L, alpha=0.50)        60.6%    92.6%     33.6x   RAW
+                                        5.1%    30.8%      1.3x   scale-free
+
+======================================================================
+ HOW TO READ THIS
+======================================================================
+
+  If the top 1 % of windows carry a LARGE share of the raw loss (say > 50 %),
+  the raw-unit objective is training on a small, scale-selected subset and the
+  other 99 % of the corpus is nearly inert. The fix is to compute the loss in
+  normalised space -- a declared deviation from Reverso's decode path, cheap to
+  implement (compare the pre-denormalisation output against y normalised by the
+  same context statistics), and it would need recording in done.md section 9.
+
+  If the share is modest (say < 20 %), the raw objective is acceptable as-is and
+  the |g| spread seen in the smoke run is better handled by raising --clip so
+  that gradient magnitude is not thrown away on every step.
+
+  Either way this affects BOTH arms identically, so it is a question of
+  statistical power, not of bias between R0 and R1.
+

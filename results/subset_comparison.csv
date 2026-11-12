@@ -1,0 +1,26 @@
+arm,MASE_all97,MASE_subset63,short,medium,long,vs_R0_k1_pct,perimetre
+A10,1.24262,1.08620,0.89293,1.17961,1.21666,-3.519,reconstitue : les 21 prefixes portant les 3 termes
+AUG,1.14820,1.01458,0.82020,1.10490,1.15244,3.306,reconstitue : les 21 prefixes portant les 3 termes
+BASE,1.21376,1.06318,0.88233,1.15105,1.18331,-1.326,reconstitue : les 21 prefixes portant les 3 termes
+D1,1.18866,1.04339,0.84904,1.13436,1.17941,0.560,reconstitue : les 21 prefixes portant les 3 termes
+EMA,1.22943,1.06350,0.88787,1.14948,1.17857,-1.356,reconstitue : les 21 prefixes portant les 3 termes
+NANO_pub,1.07418,0.93495,0.79089,0.99883,1.03455,10.896,reconstitue : les 21 prefixes portant les 3 termes
+NEG,1.16229,1.01911,0.83078,1.11482,1.14280,2.875,reconstitue : les 21 prefixes portant les 3 termes
+R0_k1,1.19817,1.04927,0.85659,1.14501,1.17783,,reconstitue : les 21 prefixes portant les 3 termes
+R0_k2,2.66929,2.25022,1.99650,2.32816,2.45128,-114.455,reconstitue : les 21 prefixes portant les 3 termes
+R0_k4,1.96911,1.59593,1.37319,1.71000,1.73106,-52.098,reconstitue : les 21 prefixes portant les 3 termes
+R1B05,1.20286,1.05426,0.85820,1.15072,1.18655,-0.475,reconstitue : les 21 prefixes portant les 3 termes
+R1S1,1.18821,1.03674,0.84474,1.12923,1.16816,1.194,reconstitue : les 21 prefixes portant les 3 termes
+R1_k1,1.21988,1.06354,0.87544,1.15091,1.19397,-1.360,reconstitue : les 21 prefixes portant les 3 termes
+R1_k2,1.17682,1.03660,0.85009,1.12588,1.16379,1.208,reconstitue : les 21 prefixes portant les 3 termes
+R1_k3,1.17355,1.03482,0.85014,1.12338,1.16032,1.377,reconstitue : les 21 prefixes portant les 3 termes
+R1_k4,1.17294,1.03505,0.85104,1.12314,1.16011,1.355,reconstitue : les 21 prefixes portant les 3 termes
+R1_k6,1.17641,1.03968,0.85488,1.12791,1.16552,0.914,reconstitue : les 21 prefixes portant les 3 termes
+R1_k8,1.18483,1.04944,0.86086,1.13915,1.17860,-0.016,reconstitue : les 21 prefixes portant les 3 termes
+R2,1.19961,1.05761,0.86562,1.15279,1.18549,-0.795,reconstitue : les 21 prefixes portant les 3 termes
+R3,1.18635,1.04448,0.83751,1.14675,1.18643,0.457,reconstitue : les 21 prefixes portant les 3 termes
+RAW,1.44332,1.23540,1.07249,1.31051,1.34148,-17.738,reconstitue : les 21 prefixes portant les 3 termes
+S05,1.26286,1.07528,0.92242,1.14741,1.17469,-2.479,reconstitue : les 21 prefixes portant les 3 termes
+SEED1,1.22311,1.05427,0.87628,1.13889,1.17418,-0.477,reconstitue : les 21 prefixes portant les 3 termes
+V2C,1.16850,1.03041,0.84646,1.11648,1.15766,1.797,reconstitue : les 21 prefixes portant les 3 termes
+V2M,1.17940,1.04795,0.84038,1.16308,1.17744,0.126,reconstitue : les 21 prefixes portant les 3 termes

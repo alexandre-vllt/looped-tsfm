@@ -1,0 +1,13 @@
+arm,label,k,beta,corpus,sampler,mase97,pct_vs_r0,wins,pval,short,medium,long,note
+NANO_pub,Reverso-nano (published),1,1.0,authors,authors,1.0742,10.35,85,,,,,published checkpoint
+AUG,+ window augmentation,1,1.0,v2,v1,1.1482,4.17,66,5.0e-4,1.1635,1.1049,1.1524,lever 1
+NEG,+ allow_neg_eigval,1,1.0,v2,v1,1.1623,2.99,70,1.5e-5,1.1886,1.1148,1.1428,lever 2
+V2C,v2 pipeline,1,1.0,v2,v2,1.1685,2.48,68,9.3e-5,1.1932,1.1165,1.1577,lever 3
+R1_k4,looped k=4,4,0.25,v1,v1,1.1729,2.11,66,5.0e-4,1.1975,1.1231,1.1601,seed 0
+R3,looped k=8,8,0.125,v1,v1,1.1864,0.99,57,0.10,,,,
+V2M,v2 pipeline + looped k=4,4,0.25,v2,v2,1.1794,1.57,68,9.3e-5,1.1864,1.1631,1.1774,pairs with V2C
+R1S1,looped k=4,4,0.25,v1,v1,1.1882,0.83,58,0.067,1.2194,1.1292,1.1682,seed 1
+D1,corpus v2 only,1,1.0,v2,v1,1.1887,0.79,61,,1.2137,1.1344,1.1794,reference for v2 arms
+R0_k1,baseline,1,1.0,v1,v1,1.1982,0.00,,,1.2271,1.1450,1.1778,reference
+R2,looped k=2,2,0.5,v1,v1,1.1996,-0.12,51,0.69,,,,
+R1B05,looped k=4 beta=1/sqrt k,4,0.5,v1,v1,1.2029,-0.39,56,0.15,1.2298,1.1507,1.1865,

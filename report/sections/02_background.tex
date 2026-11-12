@@ -1,0 +1,99 @@
+\section{Background}
+\label{sec:background}
+
+\subsection{Reverso}
+
+Reverso is a zero-shot forecasting foundation model: trained once on a large
+corpus of real and synthetic series, then evaluated without fine-tuning. Its
+backbone is a DeltaNet-style linear-attention stack
+\citep{yang2024deltanet, yang2025gateddeltanet}. Forecasting proceeds by
+patches: the model emits $48$ points at a time and the prediction is fed back
+autoregressively until the requested horizon is covered. Inputs are min--max
+normalised per window, and the output projection therefore lives in normalised
+space --- a detail that matters in \S\ref{sec:method:quantile}.
+
+We work with the \texttt{nano} configuration. All comparisons in this report are
+\emph{internal}: a baseline trained by us with one variable changed. We do not
+compare against the published checkpoint as if it were a baseline, because our
+reproduction is \ReproGap\,\% behind it (Table~\ref{tab:arms}); closing that gap
+is not what this project is about, and mixing the two comparisons would make
+every number meaningless.
+
+\subsection{The delta rule and its spectrum}
+
+DeltaNet maintains a matrix state $S_t$ updated by the delta rule
+\begin{equation}
+  S_t \;=\; \bigl(I - \beta_t\, k_t k_t^{\!\top}\bigr) S_{t-1}
+          \;+\; \beta_t\, k_t v_t^{\!\top},
+  \label{eq:deltarule}
+\end{equation}
+with $k_t$ $L_2$-normalised. The transition matrix
+$I - \beta_t k_t k_t^{\!\top}$ is a rank-one perturbation of the identity: its
+eigenvalues are $1$ on the subspace orthogonal to $k_t$ and $1-\beta_t$ along
+$k_t$. With the usual $\beta_t \in (0,1)$ the state is \emph{contracted} along
+the key direction and never reflected, so the reachable transitions form a
+strictly contractive family.
+
+This spectral reading is what makes one of our three levers interesting rather
+than arbitrary. Permitting $\beta_t \in (0,2)$ makes $1-\beta_t$ negative: the
+state is \emph{reflected} along $k_t$ instead of merely shrunk, while
+$|1-\beta_t|\le 1$ keeps the map non-expansive, so training stability is
+preserved. \citet{grazzi2025unlocking} showed that this extended range strictly
+enlarges the class of functions a linear-attention layer can express, and
+\citet{sarrof2024expressive} that a signed gate is needed to represent
+alternating structure at all.
+
+Very recent work makes the geometric point sharp. A rotation in a plane is the
+composition of \emph{two} reflections, and a 2D rotation is exactly what a
+recurrence needs in order to carry oscillatory structure forward. One can get
+such a rotation by composing two delta-rule transitions in a single update, but
+that doubles the rank and the cost. Complex KDA \citep{ckda2026} shows that
+Kimi Delta Attention already contains the second reflection: the channel-wise
+gate supplies it, provided the gate is allowed to be \emph{negative}. Combining
+the extended $\beta \in [0,2]$ of \citet{grazzi2025unlocking} with a signed
+channel-wise decay $\alpha \in [-1,1]^n$ gives the transition
+\begin{equation}
+  A_t \;=\; \bigl(I - \beta_t k_t k_t^{\!\top}\bigr)\,\mathrm{Diag}(\alpha),
+  \label{eq:ckda}
+\end{equation}
+whose spectrum can leave the real line at no extra rank. Their Table~1 states
+the boundary exactly: the number of complex eigenvalue pairs is \emph{zero}
+whenever $\beta \le 1$ or $\alpha \ge 0$, and a \emph{scalar} gate cannot help,
+because scalars commute with everything and so cannot contribute a reflection
+in a chosen direction. The reported payoff is length extrapolation on $S_3$,
+$S_4$ and \emph{periodic waveform continuation} --- which is, almost literally,
+seasonal forecasting. Two of that paper's authors supervise or lead this lab,
+and the implementation is a minor modification of the FLA kernels we already
+run, at $96$--$97\,\%$ throughput.
+
+Our \texttt{allow\_neg\_eigval} lever (\S\ref{sec:method:levers}) is the
+\emph{first} of those two ingredients only: it supplies one reflection and
+leaves the decay unsigned, so by \eqref{eq:ckda} its spectrum stays real. That
+it already buys $+2.22\,\%$, with the only horizon-growing profile among our
+three levers, is what makes the second ingredient the most promising remaining
+experiment (\S\ref{sec:remaining}).
+
+\subsection{Looped and weight-tied models}
+
+Weight tying across depth goes back to the Universal Transformer
+\citep{dehghani2019universal}. The recent revival comes from reasoning: looped
+transformers can emulate iterative algorithms \citep{giannou2023looped}, and
+looped language models trained with iterative latent computation match much
+larger models on reasoning benchmarks \citep{zhu2026ouro}. The claim in that
+literature is explicitly about \emph{latent reasoning} --- more iterations,
+more steps of an algorithm --- which is the part that does not transfer
+obviously to forecasting, and which this project tests.
+
+Closest to our setting is \citet{moroshan2026tempopfn}, which pretrains linear
+RNNs on synthetic data for zero-shot forecasting: same model family, same
+benchmark, no looping.
+
+\subsection{GIFT-Eval}
+
+GIFT-Eval \citep{aksu2024giftevalbenchmark} is a zero-shot forecasting
+benchmark spanning many domains and three horizon regimes. We report the
+geometric mean of MASE over the $97$ (dataset, horizon) rows the model
+supports, split $55$ short / $21$ medium / $21$ long. The geometric mean is the
+benchmark's own convention and it matters here: it keeps the aggregate robust
+to a single pathological dataset, which a looped model evaluated at the wrong
+$k$ produces easily (\S\ref{sec:protocol}).

@@ -1,0 +1,63 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What we think the answer to the question is}
+
+On the evidence so far: weight-tied looping does not pay for itself in a
+zero-shot forecasting foundation model at this scale. It produces a gain of
+about one and a half percent that barely clears a measured noise floor of
+\NoiseFloorKFour\,\%, costs \CostRatio$\times$ the compute at training and
+$k\times$ at inference, shows no monotone trend in $k$, and disappears when the
+data pipeline is improved. Three interventions that add no depth each produce a
+larger gain for a small fraction of the cost.
+
+We want to be careful about the scope of that claim. It is a statement about
+the \texttt{nano} configuration, this corpus, and this benchmark. It is not a
+statement that weight tying is useless in general, and it is not a statement
+about adaptive $k$ at inference, which we have not tested. What it does
+support is a methodological point: in this setting, the architectural knob was
+not where the headroom was, and the only way to find that out was to build the
+cheap controls and measure them on the same footing.
+
+\subsection{Why the negative result is the useful one}
+
+Had we stopped after Phase~1 we would have reported ``$+2.1\,\%$ MASE from
+looping at $k=4$'' from a single seed, which is both the luckier seed and an
+effect smaller than the seed spread. The two things that changed the conclusion
+cost almost nothing: training one extra seed, and building three baselines that
+nobody asked for. Table~\ref{tab:levers} is now the bar that a future claim
+about looping in this setting has to clear.
+
+\subsection{Where the headroom appears to be}
+
+The per-horizon decomposition points at the transition spectrum. Allowing
+$\beta\in(0,2)$ --- a one-line change --- buys $+2.22\,\%$, and it is the only
+lever whose benefit increases with horizon. \citet{ckda2026} shows that this is
+a strict subset of the available move: with a real $\alpha \ge 0$ decay the
+spectrum stays on the real line no matter what $\beta$ does, and only a
+channel-wise \emph{signed} $\alpha$ combined with $\beta>1$ admits complex
+eigenvalue pairs, which is what their periodic-waveform extrapolation results
+turn on. Seasonality is periodic waveform continuation. The natural next
+experiment is therefore not a larger $k$ but a signed channel-wise decay, and
+it is cheap: a minor modification of kernels we already run, at
+$96$--$97\,\%$ throughput.
+
+\subsection{Threats to validity}
+
+\paragraph{Reproduction gap.} Our baseline is \ReproGap\,\% behind the
+published checkpoint. If the gap is caused by something that interacts with
+depth --- corpus composition, schedule length --- then conclusions about
+looping could change at the published operating point. This is the single
+largest threat and we cannot currently rule it out.
+
+\paragraph{Single seeds.} Only $k=4$ has two seeds. The lever arms are
+single-seed, so the $1.70$--$3.41\,\%$ figures are larger than the $k=1$ seed
+spread ($0.77\,\%$) but have not been replicated. \texttt{AUGNEG} is being run
+with two seeds for this reason.
+
+\paragraph{One benchmark, one model size.} All results are GIFT-Eval
+\texttt{nano}. No claim is made about scaling.
+
+\paragraph{Mechanism inference from three arms.} The horizon-profile argument
+in \S\ref{sec:results} compares three single arms. It is suggestive and it was
+pre-registered, but it is not a controlled test of mechanism.

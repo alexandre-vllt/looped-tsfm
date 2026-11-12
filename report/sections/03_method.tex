@@ -1,0 +1,90 @@
+\section{Method}
+\label{sec:method}
+
+\subsection{Looping with a \texorpdfstring{$\beta$}{beta}-residual}
+
+One block $f$ is applied $k$ times with a convex residual,
+\begin{equation}
+  h^{(i+1)} \;=\; \beta\, f\bigl(h^{(i)}\bigr) + (1-\beta)\, h^{(i)},
+  \qquad i = 0,\dots,k-1 .
+  \label{eq:loop}
+\end{equation}
+At $k=1,\beta=1$ this is exactly the unlooped model, which gives us an exact
+identity check: a $k=1$, $\beta=1$ looped build must reproduce the baseline
+bit-for-bit, and we test it (\texttt{test\_loop\_identity.py}).
+
+\subsection{Choosing \texorpdfstring{$\beta$}{beta}: the Euler reading}
+\label{sec:method:euler}
+
+Equation~\eqref{eq:loop} is one explicit Euler step of size $\beta$ on the ODE
+\begin{equation}
+  \dot h \;=\; f(h) - h .
+  \label{eq:ode}
+\end{equation}
+Under this reading $k$ iterations integrate \eqref{eq:ode} over a total
+\emph{flow time}
+\[
+  T \;=\; k\beta ,
+\]
+and the choice of $\beta$ becomes a question about what one wants to hold
+fixed as $k$ grows. Setting $\beta = 1/k$ keeps $T=1$: deeper models take
+\emph{finer} steps along the same trajectory, so $k$ trades discretisation
+error for compute and nothing else changes. Setting $\beta = 1/\sqrt{k}$ gives
+$T = \sqrt{k}$, which overshoots --- the deeper model integrates further, not
+more accurately.
+
+This is not a post-hoc rationalisation: we pre-registered $\beta=1/k$ as the
+principled schedule and $\beta=1/\sqrt{k}$ as the control, and the control
+loses (\texttt{R1B05}, $-0.39\,\%$, Table~\ref{tab:arms}). The flow-time
+reading is the only part of the looping story that our experiments support.
+
+\subsection{Three non-architectural controls}
+\label{sec:method:levers}
+
+The core of the experimental design. Each lever changes the data or the
+recurrence, adds no depth, and is measured against \texttt{D1}, a baseline
+trained on the \emph{same} corpus so that exactly one variable differs.
+
+\paragraph{Window augmentation (\texttt{--augment}).} Random transformations
+applied to the training window before normalisation. A regularisation lever:
+it should help most where the training corpus is least representative, and its
+effect should not depend on horizon.
+
+\paragraph{Negative eigenvalues (\texttt{--allow-neg-eigval}).} The delta-rule
+gate is doubled, $\beta \leftarrow 2\beta$, so $\beta \in (0,2)$ and the
+transition eigenvalue $1-\beta$ may be negative --- a reflection along the key
+direction rather than a contraction (\S\ref{sec:background}). This is a change
+to the \emph{reachable state transitions}, not to the optimisation, so we
+pre-registered a specific prediction that distinguishes it from the other two
+levers: \emph{its advantage should grow with horizon}, because reflections are
+what let a recurrence carry alternating or periodic structure forward over many
+steps. \S\ref{sec:results} reports that this prediction is the only one that
+came true.
+
+\paragraph{Exact-once epochs (\texttt{--sampler enumerated}).} The original
+sampler draws windows with replacement, so within one nominal epoch some
+windows are seen several times and others never. The v2 sampler replaces this
+with a Feistel permutation with cycle-walking, which enumerates each window
+exactly once per epoch without storing the permutation, interleaved with the
+synthetic corpus by a Bresenham rule that makes the real/synthetic count exact
+rather than merely correct in expectation. Because the underlying PRNG is
+counter-based (Philox), sample $n$ is a pure function of $(n, \text{seed})$,
+which makes the stream independent of the worker count --- the property that
+lets us verify two runs saw identical data by comparing a single
+\texttt{stream\_sha256}.
+
+\subsection{A quantile head}
+\label{sec:method:quantile}
+
+MASE scores the median path only. To measure calibration we attach a
+$9$-quantile head to the frozen backbone's output projection and train it with
+the pinball loss. Two implementation facts decide whether the numbers mean
+anything. First, \texttt{out\_proj} is not the last operation: the decoder
+re-applies the window's min--max scale afterwards, so a head trained on
+\texttt{out\_proj} outputs lives in normalised space and must be denormalised
+per window before the loss. Second, at $q=0.5$ the pinball loss equals exactly
+half the MAE, which gives a \emph{step-0 control}: before any training, the
+head initialised from the point forecast must reproduce half the MAE to within
+a fraction of a percent. Our first implementation failed this control by seven
+orders of magnitude and trained for $4000$ steps on a meaningless objective;
+the control is now a hard exit rather than a warning.

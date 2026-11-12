@@ -1,0 +1,46 @@
+# ---- model weights and checkpoints -----------------------------------------
+*.pth
+*.pt
+*.safetensors
+checkpoints/
+reverso/checkpoints/
+
+# ---- datasets --------------------------------------------------------------
+*.arrow
+*.npy
+*.npz
+*.parquet
+/data/
+/gepl*/
+/synth*/
+
+# ---- run artefacts (live on the cluster, not in git) -----------------------
+runs/
+results_snap/
+results_val/
+wandb/
+
+# ---- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venvs/
+
+# ---- latex -----------------------------------------------------------------
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+report/main.pdf
+
+# ---- os / editor -----------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,586 @@
+"""
+GiftEval evaluation script for Reverso.
+"""
+import os
+import json
+import math
+import argparse
+import csv
+from types import SimpleNamespace
+from typing import List, Optional, Tuple
+from datetime import datetime
+
+import numpy as np
+import torch
+import pandas as pd
+
+import sys as _sys
+# BACKEND DEFAULT FLIPPED (11 Oct). Upstream defaulted to the `reverso` package,
+# which imports FlashFFTConv at module load. That is unusable here -- system nvcc
+# is 11.7 against torch's CUDA 12.4 (done.md 3) -- so the default crashed on
+# import before doing anything. This project trains, tests and evaluates on
+# reverso_torch throughout, so that is now the default and FlashFFTConv is
+# opt-in via --flashfft. --torch-native is still accepted, as a no-op.
+if "--torch-native" in _sys.argv:
+    _sys.argv.remove("--torch-native")
+if "--flashfft" in _sys.argv:
+    _sys.argv.remove("--flashfft")
+    from reverso.forecast import load_checkpoint
+    _BACKEND = "reverso"
+else:
+    from reverso_torch.forecast import load_checkpoint
+    _BACKEND = "reverso_torch"
+
+try:
+    from torch.amp import autocast as autocast_fp
+except Exception:
+    autocast_fp = None
+
+def numpy_fill(arr: np.ndarray) -> np.ndarray:
+    mask = np.isnan(arr)
+    idx = np.where(~mask, np.arange(mask.shape[1]), 0)
+    np.maximum.accumulate(idx, axis=1, out=idx)
+    out = arr[np.arange(idx.shape[0])[:, None], idx]
+    return out
+
+
+class ReversoPredictor:
+    """GiftEval predictor for reverso.Model."""
+
+    def __init__(
+        self,
+        prediction_length: int,
+        checkpoint_path: Optional[str] = None,
+        device: str = "cuda",
+        seq_len: int = 2048,
+        input_token_len: int = 2048,
+        output_token_len: int = 48,
+        e_layers: int = 8,
+        d_model: int = 128,
+        d_intermediate: int = 512,
+        output_bottleneck_dim: int = 48,
+        expand_v: float = 1.0,
+        state_weaving: int = 1,
+        allow_neg_eigval: int = 0,
+        gating_kernel_size: int = 3,
+        main_module: str = "conv,attn,conv,attn,conv,attn,conv,attn",
+        num_samples: int = 100,
+        batch_size: int = 256,
+        use_amp: int = 1,
+        downsample_factor: int = 1,
+        force_flip_invariance: bool = False,
+        use_output_pe: bool = False,
+        loop_k: int = 0,
+        loop_beta: float = 1.0,
+        use_ema: bool = True,
+        use_fla: bool = True,
+    ):
+        self.device = torch.device(device if torch.cuda.is_available() else "cpu")
+        self.prediction_length = int(prediction_length)
+        self.num_samples = int(num_samples)
+        self.batch_size = int(batch_size)
+        self.seq_len = int(seq_len)
+        self.input_token_len = int(input_token_len)
+        self.output_token_len = int(output_token_len)
+        self.use_amp = int(use_amp)
+        self.downsample_factor = int(downsample_factor)
+        self.force_flip_invariance = bool(force_flip_invariance)
+        self.loop_k = int(loop_k)
+        self.loop_beta = float(loop_beta)
+        self.use_ema = bool(use_ema)
+        self.use_fla = bool(use_fla)
+
+        args = SimpleNamespace(
+            input_token_len=self.input_token_len,
+            output_token_len=self.output_token_len,
+            seq_len=self.seq_len,
+            d_model=int(d_model),
+            d_intermediate=int(d_intermediate),
+            use_norm=True,
+            learn_bias=1,
+            output_bottleneck_dim=int(output_bottleneck_dim),
+            expand_v=float(expand_v),
+            state_weaving=int(state_weaving),
+            allow_neg_eigval=bool(int(allow_neg_eigval)),
+            gating_kernel_size=int(gating_kernel_size),
+            main_module=str(main_module),
+            use_output_pe=bool(use_output_pe),
+        )
+
+        if _BACKEND == "reverso_torch":
+            from reverso_torch import model as model_impl  # noqa: F811
+        else:
+            from reverso import model as model_impl  # noqa: F811
+        # LOOPED EVALUATION.
+        # loop_k > 0 builds reverso_torch.looped.LoopedModel instead of Model.
+        # Because the block is weight-tied, loop_k at EVAL need not equal loop_k
+        # at TRAIN: one checkpoint can be scored at k = 1, 2, 4, 8 with no
+        # retraining (task.md 10). k=1, beta=1 is a verified bit-exact no-op
+        # (test_loop_identity.py --fla), so R0 and R1 go through the same code.
+        def _build():
+            if self.loop_k > 0:
+                from reverso_torch.looped import LoopedModel
+                args.loop_k = self.loop_k
+                args.loop_beta = self.loop_beta
+                return LoopedModel(args)
+            return model_impl.Model(args)
+        try:
+            self.model = _build().to(self.device)
+        except RuntimeError as e:
+            if "CUDA" in str(e):
+                print(f"CUDA not usable ({e}); falling back to CPU.")
+                self.device = torch.device("cpu")
+                self.use_amp = 0
+                self.model = _build().to(self.device)
+            else:
+                raise
+        self.model.eval()
+
+        if checkpoint_path is not None and os.path.isfile(checkpoint_path):
+            self._load_checkpoint(checkpoint_path)
+        else:
+            print("Warning: checkpoint_path not provided or file not found. Using randomly initialized weights.")
+
+    def _load_checkpoint(self, ckpt_path: str):
+        """Reverso's released format, or one of OUR training checkpoints.
+
+        train_loop.py writes {model, opt, sched, ema, step, cfg, args, hashes}.
+        Reverso's release is a bare (or singly-wrapped) state_dict, which
+        load_checkpoint already handles -- so detect ours and handle it here,
+        falling through otherwise.
+
+        EMA BY DEFAULT: train_loop.py's own final report evaluates the averaged
+        weights, and the EMA shadow is kept in float32 even from a bf16 model.
+        Scoring the raw weights instead would not be the model we reported.
+        """
+        blob = torch.load(ckpt_path, map_location=str(self.device),
+                          weights_only=False)
+        ours = isinstance(blob, dict) and "model" in blob and "step" in blob
+        if not ours:
+            load_checkpoint(self.model, ckpt_path, device=str(self.device))
+            return
+
+        sd = blob["model"]
+        src = "raw"
+        if self.use_ema and isinstance(blob.get("ema"), dict):
+            ema = blob["ema"]
+            shadow = ema.get("shadow", ema)
+            if isinstance(shadow, dict) and shadow:
+                merged = dict(sd)
+                hit = 0
+                for k, v in shadow.items():
+                    if k in merged and hasattr(v, "shape") \
+                            and tuple(v.shape) == tuple(merged[k].shape):
+                        merged[k] = v.to(merged[k].dtype); hit += 1
+                if hit:
+                    sd, src = merged, f"EMA ({hit} tensors)"
+        missing, unexpected = self.model.load_state_dict(sd, strict=False)
+        ck = blob.get("cfg", {}) or {}
+        print(f"  checkpoint step {blob.get('step')}  weights: {src}  "
+              f"trained k={ck.get('loop_k')} beta={ck.get('loop_beta')}  "
+              f"-> EVAL k={self.loop_k or 1} beta={self.loop_beta}")
+        if missing or unexpected:
+            print(f"  !! state_dict missing {len(missing)} / "
+                  f"unexpected {len(unexpected)} -- first few: "
+                  f"{(missing + unexpected)[:4]}")
+        if blob.get("stream_hash"):
+            print(f"  stream_sha256 {blob['stream_hash'][:16]}...")
+
+        if self.use_fla:
+            try:
+                from reverso_torch.fast import swap_to_fla
+                self.model = swap_to_fla(self.model, "chunk").to(self.device)
+                self.model.eval()
+            except Exception as e:
+                print(f"  fla swap skipped: {type(e).__name__}: {str(e)[:60]}")
+
+    def _downsample_if_needed(self, series: torch.Tensor) -> Tuple[torch.Tensor, int]:
+        cur = series
+        if self.downsample_factor > 1:
+            cur = cur[::self.downsample_factor]
+        return cur, self.downsample_factor
+
+    def _left_pad_to_len(self, arr: np.ndarray, target_len: int) -> Tuple[np.ndarray, int]:
+        if arr.shape[0] >= target_len:
+            return arr[-target_len:], 0
+        pad_len = target_len - arr.shape[0]
+        fill_value = arr[0] if arr.shape[0] > 0 else 0.0
+        padding = np.full((pad_len,), fill_value, dtype=arr.dtype)
+        return np.concatenate([padding, arr], axis=0), pad_len
+
+    def _prepare_context_matrix(self, context: List[torch.Tensor]) -> Tuple[torch.Tensor, List[int]]:
+        xs = []
+        downsample_factors = []
+
+        for c in context:
+            cur, downsample_factor = self._downsample_if_needed(c)
+            downsample_factors.append(downsample_factor)
+
+            cur_np = cur.detach().cpu().float().numpy()
+            cur_np, _ = self._left_pad_to_len(cur_np, self.seq_len)
+
+            x2d = cur_np[None, :]
+            x_interp = np.copy(x2d)
+            series = x2d[0]
+            if np.any(np.isnan(series)):
+                valid_mask = ~np.isnan(series)
+                if np.sum(valid_mask) >= 2:
+                    valid_indices = np.where(valid_mask)[0]
+                    valid_values = series[valid_mask]
+                    x_interp[0] = np.interp(np.arange(len(series)), valid_indices, valid_values)
+                else:
+                    x_interp = numpy_fill(x2d)
+            ff = numpy_fill(x_interp)
+            bf = np.flip(numpy_fill(np.flip(x_interp, axis=1)), axis=1)
+            x_imp = np.where(np.isnan(ff), bf, ff)
+            x_imp = np.where(np.isnan(x_imp), 0.0, x_imp)
+            xs.append(x_imp[0])
+
+        x = torch.tensor(np.stack(xs), device=self.device, dtype=torch.float32).unsqueeze(-1)
+        return x, downsample_factors
+
+    def _decode_autoregressive(self, init_ctx: torch.Tensor, use_bf16: bool, downsample_factors: List[int]) -> torch.Tensor:
+        B, _, C = init_ctx.shape
+        roll_len = int(self.output_token_len)
+
+        target_pred_lens = [int(self.prediction_length) // int(max(1, df)) for df in downsample_factors]
+        max_target_pred_len = max(target_pred_lens)
+        steps = math.ceil(max_target_pred_len / roll_len)
+        preds: List[torch.Tensor] = []
+        batch_ctx = init_ctx
+
+        y_mark = torch.zeros(B, self.output_token_len, C, device=self.device, dtype=init_ctx.dtype)
+
+        for _ in range(steps):
+            x_in = batch_ctx[:, -self.seq_len:, :]
+            x_mark = torch.zeros_like(x_in)
+
+            if autocast_fp is not None and self.use_amp and use_bf16:
+                try:
+                    with autocast_fp('cuda', dtype=torch.bfloat16):
+                        outputs = self.model(x_in, x_mark, y_mark)
+                except Exception:
+                    outputs = self.model(x_in, x_mark, y_mark)
+            else:
+                outputs = self.model(x_in, x_mark, y_mark)
+
+            out_chunk = outputs[:, -self.output_token_len:, :]
+            take_chunk = out_chunk[:, :roll_len, :]
+            preds.append(take_chunk)
+            batch_ctx = torch.cat([batch_ctx, take_chunk], dim=1)
+
+        return torch.cat(preds, dim=1)
+
+    @torch.no_grad()
+    def predict(self, test_data_input, use_bf16_if_available: bool = True):
+        from gluonts.itertools import batcher
+        from gluonts.model.forecast import SampleForecast
+
+        forecasts = []
+        use_bf16 = bool(
+            use_bf16_if_available
+            and self.device.type == "cuda"
+            and torch.cuda.is_available()
+            and torch.cuda.is_bf16_supported()
+        )
+
+        for batch in batcher(test_data_input, batch_size=self.batch_size):
+            targets = [torch.tensor(entry["target"], dtype=torch.float32) for entry in batch]
+            batch_ctx, downsample_factors = self._prepare_context_matrix(targets)
+
+            pred_pos = self._decode_autoregressive(batch_ctx, use_bf16, downsample_factors)
+            if self.force_flip_invariance:
+                pred_neg = self._decode_autoregressive(-batch_ctx, use_bf16, downsample_factors)
+                pred_full = 0.5 * (pred_pos - pred_neg)
+            else:
+                pred_full = pred_pos
+
+            if torch.isnan(pred_full).any():
+                pf_2d = pred_full.squeeze(-1).detach().cpu().numpy()
+                pf_2d = numpy_fill(pf_2d)
+                pred_full = torch.tensor(pf_2d, device=pred_full.device, dtype=pred_full.dtype).unsqueeze(-1)
+
+            pred_full_np = pred_full.float().squeeze(-1).detach().cpu().numpy()
+            pred_list = []
+            for i in range(len(downsample_factors)):
+                df = downsample_factors[i]
+                target_pred_len = int(self.prediction_length) // int(max(1, df))
+                seq = pred_full_np[i, :target_pred_len]
+                if df > 1:
+                    old_len = len(seq)
+                    new_len = int(self.prediction_length)
+                    seq = np.interp(np.linspace(0, 1, new_len), np.linspace(0, 1, old_len), seq)
+                pred_list.append(seq)
+            pred_full_np = np.array(pred_list)
+
+            for i, ts in enumerate(batch):
+                start_date = ts["start"] + len(ts["target"])
+                samples = np.repeat(pred_full_np[i][None, :], self.num_samples, axis=0)
+                forecasts.append(SampleForecast(samples=samples, start_date=start_date))
+
+        return forecasts
+
+
+# ==========================
+# GiftEval evaluation script
+# ==========================
+from gluonts.ev.metrics import (
+    MAE, MAPE, MASE, MSE, MSIS, ND, NRMSE, RMSE, SMAPE,
+    MeanWeightedSumQuantileLoss,
+)
+
+METRICS = [
+    MSE(forecast_type="mean"),
+    MSE(forecast_type=0.5),
+    MAE(),
+    MASE(),
+    MAPE(),
+    SMAPE(),
+    MSIS(),
+    RMSE(),
+    NRMSE(),
+    ND(),
+    MeanWeightedSumQuantileLoss(quantile_levels=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]),
+]
+
+PRETTY_NAMES = {
+    "saugeenday": "saugeen",
+    "temperature_rain_with_missing": "temperature_rain",
+    "kdd_cup_2018_with_missing": "kdd_cup_2018",
+    "car_parts_with_missing": "car_parts",
+}
+
+SHORT_DATASETS = "m4_yearly m4_quarterly m4_monthly m4_weekly m4_daily m4_hourly electricity/15T electricity/H electricity/D electricity/W solar/10T solar/H solar/D solar/W hospital covid_deaths us_births/D us_births/M us_births/W saugeenday/D saugeenday/M saugeenday/W temperature_rain_with_missing kdd_cup_2018_with_missing/H kdd_cup_2018_with_missing/D car_parts_with_missing restaurant hierarchical_sales/D hierarchical_sales/W LOOP_SEATTLE/5T LOOP_SEATTLE/H LOOP_SEATTLE/D SZ_TAXI/15T SZ_TAXI/H M_DENSE/H M_DENSE/D ett1/15T ett1/H ett1/D ett1/W ett2/W ett2/D jena_weather/10T jena_weather/H jena_weather/D bitbrains_fast_storage/5T bitbrains_fast_storage/H bitbrains_rnd/5T bitbrains_rnd/H bizitobs_application bizitobs_service bizitobs_l2c/5T bizitobs_l2c/H"
+
+MED_LONG_DATASETS = "electricity/15T electricity/H solar/10T solar/H kdd_cup_2018_with_missing/H LOOP_SEATTLE/5T LOOP_SEATTLE/H SZ_TAXI/15T M_DENSE/H ett1/15T ett1/H ett2/15T ett2/H jena_weather/10T jena_weather/H bitbrains_fast_storage/5T bitbrains_rnd/5T bizitobs_application bizitobs_service bizitobs_l2c/5T bizitobs_l2c/H"
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Run Reverso GiftEval across datasets")
+    parser.add_argument("--checkpoint", default='checkpoints/reverso_small/checkpoint.pth', help="Path to model checkpoint")
+    parser.add_argument("--json_path", default='checkpoints/reverso_small/args.json', help="Path to JSON file with model config overrides")
+    parser.add_argument("--output-dir", dest="output_dir", default='results/reverso_small', help="Output directory for results")
+    parser.add_argument("--dataset", default=None, help="Filter to specific dataset (substring match)")
+    parser.add_argument("--term", default=None, choices=["short", "medium", "long"], help="Filter to specific term")
+    parser.add_argument("--force-flip-invariance", dest="force_flip_invariance", action="store_true",
+                        help="Average f(x) with -f(-x) for flip invariance")
+    parser.add_argument("--downsample-json", dest="downsample_json",
+                        default="config/downsample_factors.json",
+                        help="Path to JSON with downsample factors per dataset/term")
+    parser.add_argument("--loop-k", dest="loop_k", type=int, default=0,
+                        help="evaluate through LoopedModel at this k "
+                             "(0 = plain Model). Need not match training k: "
+                             "the block is weight-tied, so one checkpoint "
+                             "scores at any k (task.md 10)")
+    parser.add_argument("--loop-beta", dest="loop_beta", type=float, default=1.0)
+    parser.add_argument("--allow-arch-mismatch", dest="allow_arch_mismatch",
+                        action="store_true",
+                        help="passer outre le controle d'architecture ci-dessous. "
+                             "A n'utiliser que si on evalue EXPRES un checkpoint "
+                             "avec une autre configuration que celle de son "
+                             "entrainement, et a ecrire dans done.md.")
+    parser.add_argument("--split", dest="split", default="test",
+                        choices=["test", "validation"],
+                        help="test = le benchmark. validation = le bloc de "
+                             "prediction_length points JUSTE AVANT la region "
+                             "de test, une fenetre par serie : disjoint du "
+                             "test et invisible a l'entrainement. Tout le "
+                             "reste est identique, metrique comprise, donc "
+                             "les deux nombres sont comparables. Ecrire dans "
+                             "un --output-dir distinct.")
+    parser.add_argument("--no-ema", dest="use_ema", action="store_false",
+                        help="score the raw weights instead of the EMA ones")
+    parser.add_argument("--no-fla", dest="use_fla", action="store_false")
+    args = parser.parse_args()
+
+    # Load model config from JSON if provided
+    json_cfg = {}
+    if args.json_path and os.path.isfile(args.json_path):
+        with open(args.json_path, "r") as f:
+            json_cfg = json.load(f)
+
+    # Model hyperparameters
+    SEQ_LEN = int(json_cfg.get("seq_len", 2048))
+    INPUT_TOKEN_LEN = int(json_cfg.get("input_token_len", 2048))
+    OUTPUT_TOKEN_LEN = int(json_cfg.get("output_token_len", 48))
+    E_LAYERS = int(json_cfg.get("e_layers", 8))
+    D_MODEL = int(json_cfg.get("d_model", 128))
+    D_INTERMEDIATE = int(json_cfg.get("d_intermediate", 512))
+    OUTPUT_BOTTLENECK_DIM = int(json_cfg.get("output_bottleneck_dim", 48))
+    EXPAND_V = float(json_cfg.get("expand_v", 1.0))
+    STATE_WEAVING = int(json_cfg.get("state_weaving", 1))
+    ALLOW_NEG = int(json_cfg.get("allow_neg_eigval", 0))
+    GATING_KERNEL_SIZE = int(json_cfg.get("gating_kernel_size", 3))
+    MAIN_MODULE = str(json_cfg.get("main_module", "conv,attn,conv,attn,conv,attn,conv,attn"))
+    USE_OUTPUT_PE = bool(json_cfg.get("use_output_pe", False))
+
+    # -- l'architecture du checkpoint doit etre celle de --json_path --------
+    # Le 17 octobre, deux evals de deux heures ont mesure R2 et R3 avec une
+    # configuration d'inference fausse (CLAUDE.md 4c). Le meme accident est
+    # possible sur l'ARCHITECTURE : un run entraine avec
+    # --size reverso_nano_neg puis evalue contre checkpoints/reverso_nano
+    # donnerait, silencieusement, un modele sans la modification.
+    _meta = os.path.join(os.path.dirname(os.path.abspath(args.checkpoint)),
+                         "meta.json")
+    if os.path.isfile(_meta):
+        try:
+            _msize = json.load(open(_meta)).get("args", {}).get("size")
+        except Exception:
+            _msize = None
+        _jsize = os.path.basename(
+            os.path.dirname(os.path.abspath(args.json_path)))
+        if _msize and _jsize and _msize != _jsize:
+            print("\n!! ARCHITECTURE INCOHERENTE -- rien n'a ete evalue")
+            print("   entraine avec   --size %s" % _msize)
+            print("   evalue contre   checkpoints/%s/args.json" % _jsize)
+            print("   -> relancer avec --json_path checkpoints/%s/args.json"
+                  % _msize)
+            print("   (ou --allow-arch-mismatch si c'est voulu et documente)\n")
+            if not getattr(args, "allow_arch_mismatch", False):
+                raise SystemExit(2)
+    print(f"allow_neg_eigval: {ALLOW_NEG}")
+
+    DEVICE = "cuda"
+    NUM_SAMPLES = 100
+    BATCH_SIZE = 256
+    USE_AMP = 1
+
+    downsample_map = {}
+    if os.path.isfile(args.downsample_json):
+        with open(args.downsample_json, "r") as f:
+            downsample_map = json.load(f)
+
+    # Setup datasets
+    all_datasets = sorted(set(SHORT_DATASETS.split() + MED_LONG_DATASETS.split()))
+    med_long_set = set(MED_LONG_DATASETS.split())
+    all_terms = ["short", "medium", "long"]
+
+    with open("config/dataset_properties.json", "r") as f:
+        dataset_properties = json.load(f)
+
+    os.environ.setdefault("GIFT_EVAL", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"))
+
+    if args.dataset:
+        all_datasets = [ds for ds in all_datasets if args.dataset in ds]
+        if not all_datasets:
+            print(f"No datasets found matching '{args.dataset}'")
+            return
+
+    if args.term:
+        all_terms = [args.term]
+
+    # Setup output
+    output_dir = args.output_dir or os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+    os.makedirs(output_dir, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    csv_path = os.path.join(output_dir, f"all_results_{timestamp}.csv")
+
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "dataset", "model",
+            "eval_metrics/MSE[mean]", "eval_metrics/MSE[0.5]",
+            "eval_metrics/MAE[0.5]", "eval_metrics/MASE[0.5]",
+            "eval_metrics/MAPE[0.5]", "eval_metrics/sMAPE[0.5]",
+            "eval_metrics/MSIS", "eval_metrics/RMSE[mean]",
+            "eval_metrics/NRMSE[mean]", "eval_metrics/ND[0.5]",
+            "eval_metrics/mean_weighted_sum_quantile_loss",
+            "domain", "num_variates",
+        ])
+
+    from gluonts.model import evaluate_model
+    from gluonts.time_feature import get_seasonality
+    from gift_eval.data import Dataset
+
+    print(f"Evaluating {len(all_datasets)} datasets, terms: {all_terms}")
+    print(f"Flip invariance: {args.force_flip_invariance}")
+    print(f"Split: {args.split}")
+
+    for ds_num, ds_name in enumerate(all_datasets):
+        if "/" in ds_name:
+            ds_key = PRETTY_NAMES.get(ds_name.split("/")[0].lower(), ds_name.split("/")[0].lower())
+            ds_freq = ds_name.split("/")[1]
+        else:
+            ds_key = PRETTY_NAMES.get(ds_name.lower(), ds_name.lower())
+            ds_freq = dataset_properties[ds_key]["frequency"]
+
+        print(f"[{ds_num + 1}/{len(all_datasets)}] {ds_name}")
+
+        for term in all_terms:
+            if term in ("medium", "long") and ds_name not in med_long_set:
+                continue
+
+            ds_config = f"{ds_key}/{ds_freq}/{term}"
+            probe = Dataset(name=ds_name, term=term, to_univariate=False)
+            to_univariate = probe.target_dim != 1
+            dataset = Dataset(name=ds_name, term=term, to_univariate=to_univariate)
+            season_length = get_seasonality(dataset.freq)
+
+            downsample_key = f"{ds_key}/{ds_freq}/{term}".lower()
+            downsample_factor = downsample_map.get(downsample_key, 1)
+
+            eval_data = (dataset.test_data if args.split == "test"
+                         else dataset.validation_data)
+            info = f"  {term}: {len(eval_data)} instances [{args.split}]"
+            if downsample_factor > 1:
+                info += f", downsample={downsample_factor}"
+            print(info)
+
+            predictor = ReversoPredictor(
+                prediction_length=dataset.prediction_length,
+                checkpoint_path=args.checkpoint,
+                device=DEVICE,
+                seq_len=SEQ_LEN,
+                input_token_len=INPUT_TOKEN_LEN,
+                output_token_len=OUTPUT_TOKEN_LEN,
+                e_layers=E_LAYERS,
+                d_model=D_MODEL,
+                d_intermediate=D_INTERMEDIATE,
+                output_bottleneck_dim=OUTPUT_BOTTLENECK_DIM,
+                expand_v=EXPAND_V,
+                state_weaving=STATE_WEAVING,
+                allow_neg_eigval=ALLOW_NEG,
+                gating_kernel_size=GATING_KERNEL_SIZE,
+                main_module=MAIN_MODULE,
+                use_output_pe=USE_OUTPUT_PE,
+                num_samples=NUM_SAMPLES,
+                batch_size=BATCH_SIZE,
+                use_amp=USE_AMP,
+                downsample_factor=downsample_factor,
+                force_flip_invariance=args.force_flip_invariance,
+                loop_k=args.loop_k,
+                loop_beta=args.loop_beta,
+                use_ema=args.use_ema,
+                use_fla=args.use_fla,
+            )
+
+            res = evaluate_model(
+                predictor,
+                test_data=eval_data,
+                metrics=METRICS,
+                batch_size=BATCH_SIZE,
+                axis=None,
+                mask_invalid_label=True,
+                allow_nan_forecast=False,
+                seasonality=season_length,
+            )
+
+            with open(csv_path, "a", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    ds_config, "reverso",
+                    res["MSE[mean]"][0], res["MSE[0.5]"][0],
+                    res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+                    res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+                    res["MSIS"][0], res["RMSE[mean]"][0],
+                    res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+                    res["mean_weighted_sum_quantile_loss"][0],
+                    dataset_properties[ds_key]["domain"],
+                    dataset_properties[ds_key]["num_variates"],
+                ])
+
+    print(f"\nResults saved to: {csv_path}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,36 @@
+\section{Reproducibility}
+\label{app:repro}
+
+\paragraph{Code.} All code, launchers and analysis scripts are in the project
+repository. The upstream Reverso snapshot is vendored under \texttt{reverso/}
+with its MIT licence retained, and the exact upstream commit is recorded in
+\texttt{reverso/UPSTREAM.md}. Our modifications are reproducible from the
+anchored patch scripts in \texttt{patches/}, each of which verifies every
+anchor before writing and refuses to apply partially.
+
+\paragraph{Data provenance.} Two runs saw identical data if and only if their
+\texttt{stream\_sha256} matches; the hash is written to each run's launch log.
+This is the contract that lets a composed arm be verified as differing from its
+components in exactly one respect.
+
+\paragraph{Run index.} Every arm in Table~\ref{tab:arms} has a
+\texttt{runs/<TAG>/meta.json} recording its full argument vector, and
+\texttt{results/<TAG>/} its per-row scores. The report's tables are generated
+from \texttt{report/data/*.csv} by \texttt{analysis/make\_tables.py}, which
+recomputes every derived percentage from the raw MASE values and fails if any
+disagrees with the stored one.
+
+\section{Numbers that are easy to get wrong}
+\label{app:pitfalls}
+
+\begin{itemize}
+  \item A per-horizon decomposition on the $97$-row perimeter and one on the
+        $63$-row subset are different measurements and must never be compared.
+        Doing so once inverted a conclusion in this project.
+  \item \texttt{ls step*.pth | tail} sorts lexicographically, so
+        \texttt{step90000} follows \texttt{step150000}.
+  \item A \texttt{grep} on a log opened with \texttt{tee -a} can return the
+        previous run's block.
+  \item The decay fork ends at $132\,000$ steps, not $150\,000$; its final
+        weights are in \texttt{last.pth}.
+\end{itemize}

@@ -1,0 +1,597 @@
+=== So 11 Okt 2026 15:38:41 CEST R0_k4  k=4 beta=0.25  gpu=0 ===
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/json.py:102: UserWarning: Using `json`-module for json-handling. Consider installing one of `orjson`, `ujson` to speed up serialization and deserialization.
+  warnings.warn(
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+Current Triton version 3.2.0 is below the recommended 3.3.0 version. Errors may occur and these issues will not be fixed. Please consider upgrading Triton.
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+Evaluating 55 datasets, terms: ['short', 'medium', 'long']
+Flip invariance: False
+[1/55] LOOP_SEATTLE/5T
+  short: 6460 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:06, 39.88it/s]512it [00:12, 41.60it/s]768it [00:18, 42.06it/s]1024it [00:24, 42.21it/s]1280it [00:30, 42.46it/s]1536it [00:36, 42.48it/s]1792it [00:42, 42.19it/s]2048it [00:48, 42.43it/s]2304it [00:54, 42.66it/s]2560it [01:00, 42.76it/s]2816it [01:06, 42.88it/s]3072it [01:12, 42.44it/s]3328it [01:18, 42.43it/s]3584it [01:24, 42.16it/s]3840it [01:30, 41.75it/s]4096it [01:37, 41.53it/s]4352it [01:43, 41.02it/s]4608it [01:49, 41.01it/s]4864it [01:55, 41.42it/s]5120it [02:01, 41.84it/s]5376it [02:07, 42.10it/s]5632it [02:13, 42.14it/s]5888it [02:20, 41.69it/s]6144it [02:26, 42.10it/s]6400it [02:31, 42.86it/s]6460it [02:33, 43.03it/s]6460it [02:33, 42.15it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 6460 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:06, 42.34it/s]512it [00:12, 41.67it/s]768it [00:18, 42.26it/s]1024it [00:24, 42.25it/s]1280it [00:30, 42.22it/s]1536it [00:36, 42.42it/s]1792it [00:42, 42.55it/s]2048it [00:48, 42.02it/s]2304it [00:54, 42.06it/s]2560it [01:00, 42.02it/s]2816it [01:06, 41.72it/s]3072it [01:13, 41.49it/s]3328it [01:19, 41.43it/s]3584it [01:25, 41.92it/s]3840it [01:31, 42.28it/s]4096it [01:37, 42.40it/s]4352it [01:43, 42.34it/s]4608it [01:49, 41.78it/s]4864it [01:55, 42.55it/s]5120it [02:01, 43.26it/s]5376it [02:06, 44.01it/s]5632it [02:12, 44.59it/s]5888it [02:17, 44.80it/s]6144it [02:23, 44.65it/s]6400it [02:29, 44.88it/s]6460it [02:30, 44.91it/s]6460it [02:30, 42.88it/s]
+  long: 4845 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:05, 47.55it/s]512it [00:10, 46.46it/s]768it [00:16, 46.86it/s]1024it [00:21, 46.91it/s]1280it [00:27, 47.05it/s]1536it [00:32, 47.14it/s]1792it [00:38, 46.95it/s]2048it [00:43, 46.25it/s]2304it [00:49, 46.41it/s]2560it [00:54, 46.64it/s]2816it [01:00, 46.87it/s]3072it [01:05, 46.92it/s]3328it [01:11, 46.95it/s]3584it [01:16, 46.53it/s]3840it [01:22, 46.73it/s]4096it [01:27, 46.66it/s]4352it [01:33, 46.71it/s]4608it [01:38, 46.66it/s]4845it [01:43, 46.51it/s]4845it [01:43, 46.72it/s]
+[2/55] LOOP_SEATTLE/D
+  short: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1094.89it/s]512it [00:00, 1096.76it/s]646it [00:00, 1085.54it/s]646it [00:00, 1088.73it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[3/55] LOOP_SEATTLE/H
+  short: 6137 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 436.71it/s]512it [00:01, 437.69it/s]768it [00:01, 438.18it/s]1024it [00:02, 437.97it/s]1280it [00:02, 438.33it/s]1536it [00:03, 438.33it/s]1792it [00:04, 438.45it/s]2048it [00:04, 439.28it/s]2304it [00:05, 439.42it/s]2560it [00:05, 439.45it/s]2816it [00:06, 439.13it/s]3072it [00:07, 439.34it/s]3328it [00:07, 438.89it/s]3584it [00:08, 439.28it/s]3840it [00:08, 439.24it/s]4096it [00:09, 439.39it/s]4352it [00:09, 439.27it/s]4608it [00:10, 439.43it/s]4864it [00:11, 439.36it/s]5120it [00:11, 439.45it/s]5376it [00:12, 439.48it/s]5632it [00:12, 439.62it/s]5888it [00:13, 439.44it/s]6137it [00:14, 402.83it/s]6137it [00:14, 433.67it/s]
+  medium: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 365.10it/s]512it [00:01, 364.07it/s]646it [00:01, 362.61it/s]646it [00:01, 363.17it/s]
+  long: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 345.59it/s]512it [00:01, 343.80it/s]646it [00:01, 343.54it/s]646it [00:01, 343.81it/s]
+[4/55] M_DENSE/D
+  short: 90 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]90it [00:00, 966.62it/s]
+[5/55] M_DENSE/H
+  short: 600 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 250.17it/s]512it [00:02, 250.77it/s]600it [00:02, 250.40it/s]600it [00:02, 250.44it/s]
+  medium: 120 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]120it [00:00, 226.07it/s]120it [00:00, 226.01it/s]
+  long: 90 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]90it [00:00, 215.29it/s]90it [00:00, 215.22it/s]
+[6/55] SZ_TAXI/15T
+  short: 1092 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 795.53it/s]512it [00:00, 800.48it/s]768it [00:00, 803.82it/s]1024it [00:01, 804.70it/s]1092it [00:01, 801.06it/s]
+  medium: 156 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]156it [00:00, 513.75it/s]156it [00:00, 513.44it/s]
+  long: 156 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]156it [00:00, 484.53it/s]156it [00:00, 484.27it/s]
+[7/55] SZ_TAXI/H
+  short: 312 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 987.80it/s]312it [00:00, 974.93it/s]
+[8/55] bitbrains_fast_storage/5T
+  short: 45000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 424.65it/s]512it [00:01, 424.30it/s]768it [00:01, 423.60it/s]1024it [00:02, 425.84it/s]1280it [00:03, 425.72it/s]1536it [00:03, 430.68it/s]1792it [00:04, 433.41it/s]2048it [00:04, 435.51it/s]2304it [00:05, 437.13it/s]2560it [00:06, 401.56it/s]2816it [00:06, 412.41it/s]3072it [00:07, 420.50it/s]3328it [00:07, 426.29it/s]3584it [00:08, 430.45it/s]3840it [00:09, 432.93it/s]4096it [00:09, 435.32it/s]4352it [00:10, 436.52it/s]4608it [00:10, 437.80it/s]4864it [00:11, 437.68it/s]5120it [00:11, 437.48it/s]5376it [00:12, 437.70it/s]5632it [00:13, 437.81it/s]5888it [00:13, 438.02it/s]6144it [00:14, 437.47it/s]6400it [00:14, 437.42it/s]6656it [00:15, 437.39it/s]6912it [00:16, 437.17it/s]7168it [00:16, 437.40it/s]7424it [00:17, 436.85it/s]7680it [00:17, 436.11it/s]7936it [00:18, 436.33it/s]8192it [00:18, 436.30it/s]8448it [00:19, 436.55it/s]8704it [00:20, 437.10it/s]8960it [00:20, 436.97it/s]9216it [00:21, 437.15it/s]9472it [00:21, 437.23it/s]9728it [00:22, 438.09it/s]9984it [00:23, 437.44it/s]10240it [00:23, 437.27it/s]10496it [00:24, 437.10it/s]10752it [00:24, 437.21it/s]11008it [00:25, 436.25it/s]11264it [00:25, 436.23it/s]11520it [00:26, 436.91it/s]11776it [00:27, 437.03it/s]12032it [00:27, 437.59it/s]12288it [00:28, 437.94it/s]12544it [00:28, 437.83it/s]12800it [00:29, 437.30it/s]13056it [00:30, 437.38it/s]13312it [00:30, 437.40it/s]13568it [00:31, 437.71it/s]13824it [00:31, 437.73it/s]14080it [00:32, 437.52it/s]14336it [00:32, 437.75it/s]14592it [00:33, 437.87it/s]14848it [00:34, 437.90it/s]15104it [00:34, 437.16it/s]15360it [00:35, 437.58it/s]15616it [00:35, 437.22it/s]15872it [00:36, 436.80it/s]16128it [00:37, 436.76it/s]16384it [00:37, 436.55it/s]16640it [00:38, 436.34it/s]16896it [00:39, 400.79it/s]17152it [00:39, 410.85it/s]17408it [00:40, 417.17it/s]17664it [00:40, 422.01it/s]17920it [00:41, 424.75it/s]18176it [00:41, 426.51it/s]18432it [00:42, 429.69it/s]18688it [00:43, 431.96it/s]18944it [00:43, 432.82it/s]19200it [00:44, 433.47it/s]19456it [00:44, 434.35it/s]19712it [00:45, 435.50it/s]19968it [00:46, 435.08it/s]20224it [00:46, 435.69it/s]20480it [00:47, 435.78it/s]20736it [00:47, 434.96it/s]20992it [00:48, 435.63it/s]21248it [00:49, 436.44it/s]21504it [00:49, 435.22it/s]21760it [00:50, 435.19it/s]22016it [00:50, 435.11it/s]22272it [00:51, 435.01it/s]22528it [00:51, 435.64it/s]22784it [00:52, 435.94it/s]23040it [00:53, 435.74it/s]23296it [00:53, 435.55it/s]23552it [00:54, 435.65it/s]23808it [00:54, 435.96it/s]24064it [00:55, 436.02it/s]24320it [00:56, 436.20it/s]24576it [00:56, 436.69it/s]24832it [00:57, 436.96it/s]25088it [00:57, 436.79it/s]25344it [00:58, 436.14it/s]25600it [00:59, 436.64it/s]25856it [00:59, 436.79it/s]26112it [01:00, 436.75it/s]26368it [01:00, 436.70it/s]26624it [01:01, 436.40it/s]26880it [01:01, 436.30it/s]27136it [01:02, 436.20it/s]27392it [01:03, 436.46it/s]27648it [01:03, 437.14it/s]27904it [01:04, 437.59it/s]28160it [01:04, 438.05it/s]28416it [01:05, 438.11it/s]28672it [01:06, 437.83it/s]28928it [01:06, 437.75it/s]29184it [01:07, 437.98it/s]29440it [01:07, 437.88it/s]29696it [01:08, 437.52it/s]29952it [01:08, 437.48it/s]30208it [01:09, 437.15it/s]30464it [01:10, 437.40it/s]30720it [01:10, 404.06it/s]30976it [01:11, 413.33it/s]31232it [01:12, 420.23it/s]31488it [01:12, 425.27it/s]31744it [01:13, 428.68it/s]32000it [01:13, 431.12it/s]32256it [01:14, 433.03it/s]32512it [01:14, 433.77it/s]32768it [01:15, 434.36it/s]33024it [01:16, 433.73it/s]33280it [01:16, 433.82it/s]33536it [01:17, 434.18it/s]33792it [01:17, 435.04it/s]34048it [01:18, 435.63it/s]34304it [01:19, 436.23it/s]34560it [01:19, 435.79it/s]34816it [01:20, 434.94it/s]35072it [01:20, 436.04it/s]35328it [01:21, 436.52it/s]35584it [01:22, 436.21it/s]35840it [01:22, 435.86it/s]36096it [01:23, 436.15it/s]36352it [01:23, 437.02it/s]36608it [01:24, 436.56it/s]36864it [01:24, 435.79it/s]37120it [01:25, 435.00it/s]37376it [01:26, 434.37it/s]37632it [01:26, 434.87it/s]37888it [01:27, 434.93it/s]38144it [01:27, 435.01it/s]38400it [01:28, 435.23it/s]38656it [01:29, 435.51it/s]38912it [01:29, 434.59it/s]39168it [01:30, 434.61it/s]39424it [01:30, 435.23it/s]39680it [01:31, 435.28it/s]39936it [01:32, 435.44it/s]40192it [01:32, 434.81it/s]40448it [01:33, 435.23it/s]40704it [01:33, 435.78it/s]40960it [01:34, 435.53it/s]41216it [01:34, 435.34it/s]41472it [01:35, 435.89it/s]41728it [01:36, 434.98it/s]41984it [01:36, 435.35it/s]42240it [01:37, 435.41it/s]42496it [01:37, 435.56it/s]42752it [01:38, 436.47it/s]43008it [01:39, 435.34it/s]43264it [01:39, 435.25it/s]43520it [01:40, 434.79it/s]43776it [01:40, 434.70it/s]44032it [01:41, 435.35it/s]44288it [01:42, 435.11it/s]44544it [01:42, 435.05it/s]44800it [01:43, 435.84it/s]45000it [01:43, 435.82it/s]45000it [01:43, 434.11it/s]
+  medium: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 364.51it/s]512it [00:01, 363.89it/s]768it [00:02, 365.57it/s]1024it [00:02, 364.68it/s]1280it [00:03, 364.29it/s]1536it [00:04, 364.12it/s]1792it [00:04, 364.28it/s]2048it [00:05, 364.05it/s]2304it [00:06, 363.76it/s]2560it [00:07, 363.49it/s]2816it [00:07, 364.13it/s]3072it [00:08, 363.89it/s]3328it [00:09, 363.79it/s]3584it [00:09, 363.31it/s]3840it [00:10, 363.46it/s]4096it [00:11, 363.15it/s]4352it [00:12, 338.09it/s]4608it [00:12, 343.84it/s]4864it [00:13, 346.57it/s]5000it [00:13, 347.26it/s]5000it [00:13, 358.03it/s]
+  long: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 343.85it/s]512it [00:01, 343.79it/s]768it [00:02, 340.87it/s]1024it [00:03, 339.74it/s]1280it [00:03, 339.33it/s]1536it [00:04, 340.56it/s]1792it [00:05, 339.04it/s]2048it [00:06, 338.35it/s]2304it [00:06, 337.68it/s]2560it [00:07, 336.60it/s]2816it [00:08, 314.69it/s]3072it [00:09, 320.10it/s]3328it [00:10, 324.58it/s]3584it [00:10, 328.20it/s]3840it [00:11, 331.09it/s]4096it [00:12, 332.23it/s]4352it [00:13, 332.64it/s]4608it [00:13, 334.10it/s]4864it [00:14, 333.91it/s]5000it [00:14, 334.70it/s]5000it [00:14, 333.34it/s]
+[9/55] bitbrains_fast_storage/H
+  short: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1024.87it/s]512it [00:00, 1026.25it/s]768it [00:00, 1027.65it/s]1024it [00:00, 1030.60it/s]1280it [00:01, 1030.31it/s]1536it [00:01, 1027.43it/s]1792it [00:01, 1030.13it/s]2048it [00:01, 1032.98it/s]2304it [00:02, 1032.19it/s]2560it [00:02, 1032.10it/s]2816it [00:02, 820.83it/s] 3072it [00:03, 873.96it/s]3328it [00:03, 914.27it/s]3584it [00:03, 944.75it/s]3840it [00:03, 967.72it/s]4096it [00:04, 980.26it/s]4352it [00:04, 996.84it/s]4608it [00:04, 1007.58it/s]4864it [00:04, 1011.28it/s]5000it [00:05, 1005.95it/s]5000it [00:05, 984.73it/s] 
+[10/55] bitbrains_rnd/5T
+  short: 18000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 431.81it/s]512it [00:01, 432.56it/s]768it [00:01, 433.05it/s]1024it [00:02, 406.72it/s]1280it [00:03, 398.14it/s]1536it [00:03, 408.99it/s]1792it [00:04, 416.28it/s]2048it [00:04, 421.48it/s]2304it [00:05, 424.90it/s]2560it [00:06, 427.82it/s]2816it [00:06, 428.78it/s]3072it [00:07, 427.30it/s]3328it [00:07, 429.55it/s]3584it [00:08, 431.09it/s]3840it [00:09, 431.91it/s]4096it [00:09, 432.56it/s]4352it [00:10, 433.66it/s]4608it [00:10, 433.60it/s]4864it [00:11, 433.17it/s]5120it [00:12, 433.22it/s]5376it [00:12, 433.22it/s]5632it [00:13, 432.54it/s]5888it [00:13, 432.44it/s]6144it [00:14, 432.34it/s]6400it [00:14, 433.41it/s]6656it [00:15, 433.73it/s]6912it [00:16, 433.68it/s]7168it [00:16, 433.79it/s]7424it [00:17, 434.21it/s]7680it [00:17, 434.45it/s]7936it [00:18, 434.71it/s]8192it [00:19, 433.97it/s]8448it [00:19, 434.39it/s]8704it [00:20, 434.62it/s]8960it [00:20, 434.37it/s]9216it [00:21, 434.01it/s]9472it [00:22, 434.70it/s]9728it [00:22, 435.30it/s]9984it [00:23, 435.09it/s]10240it [00:23, 435.46it/s]10496it [00:24, 435.62it/s]10752it [00:24, 435.89it/s]11008it [00:25, 436.04it/s]11264it [00:26, 436.36it/s]11520it [00:26, 436.27it/s]11776it [00:27, 436.66it/s]12032it [00:27, 436.52it/s]12288it [00:28, 437.23it/s]12544it [00:29, 437.04it/s]12800it [00:29, 437.18it/s]13056it [00:30, 437.28it/s]13312it [00:30, 436.40it/s]13568it [00:31, 435.98it/s]13824it [00:32, 436.04it/s]14080it [00:32, 435.92it/s]14336it [00:33, 436.10it/s]14592it [00:33, 436.53it/s]14848it [00:34, 400.73it/s]15104it [00:35, 411.98it/s]15360it [00:35, 418.84it/s]15616it [00:36, 423.92it/s]15872it [00:36, 427.46it/s]16128it [00:37, 429.90it/s]16384it [00:38, 431.97it/s]16640it [00:38, 433.26it/s]16896it [00:39, 433.77it/s]17152it [00:39, 434.74it/s]17408it [00:40, 435.05it/s]17664it [00:40, 434.63it/s]17920it [00:41, 434.43it/s]18000it [00:41, 433.31it/s]18000it [00:41, 431.09it/s]
+  medium: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 361.37it/s]512it [00:01, 360.18it/s]768it [00:02, 360.26it/s]1024it [00:02, 358.99it/s]1280it [00:03, 359.49it/s]1536it [00:04, 359.25it/s]1792it [00:04, 359.61it/s]2000it [00:05, 359.17it/s]2000it [00:05, 359.48it/s]
+  long: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 284.49it/s]512it [00:01, 316.38it/s]768it [00:02, 327.67it/s]1024it [00:03, 333.30it/s]1280it [00:03, 336.75it/s]1536it [00:04, 338.50it/s]1792it [00:05, 340.34it/s]2000it [00:05, 340.95it/s]2000it [00:05, 334.03it/s]
+[11/55] bitbrains_rnd/H
+  short: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1016.44it/s]512it [00:00, 1014.04it/s]768it [00:00, 1014.94it/s]1024it [00:01, 1013.63it/s]1280it [00:01, 1011.03it/s]1536it [00:01, 1010.88it/s]1792it [00:01, 1009.32it/s]2000it [00:01, 1007.54it/s]2000it [00:01, 1010.40it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  return pd.Period(val, freq)
+[12/55] bizitobs_application
+  short: 30 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]30it [00:00, 399.07it/s]
+  medium: 4 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]4it [00:00, 237.46it/s]
+  long: 2 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]2it [00:00, 159.24it/s]
+[13/55] bizitobs_l2c/5T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 146.60it/s]140it [00:00, 146.57it/s]
+  medium: 49 instances, downsample=7
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]49it [00:00, 141.15it/s]49it [00:00, 141.09it/s]
+  long: 35 instances, downsample=7
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]35it [00:00, 136.95it/s]35it [00:00, 136.87it/s]
+[14/55] bizitobs_l2c/H
+  short: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 767.31it/s]
+  medium: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 422.16it/s]
+  long: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 411.37it/s]
+[15/55] bizitobs_service
+  short: 630 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 436.49it/s]512it [00:01, 434.56it/s]630it [00:01, 434.16it/s]630it [00:01, 434.48it/s]
+  medium: 84 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]84it [00:00, 331.70it/s]84it [00:00, 331.51it/s]
+  long: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 277.03it/s]42it [00:00, 276.76it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[16/55] car_parts_with_missing
+  short: 2674 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 968.05it/s]512it [00:00, 969.18it/s]768it [00:00, 967.24it/s]1024it [00:01, 968.56it/s]1280it [00:01, 968.83it/s]1536it [00:01, 969.52it/s]1792it [00:01, 968.14it/s]2048it [00:02, 969.58it/s]2304it [00:02, 969.32it/s]2560it [00:02, 971.34it/s]2674it [00:02, 966.39it/s]2674it [00:02, 968.39it/s]
+[17/55] covid_deaths
+  short: 266 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 920.53it/s]266it [00:00, 902.49it/s]
+[18/55] electricity/15T
+  short: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:07, 34.99it/s]512it [00:14, 35.04it/s]768it [00:21, 35.11it/s]1024it [00:29, 34.76it/s]1280it [00:36, 34.89it/s]1536it [00:43, 35.04it/s]1792it [00:51, 35.14it/s]2048it [00:58, 35.21it/s]2304it [01:05, 34.98it/s]2560it [01:13, 35.07it/s]2816it [01:20, 35.16it/s]3072it [01:27, 35.12it/s]3328it [01:34, 35.18it/s]3584it [01:42, 34.99it/s]3840it [01:49, 35.00it/s]4096it [01:56, 35.09it/s]4352it [02:04, 35.18it/s]4608it [02:11, 35.02it/s]4864it [02:18, 35.19it/s]5120it [02:25, 35.33it/s]5376it [02:32, 35.44it/s]5632it [02:40, 35.46it/s]5888it [02:47, 35.28it/s]6144it [02:54, 35.37it/s]6400it [03:01, 35.49it/s]6656it [03:09, 35.52it/s]6912it [03:16, 35.14it/s]7168it [03:23, 34.95it/s]7400it [03:30, 34.98it/s]7400it [03:30, 35.14it/s]
+  medium: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:07, 35.83it/s]512it [00:14, 36.12it/s]768it [00:21, 36.18it/s]1024it [00:28, 36.21it/s]1280it [00:35, 35.90it/s]1536it [00:42, 36.04it/s]1792it [00:49, 36.15it/s]2048it [00:56, 36.24it/s]2304it [01:03, 35.98it/s]2560it [01:10, 36.09it/s]2816it [01:17, 36.21it/s]3072it [01:25, 36.23it/s]3328it [01:32, 36.35it/s]3584it [01:39, 36.16it/s]3840it [01:46, 36.33it/s]4096it [01:53, 36.52it/s]4352it [01:59, 36.66it/s]4608it [02:06, 36.73it/s]4864it [02:14, 36.50it/s]5120it [02:20, 36.64it/s]5376it [02:27, 36.73it/s]5632it [02:34, 36.80it/s]5888it [02:41, 36.53it/s]6144it [02:48, 36.65it/s]6400it [02:55, 36.73it/s]6656it [03:02, 36.74it/s]6912it [03:09, 36.61it/s]7168it [03:17, 36.22it/s]7400it [03:23, 36.23it/s]7400it [03:23, 36.37it/s]
+  long: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:06, 36.63it/s]512it [00:13, 36.72it/s]768it [00:20, 36.62it/s]1024it [00:28, 36.21it/s]1280it [00:35, 36.34it/s]1536it [00:42, 36.47it/s]1792it [00:49, 36.53it/s]2048it [00:56, 36.55it/s]2304it [01:03, 36.26it/s]2560it [01:10, 36.37it/s]2816it [01:17, 36.52it/s]3072it [01:24, 36.58it/s]3328it [01:31, 36.73it/s]3584it [01:38, 36.45it/s]3840it [01:45, 36.46it/s]4096it [01:52, 36.49it/s]4352it [01:59, 36.56it/s]4608it [02:06, 36.50it/s]4864it [02:13, 36.39it/s]5120it [02:20, 36.48it/s]5376it [02:27, 36.61it/s]5632it [02:34, 36.69it/s]5888it [02:41, 36.43it/s]6144it [02:48, 36.54it/s]6400it [02:55, 36.64it/s]6656it [03:02, 36.68it/s]6912it [03:09, 36.58it/s]7168it [03:16, 36.23it/s]7400it [03:22, 36.15it/s]7400it [03:22, 36.46it/s]
+[19/55] electricity/D
+  short: 1850 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 909.91it/s]512it [00:00, 936.60it/s]768it [00:00, 942.80it/s]1024it [00:01, 948.98it/s]1280it [00:01, 962.96it/s]1536it [00:01, 969.53it/s]1792it [00:01, 972.85it/s]1850it [00:01, 958.58it/s]
+[20/55] electricity/H
+  short: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 133.66it/s]512it [00:03, 133.39it/s]768it [00:05, 132.68it/s]1024it [00:07, 132.81it/s]1280it [00:09, 132.90it/s]1536it [00:11, 132.29it/s]1792it [00:13, 128.42it/s]2048it [00:15, 129.41it/s]2304it [00:17, 130.21it/s]2560it [00:19, 130.83it/s]2816it [00:21, 131.39it/s]3072it [00:23, 131.76it/s]3328it [00:25, 132.22it/s]3584it [00:27, 132.44it/s]3840it [00:29, 132.79it/s]4096it [00:31, 133.44it/s]4352it [00:32, 133.94it/s]4608it [00:34, 133.93it/s]4864it [00:36, 133.91it/s]5120it [00:38, 134.19it/s]5376it [00:40, 134.35it/s]5632it [00:42, 134.46it/s]5888it [00:44, 134.61it/s]6144it [00:46, 131.26it/s]6400it [00:48, 132.32it/s]6656it [00:50, 132.70it/s]6912it [00:52, 132.57it/s]7168it [00:54, 132.43it/s]7400it [00:55, 132.39it/s]7400it [00:55, 132.49it/s]
+  medium: 2960 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 130.36it/s]512it [00:03, 130.43it/s]768it [00:05, 130.31it/s]1024it [00:07, 130.78it/s]1280it [00:09, 131.34it/s]1536it [00:11, 128.13it/s]1792it [00:13, 129.69it/s]2048it [00:15, 130.78it/s]2304it [00:17, 131.13it/s]2560it [00:19, 131.63it/s]2816it [00:21, 131.09it/s]2960it [00:22, 130.70it/s]2960it [00:22, 130.58it/s]
+  long: 1850 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 128.61it/s]512it [00:03, 128.72it/s]768it [00:05, 128.68it/s]1024it [00:07, 129.01it/s]1280it [00:09, 129.30it/s]1536it [00:11, 129.43it/s]1792it [00:14, 125.62it/s]1850it [00:14, 125.66it/s]1850it [00:14, 127.47it/s]
+[21/55] electricity/W
+  short: 1110 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1219.95it/s]512it [00:00, 1218.40it/s]768it [00:00, 1221.87it/s]1024it [00:00, 1225.13it/s]1110it [00:00, 1218.79it/s]
+[22/55] ett1/15T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:01, 71.09it/s]140it [00:01, 71.09it/s]
+  medium: 105 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]105it [00:01, 71.29it/s]105it [00:01, 71.28it/s]
+  long: 70 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]70it [00:00, 71.34it/s]70it [00:00, 71.33it/s]
+[23/55] ett1/D
+  short: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 934.67it/s]
+[24/55] ett1/H
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 251.50it/s]140it [00:00, 251.44it/s]
+  medium: 28 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]28it [00:00, 228.13it/s]28it [00:00, 227.87it/s]
+  long: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 218.83it/s]
+[25/55] ett1/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 923.48it/s]
+[26/55] ett2/15T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:01, 70.91it/s]140it [00:01, 70.90it/s]
+  medium: 105 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]105it [00:01, 72.87it/s]105it [00:01, 72.86it/s]
+  long: 70 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]70it [00:00, 71.86it/s]70it [00:00, 71.85it/s]
+[27/55] ett2/D
+  short: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 943.84it/s]
+[28/55] ett2/H
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 243.35it/s]140it [00:00, 243.30it/s]
+  medium: 28 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]28it [00:00, 231.21it/s]28it [00:00, 230.97it/s]
+  long: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 220.41it/s]
+[29/55] ett2/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 948.63it/s]
+[30/55] hierarchical_sales/D
+  short: 826 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 927.00it/s]512it [00:00, 933.78it/s]768it [00:00, 935.76it/s]826it [00:00, 930.09it/s]
+[31/55] hierarchical_sales/W
+  short: 472 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1280.50it/s]472it [00:00, 1276.06it/s]472it [00:00, 1276.53it/s]
+[32/55] hospital
+  short: 767 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 985.22it/s]512it [00:00, 652.34it/s]767it [00:01, 767.63it/s]767it [00:01, 761.49it/s]
+[33/55] jena_weather/10T
+  short: 420 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 92.30it/s]420it [00:04, 92.22it/s]420it [00:04, 92.24it/s]
+  medium: 231 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]231it [00:02, 93.25it/s]231it [00:02, 93.25it/s]
+  long: 168 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]168it [00:01, 91.31it/s]168it [00:01, 91.30it/s]
+[34/55] jena_weather/D
+  short: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 1182.17it/s]
+[35/55] jena_weather/H
+  short: 399 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 427.74it/s]399it [00:00, 428.32it/s]399it [00:00, 428.16it/s]
+  medium: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 364.69it/s]42it [00:00, 364.24it/s]
+  long: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 345.89it/s]42it [00:00, 345.47it/s]
+[36/55] kdd_cup_2018_with_missing/D
+  short: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1075.37it/s]512it [00:00, 1067.19it/s]540it [00:00, 1057.54it/s]
+[37/55] kdd_cup_2018_with_missing/H
+  short: 5400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 363.21it/s]512it [00:01, 362.80it/s]768it [00:02, 362.34it/s]1024it [00:02, 361.84it/s]1280it [00:03, 361.58it/s]1536it [00:04, 361.59it/s]1792it [00:04, 361.35it/s]2048it [00:05, 361.30it/s]2304it [00:06, 361.08it/s]2560it [00:07, 360.31it/s]2816it [00:07, 359.86it/s]3072it [00:08, 359.78it/s]3328it [00:09, 359.56it/s]3584it [00:09, 359.88it/s]3840it [00:10, 359.61it/s]4096it [00:11, 359.72it/s]4352it [00:12, 360.24it/s]4608it [00:12, 360.57it/s]4864it [00:13, 360.78it/s]5120it [00:14, 360.19it/s]5376it [00:14, 360.66it/s]5400it [00:14, 360.67it/s]
+  medium: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 300.34it/s]512it [00:01, 299.28it/s]540it [00:01, 298.84it/s]
+  long: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 288.91it/s]512it [00:01, 290.41it/s]540it [00:01, 289.67it/s]
+[38/55] m4_daily
+  short: 4227 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 843.57it/s]512it [00:00, 801.75it/s]768it [00:01, 710.76it/s]1024it [00:01, 650.21it/s]1280it [00:01, 623.23it/s]1536it [00:02, 615.06it/s]1792it [00:02, 655.16it/s]2048it [00:02, 711.76it/s]2304it [00:03, 730.07it/s]2560it [00:03, 679.09it/s]2816it [00:04, 647.15it/s]3072it [00:04, 627.24it/s]3328it [00:05, 608.24it/s]3584it [00:05, 602.49it/s]3840it [00:05, 667.38it/s]4096it [00:06, 732.62it/s]4227it [00:06, 758.13it/s]4227it [00:06, 679.98it/s]
+[39/55] m4_hourly
+  short: 414 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 843.25it/s]414it [00:00, 827.15it/s]414it [00:00, 829.90it/s]
+[40/55] m4_monthly
+  short: 48000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 913.52it/s]512it [00:00, 922.99it/s]768it [00:00, 926.35it/s]1024it [00:01, 927.69it/s]1280it [00:01, 928.85it/s]1536it [00:01, 929.85it/s]1792it [00:01, 931.74it/s]2048it [00:02, 931.61it/s]2304it [00:02, 930.35it/s]2560it [00:02, 929.97it/s]2816it [00:03, 933.84it/s]3072it [00:03, 935.12it/s]3328it [00:03, 933.62it/s]3584it [00:03, 930.83it/s]3840it [00:04, 927.80it/s]4096it [00:04, 925.56it/s]4352it [00:04, 776.77it/s]4608it [00:05, 817.37it/s]4864it [00:05, 849.55it/s]5120it [00:05, 871.86it/s]5376it [00:05, 887.17it/s]5632it [00:06, 899.57it/s]5888it [00:06, 906.37it/s]6144it [00:06, 912.97it/s]6400it [00:07, 920.34it/s]6656it [00:07, 927.33it/s]6912it [00:07, 925.50it/s]7168it [00:07, 935.06it/s]7424it [00:08, 943.05it/s]7680it [00:08, 945.73it/s]7936it [00:08, 950.21it/s]8192it [00:08, 954.66it/s]8448it [00:09, 954.21it/s]8704it [00:09, 955.81it/s]8960it [00:09, 959.39it/s]9216it [00:10, 960.50it/s]9472it [00:10, 961.41it/s]9728it [00:10, 963.52it/s]9984it [00:10, 963.86it/s]10240it [00:11, 953.78it/s]10496it [00:11, 950.06it/s]10752it [00:11, 944.94it/s]11008it [00:11, 940.46it/s]11264it [00:12, 937.81it/s]11520it [00:12, 936.53it/s]11776it [00:12, 936.67it/s]12032it [00:13, 935.47it/s]12288it [00:13, 935.21it/s]12544it [00:13, 933.82it/s]12800it [00:13, 932.83it/s]13056it [00:14, 932.53it/s]13312it [00:14, 936.52it/s]13568it [00:14, 717.42it/s]13824it [00:15, 773.69it/s]14080it [00:15, 815.04it/s]14336it [00:15, 846.67it/s]14592it [00:16, 868.38it/s]14848it [00:16, 887.69it/s]15104it [00:16, 905.07it/s]15360it [00:16, 916.06it/s]15616it [00:17, 923.18it/s]15872it [00:17, 922.23it/s]16128it [00:17, 921.57it/s]16384it [00:17, 923.07it/s]16640it [00:18, 929.48it/s]16896it [00:18, 939.97it/s]17152it [00:18, 941.26it/s]17408it [00:19, 948.05it/s]17664it [00:19, 956.16it/s]17920it [00:19, 960.95it/s]18176it [00:19, 962.90it/s]18432it [00:20, 965.87it/s]18688it [00:20, 965.23it/s]18944it [00:20, 966.38it/s]19200it [00:20, 967.84it/s]19456it [00:21, 969.28it/s]19712it [00:21, 968.86it/s]19968it [00:21, 968.92it/s]20224it [00:21, 967.78it/s]20480it [00:22, 966.32it/s]20736it [00:22, 966.32it/s]20992it [00:22, 966.81it/s]21248it [00:22, 955.53it/s]21504it [00:23, 946.65it/s]21760it [00:23, 931.08it/s]22016it [00:23, 924.34it/s]22272it [00:24, 925.66it/s]22528it [00:24, 924.16it/s]22784it [00:24, 921.50it/s]23040it [00:24, 921.05it/s]23296it [00:25, 917.16it/s]23552it [00:25, 914.05it/s]23808it [00:25, 919.17it/s]24064it [00:26, 915.72it/s]24320it [00:26, 921.29it/s]24576it [00:26, 918.16it/s]24832it [00:26, 916.70it/s]25088it [00:27, 919.39it/s]25344it [00:27, 926.55it/s]25600it [00:27, 919.12it/s]25856it [00:28, 921.28it/s]26112it [00:28, 919.97it/s]26368it [00:28, 926.47it/s]26624it [00:28, 925.57it/s]26880it [00:29, 917.81it/s]27136it [00:29, 919.36it/s]27392it [00:29, 916.53it/s]27648it [00:29, 919.63it/s]27904it [00:30, 925.38it/s]28160it [00:30, 931.99it/s]28416it [00:30, 935.49it/s]28672it [00:31, 939.36it/s]28928it [00:31, 940.19it/s]29184it [00:31, 938.30it/s]29440it [00:31, 935.85it/s]29696it [00:32, 937.51it/s]29952it [00:32, 934.76it/s]30208it [00:32, 919.06it/s]30464it [00:32, 926.45it/s]30720it [00:33, 932.57it/s]30976it [00:33, 932.95it/s]31232it [00:33, 926.20it/s]31488it [00:34, 923.05it/s]31744it [00:34, 922.52it/s]32000it [00:34, 923.79it/s]32256it [00:34, 933.90it/s]32512it [00:35, 942.52it/s]32768it [00:35, 946.19it/s]33024it [00:35, 942.46it/s]33280it [00:35, 944.42it/s]33536it [00:36, 945.39it/s]33792it [00:36, 944.34it/s]34048it [00:36, 945.06it/s]34304it [00:37, 791.13it/s]34560it [00:37, 836.39it/s]34816it [00:37, 871.66it/s]35072it [00:38, 895.46it/s]35328it [00:38, 903.05it/s]35584it [00:38, 909.89it/s]35840it [00:38, 920.53it/s]36096it [00:39, 920.50it/s]36352it [00:39, 930.23it/s]36608it [00:39, 935.66it/s]36864it [00:39, 932.65it/s]37120it [00:40, 931.54it/s]37376it [00:40, 932.86it/s]37632it [00:40, 932.63it/s]37888it [00:41, 931.03it/s]38144it [00:41, 928.92it/s]38400it [00:41, 927.84it/s]38656it [00:41, 926.44it/s]38912it [00:42, 930.91it/s]39168it [00:42, 934.47it/s]39424it [00:42, 936.38it/s]39680it [00:42, 939.63it/s]39936it [00:43, 943.80it/s]40192it [00:43, 945.45it/s]40448it [00:43, 942.94it/s]40704it [00:44, 944.03it/s]40960it [00:44, 941.40it/s]41216it [00:44, 933.91it/s]41472it [00:44, 931.23it/s]41728it [00:45, 928.92it/s]41984it [00:45, 931.59it/s]42240it [00:45, 934.60it/s]42496it [00:45, 938.11it/s]42752it [00:46, 938.00it/s]43008it [00:46, 940.75it/s]43264it [00:46, 944.15it/s]43520it [00:47, 939.92it/s]43776it [00:47, 942.17it/s]44032it [00:47, 939.16it/s]44288it [00:47, 937.79it/s]44544it [00:48, 938.91it/s]44800it [00:48, 938.30it/s]45056it [00:48, 945.46it/s]45312it [00:48, 948.65it/s]45568it [00:49, 948.69it/s]45824it [00:49, 949.05it/s]46080it [00:49, 952.97it/s]46336it [00:50, 948.80it/s]46592it [00:50, 946.29it/s]46848it [00:50, 950.25it/s]47104it [00:50, 953.11it/s]47360it [00:51, 951.23it/s]47616it [00:51, 955.19it/s]47872it [00:51, 953.66it/s]48000it [00:51, 944.86it/s]48000it [00:51, 927.00it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'Q-DEC' is deprecated and will be removed in a future version, please use 'QE-DEC' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'Q-DEC' is deprecated and will be removed in a future version, please use 'QE-DEC' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[41/55] m4_quarterly
+  short: 24000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 970.56it/s]512it [00:00, 975.76it/s]768it [00:00, 976.51it/s]1024it [00:01, 978.23it/s]1280it [00:01, 976.87it/s]1536it [00:01, 975.18it/s]1792it [00:01, 974.09it/s]2048it [00:02, 973.88it/s]2304it [00:02, 973.10it/s]2560it [00:02, 969.86it/s]2816it [00:02, 968.99it/s]3072it [00:03, 967.66it/s]3328it [00:03, 967.27it/s]3584it [00:03, 967.67it/s]3840it [00:03, 966.63it/s]4096it [00:04, 965.93it/s]4352it [00:04, 967.45it/s]4608it [00:04, 968.42it/s]4864it [00:05, 964.48it/s]5120it [00:05, 967.14it/s]5376it [00:05, 969.14it/s]5632it [00:05, 971.62it/s]5888it [00:06, 973.70it/s]6144it [00:06, 974.19it/s]6400it [00:06, 974.25it/s]6656it [00:06, 973.23it/s]6912it [00:07, 974.27it/s]7168it [00:07, 977.72it/s]7424it [00:07, 971.99it/s]7680it [00:07, 974.41it/s]7936it [00:08, 974.86it/s]8192it [00:08, 975.11it/s]8448it [00:08, 974.05it/s]8704it [00:08, 974.75it/s]8960it [00:09, 970.55it/s]9216it [00:09, 971.48it/s]9472it [00:09, 971.00it/s]9728it [00:10, 970.69it/s]9984it [00:10, 971.45it/s]10240it [00:10, 975.90it/s]10496it [00:10, 975.91it/s]10752it [00:11, 977.51it/s]11008it [00:11, 978.33it/s]11264it [00:11, 979.40it/s]11520it [00:11, 983.57it/s]11776it [00:12, 984.69it/s]12032it [00:12, 979.87it/s]12288it [00:12, 980.11it/s]12544it [00:12, 979.72it/s]12800it [00:13, 975.03it/s]13056it [00:13, 974.57it/s]13312it [00:13, 976.14it/s]13568it [00:13, 978.18it/s]13824it [00:14, 983.26it/s]14080it [00:14, 983.09it/s]14336it [00:14, 981.96it/s]14592it [00:14, 979.84it/s]14848it [00:15, 979.43it/s]15104it [00:15, 979.27it/s]15360it [00:15, 977.71it/s]15616it [00:16, 977.50it/s]15872it [00:16, 976.23it/s]16128it [00:16, 977.40it/s]16384it [00:16, 977.11it/s]16640it [00:17, 976.53it/s]16896it [00:17, 979.78it/s]17152it [00:17, 980.89it/s]17408it [00:17, 982.51it/s]17664it [00:18, 983.54it/s]17920it [00:18, 977.51it/s]18176it [00:18, 977.27it/s]18432it [00:18, 974.16it/s]18688it [00:19, 970.60it/s]18944it [00:19, 970.89it/s]19200it [00:19, 973.03it/s]19456it [00:19, 971.40it/s]19712it [00:20, 970.43it/s]19968it [00:20, 970.21it/s]20224it [00:20, 972.38it/s]20480it [00:21, 972.00it/s]20736it [00:21, 969.76it/s]20992it [00:21, 973.77it/s]21248it [00:21, 973.46it/s]21504it [00:22, 973.20it/s]21760it [00:22, 974.00it/s]22016it [00:22, 975.36it/s]22272it [00:22, 973.60it/s]22528it [00:23, 971.94it/s]22784it [00:23, 972.81it/s]23040it [00:23, 973.35it/s]23296it [00:23, 970.99it/s]23552it [00:24, 972.28it/s]23808it [00:24, 967.63it/s]24000it [00:24, 963.77it/s]24000it [00:24, 974.05it/s]
+[42/55] m4_weekly
+  short: 359 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 774.50it/s]359it [00:00, 814.05it/s]359it [00:00, 805.10it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'YE-DEC' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'YE-DEC' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'Y-DEC' instead.
+  return pd.Period(val, freq)
+[43/55] m4_yearly
+  short: 22974 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 981.36it/s]512it [00:00, 985.34it/s]768it [00:00, 986.07it/s]1024it [00:01, 988.30it/s]1280it [00:01, 987.97it/s]1536it [00:01, 986.84it/s]1792it [00:01, 989.34it/s]2048it [00:02, 989.01it/s]2304it [00:02, 990.25it/s]2560it [00:02, 989.43it/s]2816it [00:03, 757.84it/s]3072it [00:03, 813.79it/s]3328it [00:03, 856.09it/s]3584it [00:03, 884.59it/s]3840it [00:04, 906.43it/s]4096it [00:04, 921.50it/s]4352it [00:04, 931.04it/s]4608it [00:04, 938.52it/s]4864it [00:05, 947.30it/s]5120it [00:05, 950.86it/s]5376it [00:05, 955.61it/s]5632it [00:06, 958.10it/s]5888it [00:06, 960.66it/s]6144it [00:06, 961.58it/s]6400it [00:06, 963.18it/s]6656it [00:07, 963.94it/s]6912it [00:07, 966.75it/s]7168it [00:07, 965.32it/s]7424it [00:07, 966.01it/s]7680it [00:08, 965.06it/s]7936it [00:08, 966.86it/s]8192it [00:08, 967.15it/s]8448it [00:08, 967.03it/s]8704it [00:09, 966.79it/s]8960it [00:09, 927.03it/s]9216it [00:09, 818.44it/s]9472it [00:10, 862.36it/s]9728it [00:10, 895.21it/s]9984it [00:10, 915.82it/s]10240it [00:10, 931.50it/s]10496it [00:11, 943.61it/s]10752it [00:11, 951.64it/s]11008it [00:11, 956.14it/s]11264it [00:12, 958.78it/s]11520it [00:12, 961.53it/s]11776it [00:12, 964.46it/s]12032it [00:12, 963.86it/s]12288it [00:13, 964.63it/s]12544it [00:13, 967.52it/s]12800it [00:13, 967.02it/s]13056it [00:13, 967.53it/s]13312it [00:14, 967.66it/s]13568it [00:14, 968.18it/s]13824it [00:14, 967.14it/s]14080it [00:14, 967.62it/s]14336it [00:15, 965.10it/s]14592it [00:15, 965.21it/s]14848it [00:15, 966.06it/s]15104it [00:15, 967.61it/s]15360it [00:16, 966.96it/s]15616it [00:16, 965.07it/s]15872it [00:16, 965.95it/s]16128it [00:17, 968.52it/s]16384it [00:17, 968.48it/s]16640it [00:17, 967.73it/s]16896it [00:17, 967.83it/s]17152it [00:18, 967.12it/s]17408it [00:18, 968.26it/s]17664it [00:18, 966.30it/s]17920it [00:18, 966.36it/s]18176it [00:19, 965.19it/s]18432it [00:19, 964.54it/s]18688it [00:19, 963.83it/s]18944it [00:19, 963.69it/s]19200it [00:20, 963.95it/s]19456it [00:20, 965.00it/s]19712it [00:20, 965.38it/s]19968it [00:21, 967.20it/s]20224it [00:21, 966.71it/s]20480it [00:21, 966.32it/s]20736it [00:21, 964.74it/s]20992it [00:22, 966.44it/s]21248it [00:22, 964.86it/s]21504it [00:22, 963.73it/s]21760it [00:22, 963.52it/s]22016it [00:23, 964.66it/s]22272it [00:23, 964.54it/s]22528it [00:23, 965.13it/s]22784it [00:23, 961.89it/s]22974it [00:24, 960.53it/s]22974it [00:24, 951.74it/s]
+[44/55] restaurant
+  short: 807 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 874.27it/s]512it [00:00, 878.73it/s]768it [00:00, 877.67it/s]807it [00:00, 872.35it/s]
+[45/55] saugeenday/D
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 176.47it/s]20it [00:00, 176.31it/s]
+[46/55] saugeenday/M
+  short: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 623.46it/s]
+[47/55] saugeenday/W
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 614.49it/s]
+[48/55] solar/10T
+  short: 2740 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 89.93it/s]512it [00:05, 87.79it/s]768it [00:08, 89.63it/s]1024it [00:11, 90.53it/s]1280it [00:14, 90.92it/s]1536it [00:16, 91.20it/s]1792it [00:19, 91.44it/s]2048it [00:22, 91.66it/s]2304it [00:25, 92.39it/s]2560it [00:28, 92.27it/s]2740it [00:29, 92.18it/s]2740it [00:29, 91.36it/s]
+  medium: 1507 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 93.15it/s]512it [00:05, 92.66it/s]768it [00:08, 92.99it/s]1024it [00:11, 92.52it/s]1280it [00:13, 92.39it/s]1507it [00:16, 92.28it/s]1507it [00:16, 92.48it/s]
+  long: 1096 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 85.54it/s]512it [00:05, 88.08it/s]768it [00:08, 89.21it/s]1024it [00:11, 89.51it/s]1096it [00:12, 89.63it/s]1096it [00:12, 89.06it/s]
+[49/55] solar/D
+  short: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1092.75it/s]274it [00:00, 1070.78it/s]
+[50/55] solar/H
+  short: 2603 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 430.66it/s]512it [00:01, 429.58it/s]768it [00:01, 428.65it/s]1024it [00:02, 430.13it/s]1280it [00:02, 430.66it/s]1536it [00:03, 431.51it/s]1792it [00:04, 431.44it/s]2048it [00:04, 431.88it/s]2304it [00:05, 431.88it/s]2560it [00:05, 431.91it/s]2603it [00:06, 430.92it/s]
+  medium: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 353.23it/s]274it [00:00, 350.82it/s]
+  long: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 338.89it/s]274it [00:00, 336.44it/s]
+[51/55] solar/W
+  short: 137 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]137it [00:00, 948.29it/s]137it [00:00, 947.76it/s]
+[52/55] temperature_rain_with_missing
+  short: 96216 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1044.81it/s]512it [00:00, 1042.76it/s]768it [00:00, 1044.87it/s]1024it [00:00, 1041.55it/s]1280it [00:01, 1049.18it/s]1536it [00:01, 1049.53it/s]1792it [00:01, 1050.29it/s]2048it [00:01, 1048.85it/s]2304it [00:02, 1053.56it/s]2560it [00:02, 1053.47it/s]2816it [00:02, 1055.36it/s]3072it [00:02, 1058.64it/s]3328it [00:03, 1059.86it/s]3584it [00:03, 1062.84it/s]3840it [00:03, 1064.78it/s]4096it [00:03, 1065.17it/s]4352it [00:04, 1065.88it/s]4608it [00:04, 1066.87it/s]4864it [00:04, 1062.44it/s]5120it [00:04, 1064.08it/s]5376it [00:05, 1066.06it/s]5632it [00:05, 1066.20it/s]5888it [00:05, 1066.93it/s]6144it [00:05, 1067.07it/s]6400it [00:06, 1068.79it/s]6656it [00:06, 1069.31it/s]6912it [00:06, 1069.65it/s]7168it [00:06, 1068.98it/s]7424it [00:06, 1068.94it/s]7680it [00:07, 1068.68it/s]7936it [00:07, 1068.01it/s]8192it [00:07, 1068.13it/s]8448it [00:07, 1068.62it/s]8704it [00:08, 1068.67it/s]8960it [00:08, 1068.49it/s]9216it [00:08, 1068.91it/s]9472it [00:08, 1068.15it/s]9728it [00:09, 1071.10it/s]9984it [00:09, 1071.17it/s]10240it [00:09, 1066.30it/s]10496it [00:09, 1064.10it/s]10752it [00:10, 1063.91it/s]11008it [00:10, 1062.63it/s]11264it [00:10, 1059.97it/s]11520it [00:10, 1057.81it/s]11776it [00:11, 1054.01it/s]12032it [00:11, 1049.73it/s]12288it [00:11, 1048.65it/s]12544it [00:11, 1048.49it/s]12800it [00:12, 1051.21it/s]13056it [00:12, 1052.12it/s]13312it [00:12, 1051.25it/s]13568it [00:12, 1049.70it/s]13824it [00:13, 1052.47it/s]14080it [00:13, 1054.43it/s]14336it [00:13, 1055.07it/s]14592it [00:13, 1055.76it/s]14848it [00:14, 1057.71it/s]15104it [00:14, 1057.67it/s]15360it [00:14, 1057.63it/s]15616it [00:14, 1056.51it/s]15872it [00:14, 1058.43it/s]16128it [00:15, 953.81it/s] 16384it [00:15, 902.90it/s]16640it [00:15, 951.52it/s]16896it [00:16, 982.31it/s]17152it [00:16, 1002.91it/s]17408it [00:16, 1018.60it/s]17664it [00:16, 1029.54it/s]17920it [00:17, 1036.32it/s]18176it [00:17, 1024.72it/s]18432it [00:17, 1041.17it/s]18688it [00:17, 1046.06it/s]18944it [00:18, 1048.75it/s]19200it [00:18, 1052.03it/s]19456it [00:18, 1053.97it/s]19712it [00:18, 1055.21it/s]19968it [00:19, 1056.48it/s]20224it [00:19, 1057.08it/s]20480it [00:19, 1057.55it/s]20736it [00:19, 1058.23it/s]20992it [00:19, 1056.28it/s]21248it [00:20, 1056.14it/s]21504it [00:20, 1056.42it/s]21760it [00:20, 1053.79it/s]22016it [00:20, 1057.83it/s]22272it [00:21, 1056.64it/s]22528it [00:21, 1053.29it/s]22784it [00:21, 1054.59it/s]23040it [00:21, 1052.41it/s]23296it [00:22, 1051.42it/s]23552it [00:22, 1049.04it/s]23808it [00:22, 1048.61it/s]24064it [00:22, 1054.05it/s]24320it [00:23, 1055.96it/s]24576it [00:23, 1058.07it/s]24832it [00:23, 1057.87it/s]25088it [00:23, 1059.07it/s]25344it [00:24, 1059.63it/s]25600it [00:24, 1060.34it/s]25856it [00:24, 1060.60it/s]26112it [00:24, 1059.92it/s]26368it [00:25, 1058.52it/s]26624it [00:25, 1058.51it/s]26880it [00:25, 1059.37it/s]27136it [00:25, 1060.61it/s]27392it [00:26, 1059.70it/s]27648it [00:26, 1060.82it/s]27904it [00:26, 1060.27it/s]28160it [00:26, 1060.57it/s]28416it [00:27, 1059.72it/s]28672it [00:27, 1060.05it/s]28928it [00:27, 1058.84it/s]29184it [00:27, 1061.08it/s]29440it [00:27, 1061.34it/s]29696it [00:28, 1060.95it/s]29952it [00:28, 1062.84it/s]30208it [00:28, 1061.65it/s]30464it [00:28, 1062.18it/s]30720it [00:29, 1061.29it/s]30976it [00:29, 1061.05it/s]31232it [00:29, 1062.31it/s]31488it [00:29, 1063.32it/s]31744it [00:30, 1064.05it/s]32000it [00:30, 1067.01it/s]32256it [00:30, 1067.85it/s]32512it [00:30, 1067.68it/s]32768it [00:31, 1061.65it/s]33024it [00:31, 1058.63it/s]33280it [00:31, 1056.99it/s]33536it [00:31, 1053.72it/s]33792it [00:32, 1055.09it/s]34048it [00:32, 1054.50it/s]34304it [00:32, 1051.00it/s]34560it [00:32, 1047.94it/s]34816it [00:33, 1046.51it/s]35072it [00:33, 1047.97it/s]35328it [00:33, 1050.17it/s]35584it [00:33, 1051.23it/s]35840it [00:34, 1052.98it/s]36096it [00:34, 1053.50it/s]36352it [00:34, 1052.98it/s]36608it [00:34, 1054.44it/s]36864it [00:34, 1057.43it/s]37120it [00:35, 1055.17it/s]37376it [00:35, 1056.70it/s]37632it [00:35, 1059.37it/s]37888it [00:35, 1053.37it/s]38144it [00:36, 1050.18it/s]38400it [00:36, 1051.02it/s]38656it [00:36, 1050.59it/s]38912it [00:36, 1050.55it/s]39168it [00:37, 1052.58it/s]39424it [00:37, 1054.46it/s]39680it [00:37, 1054.79it/s]39936it [00:37, 1057.97it/s]40192it [00:38, 1059.13it/s]40448it [00:38, 1061.31it/s]40704it [00:38, 1057.90it/s]40960it [00:38, 1055.55it/s]41216it [00:39, 1053.62it/s]41472it [00:39, 1052.43it/s]41728it [00:39, 1054.40it/s]41984it [00:39, 1057.11it/s]42240it [00:40, 1064.02it/s]42496it [00:40, 1069.29it/s]42752it [00:40, 1067.07it/s]43008it [00:40, 1065.24it/s]43264it [00:41, 1063.38it/s]43520it [00:41, 1065.42it/s]43776it [00:41, 1062.16it/s]44032it [00:41, 1058.55it/s]44288it [00:42, 1057.27it/s]44544it [00:42, 1060.75it/s]44800it [00:42, 1060.03it/s]45056it [00:42, 1061.19it/s]45312it [00:42, 1062.85it/s]45568it [00:43, 1065.11it/s]45824it [00:43, 1066.58it/s]46080it [00:43, 1067.25it/s]46336it [00:43, 1068.90it/s]46592it [00:44, 1070.32it/s]46848it [00:44, 1073.10it/s]47104it [00:44, 1071.71it/s]47360it [00:44, 1066.69it/s]47616it [00:45, 1069.83it/s]47872it [00:45, 1070.66it/s]48128it [00:45, 1070.64it/s]48384it [00:45, 1072.43it/s]48640it [00:46, 1072.98it/s]48896it [00:46, 1071.10it/s]49152it [00:46, 1065.35it/s]49408it [00:46, 1064.05it/s]49664it [00:47, 1068.74it/s]49920it [00:47, 1069.18it/s]50176it [00:47, 1070.25it/s]50432it [00:47, 1050.98it/s]50688it [00:48, 885.83it/s] 50944it [00:48, 937.58it/s]51200it [00:48, 977.17it/s]51456it [00:48, 1004.46it/s]51712it [00:49, 1025.87it/s]51968it [00:49, 1040.52it/s]52224it [00:49, 1050.35it/s]52480it [00:49, 1056.33it/s]52736it [00:50, 1063.29it/s]52992it [00:50, 1067.21it/s]53248it [00:50, 1069.30it/s]53504it [00:50, 1069.59it/s]53760it [00:51, 1071.13it/s]54016it [00:51, 1073.50it/s]54272it [00:51, 1073.89it/s]54528it [00:51, 1075.90it/s]54784it [00:51, 1074.79it/s]55040it [00:52, 1073.83it/s]55296it [00:52, 1070.77it/s]55552it [00:52, 1067.93it/s]55808it [00:52, 1065.83it/s]56064it [00:53, 1066.12it/s]56320it [00:53, 1065.11it/s]56576it [00:53, 1068.66it/s]56832it [00:53, 1068.48it/s]57088it [00:54, 1066.01it/s]57344it [00:54, 1067.23it/s]57600it [00:54, 1070.10it/s]57856it [00:54, 1071.62it/s]58112it [00:55, 1070.74it/s]58368it [00:55, 1068.85it/s]58624it [00:55, 1067.14it/s]58880it [00:55, 1066.11it/s]59136it [00:56, 1066.78it/s]59392it [00:56, 1063.14it/s]59648it [00:56, 1061.46it/s]59904it [00:56, 1057.12it/s]60160it [00:57, 1057.34it/s]60416it [00:57, 1053.85it/s]60672it [00:57, 1051.70it/s]60928it [00:57, 1055.67it/s]61184it [00:57, 1056.62it/s]61440it [00:58, 1056.85it/s]61696it [00:58, 1059.09it/s]61952it [00:58, 1058.30it/s]62208it [00:58, 1058.36it/s]62464it [00:59, 1059.31it/s]62720it [00:59, 1061.14it/s]62976it [00:59, 1062.83it/s]63232it [00:59, 1061.48it/s]63488it [01:00, 1063.14it/s]63744it [01:00, 1064.61it/s]64000it [01:00, 1065.06it/s]64256it [01:00, 1064.41it/s]64512it [01:01, 1062.80it/s]64768it [01:01, 1060.48it/s]65024it [01:01, 1059.09it/s]65280it [01:01, 1062.03it/s]65536it [01:02, 1063.40it/s]65792it [01:02, 1065.27it/s]66048it [01:02, 1065.54it/s]66304it [01:02, 1064.01it/s]66560it [01:03, 1065.19it/s]66816it [01:03, 1067.39it/s]67072it [01:03, 1069.01it/s]67328it [01:04, 750.43it/s] 67584it [01:04, 821.80it/s]67840it [01:04, 880.30it/s]68096it [01:04, 928.24it/s]68352it [01:05, 962.68it/s]68608it [01:05, 989.26it/s]68864it [01:05, 1007.92it/s]69120it [01:05, 1022.17it/s]69376it [01:06, 1030.67it/s]69632it [01:06, 1038.04it/s]69888it [01:06, 1043.52it/s]70144it [01:06, 1049.07it/s]70400it [01:07, 1050.54it/s]70656it [01:07, 1052.66it/s]70912it [01:07, 1054.03it/s]71168it [01:07, 1058.70it/s]71424it [01:07, 1056.92it/s]71680it [01:08, 1056.59it/s]71936it [01:08, 1055.80it/s]72192it [01:08, 1055.70it/s]72448it [01:08, 1059.50it/s]72704it [01:09, 1060.44it/s]72960it [01:09, 1057.22it/s]73216it [01:09, 1057.32it/s]73472it [01:09, 1057.36it/s]73728it [01:10, 1055.47it/s]73984it [01:10, 1057.38it/s]74240it [01:10, 1062.15it/s]74496it [01:10, 1066.69it/s]74752it [01:11, 1068.66it/s]75008it [01:11, 1070.04it/s]75264it [01:11, 1068.84it/s]75520it [01:11, 1069.86it/s]75776it [01:12, 1069.90it/s]76032it [01:12, 1067.90it/s]76288it [01:12, 1067.23it/s]76544it [01:12, 1065.81it/s]76800it [01:13, 1066.56it/s]77056it [01:13, 1068.42it/s]77312it [01:13, 1068.76it/s]77568it [01:13, 1067.22it/s]77824it [01:13, 1067.47it/s]78080it [01:14, 1065.06it/s]78336it [01:14, 1064.78it/s]78592it [01:14, 1063.74it/s]78848it [01:14, 1064.25it/s]79104it [01:15, 1062.59it/s]79360it [01:15, 1060.26it/s]79616it [01:15, 1060.41it/s]79872it [01:15, 1060.41it/s]80128it [01:16, 1058.63it/s]80384it [01:16, 1057.78it/s]80640it [01:16, 1057.16it/s]80896it [01:16, 1057.32it/s]81152it [01:17, 1059.02it/s]81408it [01:17, 1059.53it/s]81664it [01:17, 1062.38it/s]81920it [01:17, 1071.14it/s]82176it [01:18, 1071.12it/s]82432it [01:18, 1070.29it/s]82688it [01:18, 1069.94it/s]82944it [01:18, 1069.66it/s]83200it [01:19, 1067.65it/s]83456it [01:19, 1066.58it/s]83712it [01:19, 876.80it/s] 83968it [01:19, 918.69it/s]84224it [01:20, 962.07it/s]84480it [01:20, 991.36it/s]84736it [01:20, 1013.87it/s]84992it [01:20, 1029.19it/s]85248it [01:21, 1040.06it/s]85504it [01:21, 1049.18it/s]85760it [01:21, 1056.28it/s]86016it [01:21, 1067.33it/s]86272it [01:22, 1072.67it/s]86528it [01:22, 1067.40it/s]86784it [01:22, 1065.59it/s]87040it [01:22, 1063.44it/s]87296it [01:23, 1067.34it/s]87552it [01:23, 1073.15it/s]87808it [01:23, 1073.40it/s]88064it [01:23, 1073.05it/s]88320it [01:24, 1074.18it/s]88576it [01:24, 1076.68it/s]88832it [01:24, 1075.49it/s]89088it [01:24, 1075.17it/s]89344it [01:24, 1074.74it/s]89600it [01:25, 1076.93it/s]89856it [01:25, 1072.10it/s]90112it [01:25, 1067.07it/s]90368it [01:25, 1064.90it/s]90624it [01:26, 1065.10it/s]90880it [01:26, 1062.97it/s]91136it [01:26, 1066.11it/s]91392it [01:26, 1069.48it/s]91648it [01:27, 1070.55it/s]91904it [01:27, 1071.58it/s]92160it [01:27, 1071.57it/s]92416it [01:27, 1072.34it/s]92672it [01:28, 1071.17it/s]92928it [01:28, 1066.95it/s]93184it [01:28, 1067.13it/s]93440it [01:28, 1065.44it/s]93696it [01:29, 1065.36it/s]93952it [01:29, 1063.48it/s]94208it [01:29, 1065.21it/s]94464it [01:29, 1066.99it/s]94720it [01:29, 1062.05it/s]94976it [01:30, 1063.50it/s]95232it [01:30, 1065.22it/s]95488it [01:30, 1060.69it/s]95744it [01:30, 1061.84it/s]96000it [01:31, 1060.52it/s]96216it [01:31, 1058.07it/s]96216it [01:31, 1052.56it/s]
+[53/55] us_births/D
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 396.45it/s]
+[54/55] us_births/M
+  short: 2 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]2it [00:00, 294.75it/s]
+[55/55] us_births/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=1 beta=1.0  -> EVAL k=4 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 813.51it/s]
+
+Results saved to: results/R0_k4/all_results_20261011_153843.csv
+=== FINI R0_k4 So 11 Okt 2026 16:20:05 CEST ===

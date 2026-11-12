@@ -1,0 +1,76 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{The question}
+
+A looped model reuses one block $k$ times:
+\[
+  h \;\leftarrow\; \beta f(h) + (1-\beta)\,h,
+  \qquad k \text{ times},
+\]
+where $f$ is a single transformer block whose weights are shared across the $k$
+iterations. The appeal is that depth becomes a \emph{run-time} choice rather
+than a parameter count: one can train at $k=4$ and ask for $k=8$ at inference,
+or adapt $k$ per input. In reasoning tasks this has a clear story --- more
+iterations, more steps of an algorithm \citep{dehghani2019universal,
+giannou2023looped, zhu2026ouro}.
+
+Time-series forecasting has no comparable story, and this is what makes the
+question worth asking. A foundation model for forecasting is trained once and
+then queried zero-shot on hundreds of unseen series of wildly different
+character. One might argue that this heterogeneity is \emph{exactly} what
+adaptive depth is for: a smooth hourly load curve needs less computation than a
+noisy sparse retail series. One might equally argue that forecasting is a
+single-pass pattern-matching problem and that extra iterations only re-apply
+the same smoothing operator.
+
+So the research question of this project is:
+
+\begin{quote}
+\textbf{Does weight-tied block looping improve zero-shot forecasting accuracy,
+and if it does, is the improvement attributable to looping specifically --- or
+is it a generic effect that cheaper, non-architectural interventions reproduce
+or exceed?}
+\end{quote}
+
+The second half of that question is the part we consider our contribution. It
+is easy to show that a looped model beats a baseline; it is much harder, and
+much more useful, to show that the gain is \emph{about looping}. A result of
+the form ``$+2\,\%$ MASE at $k=4$'' is only interesting if $+2\,\%$ is not also
+what one gets from a better data loader.
+
+\subsection{What we did}
+
+We proceeded in three phases.
+
+\textbf{Phase~1 --- implement and sweep.} Looping with a $\beta$-residual was
+added to Reverso, and models were trained from scratch at
+$k\in\{1,2,4,8\}$ with $\beta = 1/k$, plus the variants $\beta=1/\sqrt{k}$ and
+$\beta=1$. A second seed at $k=4$ was trained for the sole purpose of
+\emph{measuring the noise floor}, which turned out to be the most consequential
+number in the project.
+
+\textbf{Phase~2 --- build the controls.} We implemented three interventions
+that change the data or the recurrence but add no depth, and measured each one
+against a baseline trained on the identical corpus, one variable at a time.
+
+\textbf{Phase~3 --- in progress.} Composition of the levers, the eigenvalue
+question, and a probabilistic output head.
+
+\subsection{Contributions of this report}
+
+\begin{enumerate}
+  \item A negative but tightly controlled result on looping in a forecasting
+        foundation model, with an explicitly measured noise floor rather than
+        an assumed one (\S\ref{sec:results}).
+  \item A cost accounting that makes the negative result decision-relevant:
+        the compute ratio is measured, not estimated (Table~\ref{tab:cost}).
+  \item Three non-architectural baselines that any future claim about looping
+        in this setting has to clear, with per-horizon decompositions
+        (Table~\ref{tab:levers}).
+  \item A methodological finding about model selection in this benchmark: the
+        in-corpus held-out loss is \emph{anti}-correlated with benchmark rank
+        ($\rho=-0.90$), while the GIFT-Eval validation split tracks it
+        ($\rho=+0.918$) --- so the obvious early-stopping signal is the wrong
+        one (\S\ref{sec:protocol}).
+\end{enumerate}

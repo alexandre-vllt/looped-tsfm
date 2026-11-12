@@ -1,0 +1,1255 @@
+=== So 11 Okt 2026 15:31:12 CEST R1_k1  k=1 beta=0.25  gpu=5 ===
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/json.py:102: UserWarning: Using `json`-module for json-handling. Consider installing one of `orjson`, `ujson` to speed up serialization and deserialization.
+  warnings.warn(
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+Current Triton version 3.2.0 is below the recommended 3.3.0 version. Errors may occur and these issues will not be fixed. Please consider upgrading Triton.
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+Evaluating 55 datasets, terms: ['short', 'medium', 'long']
+Flip invariance: False
+[1/55] LOOP_SEATTLE/5T
+  short: 6460 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:05, 44.16it/s]512it [00:11, 43.17it/s]768it [00:17, 43.56it/s]1024it [00:23, 42.98it/s]1280it [00:30, 41.65it/s]1536it [00:36, 40.96it/s]1792it [00:43, 40.60it/s]2048it [00:49, 40.75it/s]2304it [00:55, 40.79it/s]2560it [01:01, 40.97it/s]2816it [01:07, 41.17it/s]3072it [01:14, 41.17it/s]3328it [01:20, 40.84it/s]3584it [01:26, 41.18it/s]3840it [01:32, 41.44it/s]4096it [01:38, 41.69it/s]4352it [01:44, 41.92it/s]4608it [01:50, 41.72it/s]4864it [01:57, 41.84it/s]5120it [02:03, 42.03it/s]5376it [02:09, 42.16it/s]5632it [02:15, 42.19it/s]5888it [02:21, 41.58it/s]6144it [02:27, 41.06it/s]6400it [02:34, 40.73it/s]6460it [02:35, 40.87it/s]6460it [02:35, 41.47it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 6460 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:05, 46.78it/s]512it [00:10, 46.51it/s]768it [00:16, 45.29it/s]1024it [00:22, 44.60it/s]1280it [00:28, 44.21it/s]1536it [00:34, 44.00it/s]1792it [00:40, 43.60it/s]2048it [00:46, 42.77it/s]2304it [00:52, 42.51it/s]2560it [00:58, 42.38it/s]2816it [01:04, 42.49it/s]3072it [01:10, 42.61it/s]3328it [01:16, 42.36it/s]3584it [01:23, 42.15it/s]3840it [01:29, 42.19it/s]4096it [01:35, 42.07it/s]4352it [01:41, 42.02it/s]4608it [01:47, 41.80it/s]4864it [01:54, 41.16it/s]5120it [02:00, 41.24it/s]5376it [02:06, 41.13it/s]5632it [02:12, 41.13it/s]5888it [02:18, 41.31it/s]6144it [02:25, 41.10it/s]6400it [02:31, 41.12it/s]6460it [02:32, 41.11it/s]6460it [02:32, 42.28it/s]
+  long: 4845 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:05, 47.19it/s]512it [00:11, 46.35it/s]768it [00:16, 46.94it/s]1024it [00:21, 47.20it/s]1280it [00:27, 47.35it/s]1536it [00:32, 47.42it/s]1792it [00:37, 47.44it/s]2048it [00:43, 46.98it/s]2304it [00:48, 47.17it/s]2560it [00:54, 47.16it/s]2816it [00:59, 47.26it/s]3072it [01:05, 47.24it/s]3328it [01:10, 47.12it/s]3584it [01:16, 46.98it/s]3840it [01:21, 46.37it/s]4096it [01:27, 46.28it/s]4352it [01:32, 46.12it/s]4608it [01:38, 45.68it/s]4845it [01:43, 45.40it/s]4845it [01:43, 46.62it/s]
+[2/55] LOOP_SEATTLE/D
+  short: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1034.56it/s]512it [00:00, 1068.09it/s]646it [00:00, 1059.27it/s]646it [00:00, 1057.84it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[3/55] LOOP_SEATTLE/H
+  short: 6137 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 437.80it/s]512it [00:01, 437.61it/s]768it [00:01, 437.73it/s]1024it [00:02, 438.41it/s]1280it [00:02, 438.10it/s]1536it [00:03, 438.78it/s]1792it [00:04, 438.58it/s]2048it [00:04, 438.98it/s]2304it [00:05, 439.41it/s]2560it [00:05, 438.96it/s]2816it [00:06, 439.43it/s]3072it [00:07, 438.86it/s]3328it [00:07, 439.43it/s]3584it [00:08, 438.92it/s]3840it [00:08, 437.90it/s]4096it [00:09, 438.58it/s]4352it [00:09, 438.56it/s]4608it [00:10, 439.87it/s]4864it [00:11, 439.60it/s]5120it [00:11, 440.57it/s]5376it [00:12, 440.78it/s]5632it [00:12, 440.48it/s]5888it [00:13, 441.09it/s]6137it [00:13, 441.17it/s]6137it [00:13, 439.45it/s]
+  medium: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 361.95it/s]512it [00:01, 357.96it/s]646it [00:01, 356.13it/s]646it [00:01, 357.15it/s]
+  long: 646 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 337.04it/s]512it [00:01, 336.22it/s]646it [00:01, 337.24it/s]646it [00:01, 336.97it/s]
+[4/55] M_DENSE/D
+  short: 90 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]90it [00:00, 975.82it/s]
+[5/55] M_DENSE/H
+  short: 600 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 252.45it/s]512it [00:02, 252.72it/s]600it [00:02, 252.20it/s]600it [00:02, 252.33it/s]
+  medium: 120 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]120it [00:00, 224.31it/s]120it [00:00, 224.22it/s]
+  long: 90 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]90it [00:00, 215.07it/s]90it [00:00, 214.98it/s]
+[6/55] SZ_TAXI/15T
+  short: 1092 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 797.00it/s]512it [00:00, 799.03it/s]768it [00:00, 801.12it/s]1024it [00:01, 801.59it/s]1092it [00:01, 798.59it/s]
+  medium: 156 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]156it [00:00, 525.54it/s]156it [00:00, 525.24it/s]
+  long: 156 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]156it [00:00, 482.77it/s]156it [00:00, 482.51it/s]
+[7/55] SZ_TAXI/H
+  short: 312 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1023.41it/s]312it [00:00, 1006.46it/s]
+[8/55] bitbrains_fast_storage/5T
+  short: 45000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 442.77it/s]512it [00:01, 441.94it/s]768it [00:01, 441.99it/s]1024it [00:02, 443.02it/s]1280it [00:02, 442.68it/s]1536it [00:03, 443.42it/s]1792it [00:04, 443.74it/s]2048it [00:04, 444.06it/s]2304it [00:05, 444.63it/s]2560it [00:05, 444.14it/s]2816it [00:06, 443.88it/s]3072it [00:06, 443.83it/s]3328it [00:07, 443.98it/s]3584it [00:08, 443.65it/s]3840it [00:08, 444.02it/s]4096it [00:09, 444.60it/s]4352it [00:09, 444.87it/s]4608it [00:10, 444.76it/s]4864it [00:10, 444.34it/s]5120it [00:11, 444.63it/s]5376it [00:12, 444.69it/s]5632it [00:12, 406.50it/s]5888it [00:13, 416.32it/s]6144it [00:14, 424.34it/s]6400it [00:14, 430.07it/s]6656it [00:15, 433.18it/s]6912it [00:15, 435.92it/s]7168it [00:16, 438.39it/s]7424it [00:16, 440.07it/s]7680it [00:17, 440.80it/s]7936it [00:18, 441.70it/s]8192it [00:18, 442.74it/s]8448it [00:19, 442.83it/s]8704it [00:19, 442.55it/s]8960it [00:20, 442.89it/s]9216it [00:20, 443.54it/s]9472it [00:21, 442.51it/s]9728it [00:22, 443.50it/s]9984it [00:22, 443.11it/s]10240it [00:23, 442.97it/s]10496it [00:23, 442.44it/s]10752it [00:24, 443.11it/s]11008it [00:24, 443.07it/s]11264it [00:25, 443.11it/s]11520it [00:26, 442.91it/s]11776it [00:26, 442.53it/s]12032it [00:27, 442.84it/s]12288it [00:27, 442.73it/s]12544it [00:28, 443.22it/s]12800it [00:29, 443.07it/s]13056it [00:29, 442.90it/s]13312it [00:30, 442.99it/s]13568it [00:30, 442.74it/s]13824it [00:31, 442.71it/s]14080it [00:31, 441.95it/s]14336it [00:32, 442.12it/s]14592it [00:33, 442.11it/s]14848it [00:33, 442.85it/s]15104it [00:34, 443.15it/s]15360it [00:34, 443.16it/s]15616it [00:35, 443.23it/s]15872it [00:35, 443.42it/s]16128it [00:36, 443.75it/s]16384it [00:37, 443.13it/s]16640it [00:37, 443.60it/s]16896it [00:38, 444.38it/s]17152it [00:38, 444.91it/s]17408it [00:39, 444.74it/s]17664it [00:40, 443.82it/s]17920it [00:40, 443.45it/s]18176it [00:41, 442.80it/s]18432it [00:41, 442.93it/s]18688it [00:42, 441.94it/s]18944it [00:42, 442.56it/s]19200it [00:43, 442.84it/s]19456it [00:44, 442.34it/s]19712it [00:44, 404.91it/s]19968it [00:45, 415.65it/s]20224it [00:45, 424.32it/s]20480it [00:46, 430.52it/s]20736it [00:47, 434.47it/s]20992it [00:47, 436.94it/s]21248it [00:48, 439.85it/s]21504it [00:48, 441.27it/s]21760it [00:49, 442.30it/s]22016it [00:50, 442.61it/s]22272it [00:50, 442.99it/s]22528it [00:51, 443.35it/s]22784it [00:51, 444.09it/s]23040it [00:52, 444.17it/s]23296it [00:52, 444.23it/s]23552it [00:53, 444.29it/s]23808it [00:54, 444.54it/s]24064it [00:54, 444.32it/s]24320it [00:55, 443.99it/s]24576it [00:55, 443.92it/s]24832it [00:56, 443.92it/s]25088it [00:56, 443.68it/s]25344it [00:57, 443.66it/s]25600it [00:58, 443.31it/s]25856it [00:58, 443.62it/s]26112it [00:59, 443.39it/s]26368it [00:59, 443.57it/s]26624it [01:00, 444.07it/s]26880it [01:00, 444.08it/s]27136it [01:01, 444.50it/s]27392it [01:02, 444.89it/s]27648it [01:02, 445.06it/s]27904it [01:03, 444.65it/s]28160it [01:03, 444.62it/s]28416it [01:04, 444.40it/s]28672it [01:04, 444.42it/s]28928it [01:05, 444.30it/s]29184it [01:06, 444.03it/s]29440it [01:06, 444.48it/s]29696it [01:07, 445.01it/s]29952it [01:07, 442.94it/s]30208it [01:08, 442.76it/s]30464it [01:09, 442.99it/s]30720it [01:09, 442.46it/s]30976it [01:10, 441.81it/s]31232it [01:10, 441.47it/s]31488it [01:11, 441.00it/s]31744it [01:11, 440.82it/s]32000it [01:12, 441.38it/s]32256it [01:13, 441.09it/s]32512it [01:13, 441.27it/s]32768it [01:14, 441.22it/s]33024it [01:14, 440.73it/s]33280it [01:15, 441.04it/s]33536it [01:16, 440.22it/s]33792it [01:16, 439.76it/s]34048it [01:17, 404.63it/s]34304it [01:17, 413.87it/s]34560it [01:18, 421.93it/s]34816it [01:19, 427.03it/s]35072it [01:19, 431.46it/s]35328it [01:20, 434.02it/s]35584it [01:20, 436.35it/s]35840it [01:21, 437.49it/s]36096it [01:21, 438.57it/s]36352it [01:22, 439.83it/s]36608it [01:23, 440.36it/s]36864it [01:23, 440.84it/s]37120it [01:24, 440.67it/s]37376it [01:24, 441.60it/s]37632it [01:25, 442.19it/s]37888it [01:26, 442.54it/s]38144it [01:26, 442.63it/s]38400it [01:27, 442.10it/s]38656it [01:27, 442.76it/s]38912it [01:28, 442.73it/s]39168it [01:28, 442.74it/s]39424it [01:29, 442.37it/s]39680it [01:30, 442.41it/s]39936it [01:30, 442.74it/s]40192it [01:31, 442.19it/s]40448it [01:31, 442.43it/s]40704it [01:32, 441.78it/s]40960it [01:32, 442.15it/s]41216it [01:33, 442.12it/s]41472it [01:34, 442.56it/s]41728it [01:34, 442.51it/s]41984it [01:35, 442.39it/s]42240it [01:35, 442.97it/s]42496it [01:36, 442.64it/s]42752it [01:37, 442.33it/s]43008it [01:37, 442.59it/s]43264it [01:38, 442.38it/s]43520it [01:38, 442.75it/s]43776it [01:39, 442.79it/s]44032it [01:39, 443.45it/s]44288it [01:40, 443.06it/s]44544it [01:41, 442.84it/s]44800it [01:41, 443.26it/s]45000it [01:42, 443.63it/s]45000it [01:42, 440.74it/s]
+  medium: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 357.48it/s]512it [00:01, 359.33it/s]768it [00:02, 361.71it/s]1024it [00:02, 360.89it/s]1280it [00:03, 361.59it/s]1536it [00:04, 360.93it/s]1792it [00:04, 361.00it/s]2048it [00:05, 361.51it/s]2304it [00:06, 361.93it/s]2560it [00:07, 361.28it/s]2816it [00:07, 361.69it/s]3072it [00:08, 360.76it/s]3328it [00:09, 361.53it/s]3584it [00:09, 361.16it/s]3840it [00:10, 361.39it/s]4096it [00:11, 361.33it/s]4352it [00:12, 361.56it/s]4608it [00:12, 360.92it/s]4864it [00:13, 361.28it/s]5000it [00:13, 359.92it/s]5000it [00:13, 361.00it/s]
+  long: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 349.87it/s]512it [00:01, 347.95it/s]768it [00:02, 348.06it/s]1024it [00:02, 347.95it/s]1280it [00:03, 347.88it/s]1536it [00:04, 347.07it/s]1792it [00:05, 343.59it/s]2048it [00:05, 340.32it/s]2304it [00:06, 339.03it/s]2560it [00:07, 337.71it/s]2816it [00:08, 336.83it/s]3072it [00:09, 336.01it/s]3328it [00:09, 335.85it/s]3584it [00:10, 313.56it/s]3840it [00:11, 319.94it/s]4096it [00:12, 324.20it/s]4352it [00:12, 327.50it/s]4608it [00:13, 328.84it/s]4864it [00:14, 330.23it/s]5000it [00:14, 331.35it/s]5000it [00:14, 334.62it/s]
+[9/55] bitbrains_fast_storage/H
+  short: 5000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1044.50it/s]512it [00:00, 1041.94it/s]768it [00:00, 1041.76it/s]1024it [00:00, 1044.93it/s]1280it [00:01, 1043.99it/s]1536it [00:01, 1043.57it/s]1792it [00:01, 1044.20it/s]2048it [00:01, 1043.59it/s]2304it [00:02, 1040.21it/s]2560it [00:02, 1037.89it/s]2816it [00:02, 1039.83it/s]3072it [00:02, 1042.77it/s]3328it [00:03, 1039.12it/s]3584it [00:03, 1040.49it/s]3840it [00:03, 1041.42it/s]4096it [00:03, 1042.66it/s]4352it [00:04, 1043.44it/s]4608it [00:04, 1043.78it/s]4864it [00:04, 1038.56it/s]5000it [00:04, 1035.04it/s]5000it [00:04, 1040.83it/s]
+[10/55] bitbrains_rnd/5T
+  short: 18000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 440.62it/s]512it [00:01, 442.51it/s]768it [00:01, 441.04it/s]1024it [00:02, 440.96it/s]1280it [00:02, 441.34it/s]1536it [00:03, 441.48it/s]1792it [00:04, 442.50it/s]2048it [00:04, 442.79it/s]2304it [00:05, 443.00it/s]2560it [00:05, 443.29it/s]2816it [00:06, 443.25it/s]3072it [00:07, 405.74it/s]3328it [00:07, 416.03it/s]3584it [00:08, 424.13it/s]3840it [00:08, 430.84it/s]4096it [00:09, 434.19it/s]4352it [00:10, 437.15it/s]4608it [00:10, 439.21it/s]4864it [00:11, 440.95it/s]5120it [00:11, 442.51it/s]5376it [00:12, 442.99it/s]5632it [00:12, 443.10it/s]5888it [00:13, 442.86it/s]6144it [00:14, 442.44it/s]6400it [00:14, 442.35it/s]6656it [00:15, 442.24it/s]6912it [00:15, 442.50it/s]7168it [00:16, 442.59it/s]7424it [00:16, 443.04it/s]7680it [00:17, 443.49it/s]7936it [00:18, 443.17it/s]8192it [00:18, 443.15it/s]8448it [00:19, 442.82it/s]8704it [00:19, 443.26it/s]8960it [00:20, 443.37it/s]9216it [00:20, 443.50it/s]9472it [00:21, 443.81it/s]9728it [00:22, 444.09it/s]9984it [00:22, 444.68it/s]10240it [00:23, 444.02it/s]10496it [00:23, 444.27it/s]10752it [00:24, 443.74it/s]11008it [00:25, 443.84it/s]11264it [00:25, 443.74it/s]11520it [00:26, 443.34it/s]11776it [00:26, 443.20it/s]12032it [00:27, 443.56it/s]12288it [00:27, 443.36it/s]12544it [00:28, 442.77it/s]12800it [00:29, 443.01it/s]13056it [00:29, 442.80it/s]13312it [00:30, 443.34it/s]13568it [00:30, 443.01it/s]13824it [00:31, 442.48it/s]14080it [00:31, 442.79it/s]14336it [00:32, 443.37it/s]14592it [00:33, 441.99it/s]14848it [00:33, 442.22it/s]15104it [00:34, 443.11it/s]15360it [00:34, 443.74it/s]15616it [00:35, 439.27it/s]15872it [00:36, 440.83it/s]16128it [00:36, 441.69it/s]16384it [00:37, 442.52it/s]16640it [00:37, 442.91it/s]16896it [00:38, 442.94it/s]17152it [00:38, 442.84it/s]17408it [00:39, 422.01it/s]17664it [00:40, 411.81it/s]17920it [00:40, 418.47it/s]18000it [00:40, 420.02it/s]18000it [00:40, 439.12it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 356.04it/s]512it [00:01, 356.13it/s]768it [00:02, 351.12it/s]1024it [00:02, 348.91it/s]1280it [00:03, 350.32it/s]1536it [00:04, 350.82it/s]1792it [00:05, 352.35it/s]2000it [00:05, 352.34it/s]2000it [00:05, 351.88it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 343.51it/s]512it [00:01, 342.86it/s]768it [00:02, 341.90it/s]1024it [00:02, 341.52it/s]1280it [00:03, 341.07it/s]1536it [00:04, 341.00it/s]1792it [00:05, 340.62it/s]2000it [00:05, 339.07it/s]2000it [00:05, 340.56it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[11/55] bitbrains_rnd/H
+  short: 2000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1005.70it/s]512it [00:00, 1001.05it/s]768it [00:00, 995.68it/s] 1024it [00:01, 998.97it/s]1280it [00:01, 999.11it/s]1536it [00:01, 1000.64it/s]1792it [00:01, 1008.69it/s]2000it [00:01, 1011.06it/s]2000it [00:01, 1004.88it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  return pd.Period(val, freq)
+[12/55] bizitobs_application
+  short: 30 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]30it [00:00, 406.67it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 4 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]4it [00:00, 217.09it/s]
+  long: 2 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]2it [00:00, 154.15it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+[13/55] bizitobs_l2c/5T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 148.91it/s]140it [00:00, 148.89it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 49 instances, downsample=7
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]49it [00:00, 140.70it/s]49it [00:00, 140.61it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 35 instances, downsample=7
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]35it [00:00, 136.76it/s]35it [00:00, 136.66it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[14/55] bizitobs_l2c/H
+  short: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 772.60it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 425.11it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 404.67it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[15/55] bizitobs_service
+  short: 630 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 435.95it/s]512it [00:01, 434.71it/s]630it [00:01, 433.51it/s]630it [00:01, 434.00it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 84 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]84it [00:00, 316.07it/s]84it [00:00, 315.86it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'S' is deprecated and will be removed in a future version, please use 's' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 265.10it/s]42it [00:00, 264.80it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[16/55] car_parts_with_missing
+  short: 2674 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 944.15it/s]512it [00:00, 961.70it/s]768it [00:00, 969.13it/s]1024it [00:01, 973.50it/s]1280it [00:01, 977.53it/s]1536it [00:01, 979.50it/s]1792it [00:01, 981.89it/s]2048it [00:02, 983.24it/s]2304it [00:02, 980.61it/s]2560it [00:02, 970.13it/s]2674it [00:02, 965.38it/s]2674it [00:02, 972.37it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[17/55] covid_deaths
+  short: 266 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 929.01it/s]266it [00:00, 910.39it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+[18/55] electricity/15T
+  short: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:07, 35.65it/s]512it [00:14, 35.65it/s]768it [00:21, 35.63it/s]1024it [00:28, 35.69it/s]1280it [00:36, 35.38it/s]1536it [00:43, 35.52it/s]1792it [00:50, 35.57it/s]2048it [00:57, 35.62it/s]2304it [01:04, 35.34it/s]2560it [01:12, 35.43it/s]2816it [01:19, 35.56it/s]3072it [01:26, 35.60it/s]3328it [01:33, 35.76it/s]3584it [01:40, 35.62it/s]3840it [01:47, 35.79it/s]4096it [01:54, 35.99it/s]4352it [02:01, 36.13it/s]4608it [02:09, 35.92it/s]4864it [02:16, 36.11it/s]5120it [02:23, 36.19it/s]5376it [02:30, 36.29it/s]5632it [02:37, 36.35it/s]5888it [02:44, 36.13it/s]6144it [02:51, 36.25it/s]6400it [02:58, 36.33it/s]6656it [03:05, 35.43it/s]6912it [03:13, 35.23it/s]7168it [03:20, 35.36it/s]7400it [03:27, 35.44it/s]7400it [03:27, 35.74it/s]
+  medium: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:06, 36.86it/s]512it [00:14, 36.25it/s]768it [00:21, 36.48it/s]1024it [00:28, 36.57it/s]1280it [00:34, 36.64it/s]1536it [00:41, 36.69it/s]1792it [00:49, 36.34it/s]2048it [00:56, 36.40it/s]2304it [01:03, 36.43it/s]2560it [01:10, 36.29it/s]2816it [01:17, 36.09it/s]3072it [01:24, 36.01it/s]3328it [01:31, 36.31it/s]3584it [01:38, 36.35it/s]3840it [01:45, 36.53it/s]4096it [01:52, 36.46it/s]4352it [01:59, 36.69it/s]4608it [02:06, 36.89it/s]4864it [02:13, 37.06it/s]5120it [02:19, 37.13it/s]5376it [02:26, 36.91it/s]5632it [02:33, 37.04it/s]5888it [02:40, 37.15it/s]6144it [02:47, 37.21it/s]6400it [02:54, 37.24it/s]6656it [03:01, 36.92it/s]6912it [03:08, 36.86it/s]7168it [03:15, 36.77it/s]7400it [03:21, 36.76it/s]7400it [03:21, 36.68it/s]
+  long: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:06, 37.11it/s]512it [00:13, 37.10it/s]768it [00:20, 37.07it/s]1024it [00:27, 37.04it/s]1280it [00:34, 36.49it/s]1536it [00:41, 36.53it/s]1792it [00:48, 36.68it/s]2048it [00:55, 36.75it/s]2304it [01:02, 36.40it/s]2560it [01:09, 36.57it/s]2816it [01:16, 36.71it/s]3072it [01:23, 36.79it/s]3328it [01:30, 36.93it/s]3584it [01:37, 36.71it/s]3840it [01:44, 36.82it/s]4096it [01:51, 36.81it/s]4352it [01:58, 36.85it/s]4608it [02:05, 36.87it/s]4864it [02:12, 36.65it/s]5120it [02:19, 36.73it/s]5376it [02:26, 36.84it/s]5632it [02:33, 36.91it/s]5888it [02:40, 36.65it/s]6144it [02:47, 36.77it/s]6400it [02:54, 36.87it/s]6656it [03:00, 36.84it/s]6912it [03:08, 36.53it/s]7168it [03:15, 36.18it/s]7400it [03:21, 36.24it/s]7400it [03:21, 36.68it/s]
+[19/55] electricity/D
+  short: 1850 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 940.32it/s]512it [00:00, 943.43it/s]768it [00:00, 943.24it/s]1024it [00:01, 944.66it/s]1280it [00:01, 945.57it/s]1536it [00:01, 945.25it/s]1792it [00:01, 944.55it/s]1850it [00:01, 942.40it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[20/55] electricity/H
+  short: 7400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 133.37it/s]512it [00:03, 133.01it/s]768it [00:05, 132.96it/s]1024it [00:07, 132.98it/s]1280it [00:09, 132.95it/s]1536it [00:11, 132.72it/s]1792it [00:13, 132.53it/s]2048it [00:15, 132.41it/s]2304it [00:17, 128.82it/s]2560it [00:19, 130.06it/s]2816it [00:21, 131.01it/s]3072it [00:23, 131.59it/s]3328it [00:25, 132.51it/s]3584it [00:27, 133.26it/s]3840it [00:29, 133.68it/s]4096it [00:30, 134.37it/s]4352it [00:32, 134.82it/s]4608it [00:34, 135.12it/s]4864it [00:36, 135.34it/s]5120it [00:38, 135.52it/s]5376it [00:40, 135.69it/s]5632it [00:42, 135.76it/s]5888it [00:44, 135.78it/s]6144it [00:45, 135.71it/s]6400it [00:48, 132.11it/s]6656it [00:49, 133.15it/s]6912it [00:51, 133.34it/s]7168it [00:53, 133.41it/s]7400it [00:55, 133.28it/s]7400it [00:55, 133.36it/s]
+  medium: 2960 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:01, 131.25it/s]512it [00:03, 131.42it/s]768it [00:05, 131.44it/s]1024it [00:07, 131.44it/s]1280it [00:09, 131.64it/s]1536it [00:11, 132.04it/s]1792it [00:13, 132.68it/s]2048it [00:15, 131.03it/s]2304it [00:17, 130.30it/s]2560it [00:19, 131.20it/s]2816it [00:21, 131.62it/s]2960it [00:22, 131.46it/s]2960it [00:22, 131.46it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 1850 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 125.11it/s]512it [00:04, 125.36it/s]768it [00:06, 125.47it/s]1024it [00:08, 126.18it/s]1280it [00:10, 126.89it/s]1536it [00:12, 127.30it/s]1792it [00:14, 127.20it/s]1850it [00:14, 126.95it/s]1850it [00:14, 126.61it/s]
+[21/55] electricity/W
+  short: 1110 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1169.95it/s]512it [00:00, 1174.39it/s]768it [00:00, 1169.83it/s]1024it [00:00, 1174.91it/s]1110it [00:00, 1168.57it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+[22/55] ett1/15T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:02, 69.77it/s]140it [00:02, 69.76it/s]
+  medium: 105 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]105it [00:01, 71.31it/s]105it [00:01, 71.30it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 70 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]70it [00:00, 70.61it/s]70it [00:00, 70.60it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[23/55] ett1/D
+  short: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 899.05it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[24/55] ett1/H
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 247.26it/s]140it [00:00, 247.21it/s]
+  medium: 28 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]28it [00:00, 223.80it/s]28it [00:00, 223.56it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 212.11it/s]
+[25/55] ett1/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 901.35it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[26/55] ett2/15T
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:01, 70.19it/s]140it [00:01, 70.19it/s]
+  medium: 105 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]105it [00:01, 71.52it/s]105it [00:01, 71.52it/s]
+  long: 70 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]70it [00:00, 70.45it/s]70it [00:00, 70.44it/s]
+[27/55] ett2/D
+  short: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 854.05it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[28/55] ett2/H
+  short: 140 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]140it [00:00, 247.51it/s]140it [00:00, 247.46it/s]
+  medium: 28 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]28it [00:00, 225.80it/s]28it [00:00, 225.57it/s]
+  long: 21 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]21it [00:00, 215.34it/s]
+[29/55] ett2/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 915.76it/s]
+[30/55] hierarchical_sales/D
+  short: 826 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 906.20it/s]512it [00:00, 904.72it/s]768it [00:00, 904.96it/s]826it [00:00, 900.69it/s]
+[31/55] hierarchical_sales/W
+  short: 472 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1166.01it/s]472it [00:00, 1186.92it/s]472it [00:00, 1183.16it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[32/55] hospital
+  short: 767 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 924.11it/s]512it [00:00, 935.63it/s]767it [00:00, 947.52it/s]767it [00:00, 942.97it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+[33/55] jena_weather/10T
+  short: 420 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 86.26it/s]420it [00:04, 88.08it/s]420it [00:04, 87.73it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 231 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]231it [00:02, 92.59it/s]231it [00:02, 92.58it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 168 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]168it [00:01, 90.99it/s]168it [00:01, 90.99it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[34/55] jena_weather/D
+  short: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 1082.26it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[35/55] jena_weather/H
+  short: 399 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 425.57it/s]399it [00:00, 425.89it/s]399it [00:00, 425.76it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 359.99it/s]42it [00:00, 359.55it/s]
+  long: 42 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]42it [00:00, 343.97it/s]42it [00:00, 343.56it/s]
+[36/55] kdd_cup_2018_with_missing/D
+  short: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1035.80it/s]512it [00:00, 1035.66it/s]540it [00:00, 1025.27it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[37/55] kdd_cup_2018_with_missing/H
+  short: 5400 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 358.58it/s]512it [00:01, 358.61it/s]768it [00:02, 358.24it/s]1024it [00:02, 357.52it/s]1280it [00:03, 358.25it/s]1536it [00:04, 358.46it/s]1792it [00:05, 358.42it/s]2048it [00:05, 358.59it/s]2304it [00:06, 358.67it/s]2560it [00:07, 357.98it/s]2816it [00:07, 357.54it/s]3072it [00:08, 357.45it/s]3328it [00:09, 357.41it/s]3584it [00:10, 358.03it/s]3840it [00:10, 358.38it/s]4096it [00:11, 358.99it/s]4352it [00:12, 359.58it/s]4608it [00:12, 360.58it/s]4864it [00:13, 360.86it/s]5120it [00:14, 361.05it/s]5376it [00:14, 361.66it/s]5400it [00:15, 359.16it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 303.09it/s]512it [00:01, 302.50it/s]540it [00:01, 301.81it/s]
+  long: 540 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 289.85it/s]512it [00:01, 258.34it/s]540it [00:02, 259.92it/s]540it [00:02, 263.38it/s]
+[38/55] m4_daily
+  short: 4227 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 818.50it/s]512it [00:00, 776.04it/s]768it [00:01, 690.09it/s]1024it [00:01, 632.29it/s]1280it [00:01, 604.21it/s]1536it [00:02, 592.31it/s]1792it [00:02, 630.64it/s]2048it [00:03, 681.20it/s]2304it [00:03, 700.82it/s]2560it [00:03, 659.82it/s]2816it [00:04, 632.69it/s]3072it [00:04, 616.71it/s]3328it [00:05, 599.42it/s]3584it [00:05, 594.89it/s]3840it [00:05, 657.96it/s]4096it [00:06, 721.95it/s]4227it [00:06, 746.49it/s]4227it [00:06, 663.40it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[39/55] m4_hourly
+  short: 414 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 791.75it/s]414it [00:00, 786.79it/s]414it [00:00, 787.45it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[40/55] m4_monthly
+  short: 48000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 893.20it/s]512it [00:00, 905.49it/s]768it [00:00, 907.39it/s]1024it [00:01, 916.42it/s]1280it [00:01, 916.99it/s]1536it [00:01, 920.10it/s]1792it [00:01, 921.54it/s]2048it [00:02, 923.44it/s]2304it [00:02, 924.69it/s]2560it [00:02, 925.01it/s]2816it [00:03, 928.75it/s]3072it [00:03, 932.27it/s]3328it [00:03, 932.21it/s]3584it [00:03, 929.89it/s]3840it [00:04, 926.88it/s]4096it [00:04, 927.04it/s]4352it [00:04, 868.57it/s]4608it [00:05, 787.94it/s]4864it [00:05, 826.25it/s]5120it [00:05, 854.26it/s]5376it [00:06, 869.47it/s]5632it [00:06, 888.28it/s]5888it [00:06, 899.47it/s]6144it [00:06, 909.37it/s]6400it [00:07, 919.46it/s]6656it [00:07, 927.02it/s]6912it [00:07, 930.22it/s]7168it [00:07, 940.23it/s]7424it [00:08, 947.90it/s]7680it [00:08, 948.56it/s]7936it [00:08, 952.87it/s]8192it [00:08, 959.34it/s]8448it [00:09, 958.04it/s]8704it [00:09, 959.32it/s]8960it [00:09, 963.98it/s]9216it [00:10, 968.32it/s]9472it [00:10, 969.64it/s]9728it [00:10, 971.56it/s]9984it [00:10, 972.78it/s]10240it [00:11, 961.30it/s]10496it [00:11, 956.22it/s]10752it [00:11, 951.49it/s]11008it [00:11, 945.73it/s]11264it [00:12, 944.20it/s]11520it [00:12, 942.61it/s]11776it [00:12, 942.96it/s]12032it [00:12, 941.16it/s]12288it [00:13, 942.43it/s]12544it [00:13, 941.54it/s]12800it [00:13, 941.37it/s]13056it [00:14, 935.46it/s]13312it [00:14, 939.81it/s]13568it [00:14, 938.09it/s]13824it [00:14, 944.49it/s]14080it [00:15, 944.20it/s]14336it [00:15, 946.80it/s]14592it [00:15, 942.19it/s]14848it [00:15, 944.68it/s]15104it [00:16, 948.56it/s]15360it [00:16, 950.96it/s]15616it [00:16, 950.49it/s]15872it [00:17, 948.17it/s]16128it [00:17, 940.66it/s]16384it [00:17, 935.03it/s]16640it [00:17, 937.62it/s]16896it [00:18, 949.74it/s]17152it [00:18, 944.76it/s]17408it [00:18, 951.21it/s]17664it [00:18, 956.92it/s]17920it [00:19, 962.86it/s]18176it [00:19, 965.69it/s]18432it [00:19, 968.33it/s]18688it [00:19, 970.56it/s]18944it [00:20, 972.45it/s]19200it [00:20, 972.75it/s]19456it [00:20, 974.90it/s]19712it [00:21, 976.07it/s]19968it [00:21, 976.15it/s]20224it [00:21, 973.25it/s]20480it [00:21, 971.18it/s]20736it [00:22, 973.85it/s]20992it [00:22, 969.13it/s]21248it [00:22, 961.92it/s]21504it [00:22, 951.91it/s]21760it [00:23, 944.96it/s]22016it [00:23, 940.52it/s]22272it [00:23, 939.18it/s]22528it [00:24, 936.24it/s]22784it [00:24, 936.04it/s]23040it [00:24, 937.45it/s]23296it [00:24, 937.15it/s]23552it [00:25, 935.51it/s]23808it [00:25, 935.95it/s]24064it [00:25, 932.77it/s]24320it [00:25, 935.66it/s]24576it [00:26, 934.15it/s]24832it [00:26, 924.29it/s]25088it [00:26, 923.12it/s]25344it [00:27, 931.69it/s]25600it [00:27, 930.29it/s]25856it [00:27, 927.43it/s]26112it [00:27, 923.08it/s]26368it [00:28, 929.51it/s]26624it [00:28, 932.46it/s]26880it [00:28, 927.06it/s]27136it [00:28, 929.09it/s]27392it [00:29, 927.09it/s]27648it [00:29, 926.39it/s]27904it [00:29, 930.71it/s]28160it [00:30, 936.61it/s]28416it [00:30, 940.46it/s]28672it [00:30, 944.25it/s]28928it [00:30, 947.20it/s]29184it [00:31, 944.86it/s]29440it [00:31, 944.39it/s]29696it [00:31, 944.91it/s]29952it [00:31, 938.97it/s]30208it [00:32, 939.24it/s]30464it [00:32, 939.21it/s]30720it [00:32, 942.15it/s]30976it [00:33, 940.94it/s]31232it [00:33, 935.92it/s]31488it [00:33, 934.95it/s]31744it [00:33, 931.90it/s]32000it [00:34, 932.77it/s]32256it [00:34, 943.72it/s]32512it [00:34, 950.05it/s]32768it [00:34, 953.44it/s]33024it [00:35, 953.67it/s]33280it [00:35, 955.72it/s]33536it [00:35, 954.18it/s]33792it [00:36, 956.04it/s]34048it [00:36, 960.49it/s]34304it [00:36, 959.13it/s]34560it [00:36, 826.99it/s]34816it [00:37, 837.47it/s]35072it [00:37, 873.02it/s]35328it [00:37, 893.51it/s]35584it [00:38, 906.08it/s]35840it [00:38, 917.96it/s]36096it [00:38, 922.27it/s]36352it [00:38, 932.48it/s]36608it [00:39, 938.21it/s]36864it [00:39, 938.38it/s]37120it [00:39, 938.63it/s]37376it [00:39, 941.36it/s]37632it [00:40, 942.98it/s]37888it [00:40, 940.04it/s]38144it [00:40, 937.25it/s]38400it [00:41, 933.10it/s]38656it [00:41, 933.95it/s]38912it [00:41, 941.22it/s]39168it [00:41, 945.52it/s]39424it [00:42, 950.04it/s]39680it [00:42, 951.68it/s]39936it [00:43, 574.14it/s]40192it [00:43, 650.15it/s]40448it [00:43, 717.77it/s]40704it [00:44, 771.14it/s]40960it [00:44, 815.62it/s]41216it [00:44, 847.30it/s]41472it [00:44, 871.63it/s]41728it [00:45, 888.27it/s]41984it [00:45, 905.81it/s]42240it [00:45, 916.15it/s]42496it [00:45, 925.03it/s]42752it [00:46, 932.66it/s]43008it [00:46, 941.62it/s]43264it [00:46, 947.61it/s]43520it [00:47, 943.62it/s]43776it [00:47, 946.13it/s]44032it [00:47, 944.76it/s]44288it [00:47, 949.17it/s]44544it [00:48, 947.33it/s]44800it [00:48, 947.69it/s]45056it [00:48, 953.40it/s]45312it [00:48, 957.49it/s]45568it [00:49, 957.92it/s]45824it [00:49, 960.34it/s]46080it [00:49, 964.27it/s]46336it [00:49, 960.89it/s]46592it [00:50, 955.96it/s]46848it [00:50, 957.21it/s]47104it [00:50, 963.19it/s]47360it [00:51, 965.30it/s]47616it [00:51, 967.50it/s]47872it [00:51, 963.76it/s]48000it [00:51, 955.45it/s]48000it [00:51, 927.87it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'Q-DEC' is deprecated and will be removed in a future version, please use 'QE-DEC' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'Q-DEC' is deprecated and will be removed in a future version, please use 'QE-DEC' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[41/55] m4_quarterly
+  short: 24000 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 927.41it/s]512it [00:00, 938.66it/s]768it [00:00, 940.55it/s]1024it [00:01, 946.20it/s]1280it [00:01, 944.86it/s]1536it [00:01, 947.12it/s]1792it [00:01, 944.91it/s]2048it [00:02, 944.92it/s]2304it [00:02, 942.80it/s]2560it [00:02, 942.51it/s]2816it [00:02, 941.27it/s]3072it [00:03, 942.42it/s]3328it [00:03, 940.04it/s]3584it [00:03, 937.96it/s]3840it [00:04, 936.95it/s]4096it [00:04, 938.23it/s]4352it [00:04, 937.40it/s]4608it [00:04, 939.93it/s]4864it [00:05, 937.39it/s]5120it [00:05, 940.73it/s]5376it [00:05, 940.30it/s]5632it [00:05, 943.82it/s]5888it [00:06, 944.47it/s]6144it [00:06, 945.26it/s]6400it [00:06, 944.39it/s]6656it [00:07, 946.12it/s]6912it [00:07, 945.79it/s]7168it [00:07, 946.36it/s]7424it [00:07, 945.95it/s]7680it [00:08, 947.18it/s]7936it [00:08, 944.19it/s]8192it [00:08, 946.36it/s]8448it [00:08, 946.25it/s]8704it [00:09, 947.65it/s]8960it [00:09, 945.84it/s]9216it [00:09, 941.13it/s]9472it [00:10, 941.85it/s]9728it [00:10, 944.77it/s]9984it [00:10, 942.56it/s]10240it [00:10, 946.13it/s]10496it [00:11, 945.86it/s]10752it [00:11, 946.84it/s]11008it [00:11, 945.18it/s]11264it [00:11, 947.62it/s]11520it [00:12, 946.28it/s]11776it [00:12, 948.23it/s]12032it [00:12, 947.89it/s]12288it [00:13, 947.12it/s]12544it [00:13, 946.09it/s]12800it [00:13, 948.47it/s]13056it [00:13, 947.84it/s]13312it [00:14, 947.95it/s]13568it [00:14, 944.59it/s]13824it [00:14, 948.10it/s]14080it [00:14, 950.78it/s]14336it [00:15, 950.71it/s]14592it [00:15, 948.87it/s]14848it [00:15, 948.08it/s]15104it [00:15, 945.96it/s]15360it [00:16, 945.11it/s]15616it [00:16, 943.71it/s]15872it [00:16, 944.85it/s]16128it [00:17, 943.28it/s]16384it [00:17, 944.41it/s]16640it [00:17, 943.56it/s]16896it [00:17, 949.06it/s]17152it [00:18, 948.08it/s]17408it [00:18, 952.14it/s]17664it [00:18, 952.88it/s]17920it [00:18, 950.34it/s]18176it [00:19, 949.34it/s]18432it [00:19, 950.82it/s]18688it [00:19, 947.78it/s]18944it [00:20, 946.96it/s]19200it [00:20, 947.02it/s]19456it [00:20, 948.56it/s]19712it [00:20, 946.04it/s]19968it [00:21, 948.03it/s]20224it [00:21, 947.02it/s]20480it [00:21, 948.06it/s]20736it [00:21, 945.50it/s]20992it [00:22, 947.47it/s]21248it [00:22, 947.70it/s]21504it [00:22, 946.41it/s]21760it [00:23, 948.59it/s]22016it [00:23, 950.13it/s]22272it [00:23, 948.44it/s]22528it [00:23, 949.38it/s]22784it [00:24, 949.71it/s]23040it [00:24, 953.08it/s]23296it [00:24, 950.88it/s]23552it [00:24, 950.58it/s]23808it [00:25, 948.57it/s]24000it [00:25, 946.29it/s]24000it [00:25, 945.84it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[42/55] m4_weekly
+  short: 359 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 759.79it/s]359it [00:00, 795.08it/s]359it [00:00, 787.07it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'YE-DEC' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'YE-DEC' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'A-DEC' is deprecated and will be removed in a future version, please use 'Y-DEC' instead.
+  return pd.Period(val, freq)
+[43/55] m4_yearly
+  short: 22974 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 918.34it/s]512it [00:00, 918.19it/s]768it [00:00, 926.83it/s]1024it [00:01, 936.66it/s]1280it [00:01, 943.78it/s]1536it [00:01, 942.89it/s]1792it [00:01, 944.46it/s]2048it [00:02, 954.42it/s]2304it [00:02, 962.42it/s]2560it [00:02, 963.47it/s]2816it [00:02, 966.68it/s]3072it [00:03, 971.14it/s]3328it [00:03, 973.77it/s]3584it [00:03, 971.86it/s]3840it [00:04, 938.20it/s]4096it [00:04, 816.75it/s]4352it [00:04, 852.28it/s]4608it [00:04, 884.16it/s]4864it [00:05, 904.38it/s]5120it [00:05, 909.59it/s]5376it [00:05, 910.75it/s]5632it [00:06, 918.58it/s]5888it [00:06, 918.86it/s]6144it [00:06, 924.40it/s]6400it [00:06, 936.37it/s]6656it [00:07, 948.46it/s]6912it [00:07, 955.74it/s]7168it [00:07, 960.21it/s]7424it [00:07, 959.60it/s]7680it [00:08, 964.78it/s]7936it [00:08, 966.71it/s]8192it [00:08, 965.09it/s]8448it [00:09, 964.60it/s]8704it [00:09, 967.11it/s]8960it [00:09, 966.41it/s]9216it [00:09, 969.64it/s]9472it [00:10, 969.68it/s]9728it [00:10, 972.42it/s]9984it [00:10, 972.39it/s]10240it [00:10, 973.54it/s]10496it [00:11, 972.61it/s]10752it [00:11, 971.73it/s]11008it [00:11, 971.57it/s]11264it [00:11, 972.20it/s]11520it [00:12, 971.68it/s]11776it [00:12, 971.27it/s]12032it [00:12, 970.15it/s]12288it [00:12, 973.00it/s]12544it [00:13, 973.90it/s]12800it [00:13, 973.39it/s]13056it [00:13, 971.96it/s]13312it [00:14, 971.06it/s]13568it [00:14, 970.99it/s]13824it [00:14, 971.83it/s]14080it [00:14, 969.56it/s]14336it [00:15, 967.72it/s]14592it [00:15, 965.95it/s]14848it [00:15, 966.48it/s]15104it [00:15, 964.07it/s]15360it [00:16, 964.68it/s]15616it [00:16, 961.06it/s]15872it [00:16, 956.68it/s]16128it [00:16, 954.02it/s]16384it [00:17, 953.06it/s]16640it [00:17, 949.86it/s]16896it [00:17, 956.64it/s]17152it [00:18, 958.01it/s]17408it [00:18, 958.56it/s]17664it [00:18, 959.57it/s]17920it [00:18, 958.24it/s]18176it [00:19, 959.96it/s]18432it [00:19, 963.90it/s]18688it [00:19, 964.36it/s]18944it [00:19, 965.06it/s]19200it [00:20, 964.46it/s]19456it [00:20, 964.54it/s]19712it [00:20, 965.32it/s]19968it [00:20, 966.42it/s]20224it [00:21, 968.08it/s]20480it [00:21, 970.62it/s]20736it [00:21, 970.65it/s]20992it [00:22, 737.26it/s]21248it [00:22, 791.79it/s]21504it [00:22, 836.44it/s]21760it [00:23, 872.43it/s]22016it [00:23, 899.56it/s]22272it [00:23, 917.07it/s]22528it [00:23, 929.86it/s]22784it [00:24, 940.98it/s]22974it [00:24, 939.62it/s]22974it [00:24, 944.31it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[44/55] restaurant
+  short: 807 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 863.81it/s]512it [00:00, 864.32it/s]768it [00:00, 861.98it/s]807it [00:00, 856.84it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[45/55] saugeenday/D
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 179.40it/s]20it [00:00, 179.27it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[46/55] saugeenday/M
+  short: 7 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]7it [00:00, 623.01it/s]
+[47/55] saugeenday/W
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 624.81it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  return pd.Period(val, freq)
+[48/55] solar/10T
+  short: 2740 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 93.51it/s]512it [00:05, 93.71it/s]768it [00:08, 93.64it/s]1024it [00:10, 93.69it/s]1280it [00:13, 93.71it/s]1536it [00:16, 91.02it/s]1792it [00:19, 91.80it/s]2048it [00:22, 92.25it/s]2304it [00:24, 92.04it/s]2560it [00:27, 91.94it/s]2740it [00:29, 91.92it/s]2740it [00:29, 92.37it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 1507 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 92.30it/s]512it [00:05, 92.90it/s]768it [00:08, 91.99it/s]1024it [00:11, 91.92it/s]1280it [00:13, 92.76it/s]1507it [00:16, 93.04it/s]1507it [00:16, 92.68it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  long: 1096 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:02, 92.94it/s]512it [00:05, 92.96it/s]768it [00:08, 93.16it/s]1024it [00:11, 92.94it/s]1096it [00:11, 92.94it/s]1096it [00:11, 92.98it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[49/55] solar/D
+  short: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1062.31it/s]274it [00:00, 1039.23it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/dataset/common.py:263: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  return pd.Period(val, freq)
+[50/55] solar/H
+  short: 2603 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 440.34it/s]512it [00:01, 438.53it/s]768it [00:01, 438.88it/s]1024it [00:02, 436.06it/s]1280it [00:02, 436.48it/s]1536it [00:03, 436.42it/s]1792it [00:04, 436.72it/s]2048it [00:04, 436.69it/s]2304it [00:05, 436.77it/s]2560it [00:05, 436.95it/s]2603it [00:05, 436.67it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'H' is deprecated and will be removed in a future version, please use 'h' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+  medium: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 349.13it/s]274it [00:00, 346.50it/s]
+  long: 274 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 333.22it/s]274it [00:00, 330.94it/s]
+[51/55] solar/W
+  short: 137 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]137it [00:00, 897.33it/s]137it [00:00, 896.52it/s]
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:524: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSE[mean]"][0], res["MSE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:525: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAE[0.5]"][0], res["MASE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:526: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MAPE[0.5]"][0], res["sMAPE[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:527: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["MSIS"][0], res["RMSE[mean]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:528: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["NRMSE[mean]"][0], res["ND[0.5]"][0],
+/home/agvallet/work/sem_proj/reverso/example/eval_gift.py:529: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+  res["mean_weighted_sum_quantile_loss"][0],
+[52/55] temperature_rain_with_missing
+  short: 96216 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]256it [00:00, 1013.17it/s]512it [00:00, 1017.49it/s]768it [00:00, 1015.98it/s]1024it [00:01, 1016.76it/s]1280it [00:01, 1016.76it/s]1536it [00:01, 1018.67it/s]1792it [00:01, 1016.64it/s]2048it [00:02, 1018.16it/s]2304it [00:02, 1019.68it/s]2560it [00:02, 1019.00it/s]2816it [00:02, 1019.24it/s]3072it [00:03, 848.97it/s] 3328it [00:03, 893.82it/s]3584it [00:03, 930.95it/s]3840it [00:03, 956.23it/s]4096it [00:04, 975.53it/s]4352it [00:04, 989.50it/s]4608it [00:04, 1000.11it/s]4864it [00:04, 1005.39it/s]5120it [00:05, 1011.61it/s]5376it [00:05, 1016.70it/s]5632it [00:05, 1019.67it/s]5888it [00:05, 1021.32it/s]6144it [00:06, 1024.79it/s]6400it [00:06, 1024.26it/s]6656it [00:06, 1027.24it/s]6912it [00:06, 1027.63it/s]7168it [00:07, 1028.86it/s]7424it [00:07, 1028.69it/s]7680it [00:07, 1029.21it/s]7936it [00:07, 1024.46it/s]8192it [00:08, 1022.34it/s]8448it [00:08, 1022.24it/s]8704it [00:08, 1023.29it/s]8960it [00:08, 1022.13it/s]9216it [00:09, 1022.84it/s]9472it [00:09, 1018.81it/s]9728it [00:09, 1020.46it/s]9984it [00:09, 1021.94it/s]10240it [00:10, 1026.07it/s]10496it [00:10, 1024.24it/s]10752it [00:10, 1028.01it/s]11008it [00:10, 1029.73it/s]11264it [00:11, 1033.21it/s]11520it [00:11, 1035.77it/s]11776it [00:11, 1038.05it/s]12032it [00:11, 1037.63it/s]12288it [00:12, 1039.62it/s]12544it [00:12, 1039.45it/s]12800it [00:12, 1040.86it/s]13056it [00:12, 1041.93it/s]13312it [00:13, 1041.39it/s]13568it [00:13, 1041.09it/s]13824it [00:13, 1042.70it/s]14080it [00:13, 1041.52it/s]14336it [00:14, 1041.46it/s]14592it [00:14, 1042.20it/s]14848it [00:14, 1042.92it/s]15104it [00:14, 1042.68it/s]15360it [00:15, 1044.89it/s]15616it [00:15, 1043.86it/s]15872it [00:15, 1043.09it/s]16128it [00:15, 1042.47it/s]16384it [00:16, 1040.63it/s]16640it [00:16, 1039.85it/s]16896it [00:16, 1041.63it/s]17152it [00:16, 1041.24it/s]17408it [00:17, 1043.57it/s]17664it [00:17, 1043.32it/s]17920it [00:17, 1043.79it/s]18176it [00:17, 1044.01it/s]18432it [00:18, 1043.28it/s]18688it [00:18, 1040.25it/s]18944it [00:18, 1041.83it/s]19200it [00:18, 1038.06it/s]19456it [00:19, 1039.36it/s]19712it [00:19, 1039.21it/s]19968it [00:19, 1041.32it/s]20224it [00:19, 1040.43it/s]20480it [00:20, 1042.21it/s]20736it [00:20, 1042.57it/s]20992it [00:20, 1042.37it/s]21248it [00:20, 1041.64it/s]21504it [00:20, 1044.25it/s]21760it [00:21, 1042.28it/s]22016it [00:21, 1042.44it/s]22272it [00:21, 1037.56it/s]22528it [00:21, 1038.00it/s]22784it [00:22, 1039.86it/s]23040it [00:22, 1043.03it/s]23296it [00:22, 1044.03it/s]23552it [00:22, 1046.55it/s]23808it [00:23, 1046.11it/s]24064it [00:23, 1045.65it/s]24320it [00:23, 1045.02it/s]24576it [00:23, 1046.02it/s]24832it [00:24, 1043.04it/s]25088it [00:24, 1044.83it/s]25344it [00:24, 1043.70it/s]25600it [00:24, 1043.32it/s]25856it [00:25, 1043.24it/s]26112it [00:25, 1042.96it/s]26368it [00:25, 1041.53it/s]26624it [00:25, 1023.87it/s]26880it [00:26, 1032.17it/s]27136it [00:26, 1035.89it/s]27392it [00:26, 1037.80it/s]27648it [00:26, 1041.27it/s]27904it [00:27, 1041.40it/s]28160it [00:27, 1043.57it/s]28416it [00:27, 1042.56it/s]28672it [00:27, 1043.90it/s]28928it [00:28, 1043.27it/s]29184it [00:28, 1041.16it/s]29440it [00:28, 1042.93it/s]29696it [00:28, 1046.30it/s]29952it [00:29, 1044.12it/s]30208it [00:29, 1043.87it/s]30464it [00:29, 1044.74it/s]30720it [00:29, 1046.70it/s]30976it [00:30, 1045.04it/s]31232it [00:30, 1045.61it/s]31488it [00:30, 1045.37it/s]31744it [00:30, 1044.63it/s]32000it [00:31, 1044.03it/s]32256it [00:31, 1042.47it/s]32512it [00:31, 1042.44it/s]32768it [00:31, 1041.92it/s]33024it [00:32, 1043.02it/s]33280it [00:32, 1045.07it/s]33536it [00:32, 1043.72it/s]33792it [00:32, 1044.93it/s]34048it [00:33, 1044.22it/s]34304it [00:33, 1042.65it/s]34560it [00:33, 1043.24it/s]34816it [00:33, 1045.81it/s]35072it [00:34, 1046.67it/s]35328it [00:34, 1047.80it/s]35584it [00:34, 1047.19it/s]35840it [00:34, 1047.40it/s]36096it [00:35, 867.39it/s] 36352it [00:35, 911.26it/s]36608it [00:35, 950.05it/s]36864it [00:35, 975.74it/s]37120it [00:36, 995.48it/s]37376it [00:36, 1011.42it/s]37632it [00:36, 1019.29it/s]37888it [00:36, 1028.26it/s]38144it [00:37, 1034.23it/s]38400it [00:37, 1038.20it/s]38656it [00:37, 1035.50it/s]38912it [00:37, 1040.24it/s]39168it [00:38, 1040.68it/s]39424it [00:38, 1041.80it/s]39680it [00:38, 1045.86it/s]39936it [00:38, 1050.29it/s]40192it [00:39, 1046.81it/s]40448it [00:39, 1046.13it/s]40704it [00:39, 1045.26it/s]40960it [00:39, 1044.24it/s]41216it [00:40, 1043.53it/s]41472it [00:40, 1042.94it/s]41728it [00:40, 1039.78it/s]41984it [00:40, 1040.25it/s]42240it [00:41, 1040.81it/s]42496it [00:41, 1041.35it/s]42752it [00:41, 1040.69it/s]43008it [00:41, 1039.99it/s]43264it [00:42, 1038.55it/s]43520it [00:42, 1040.85it/s]43776it [00:42, 1040.47it/s]44032it [00:42, 1041.42it/s]44288it [00:43, 1040.49it/s]44544it [00:43, 1042.33it/s]44800it [00:43, 1040.08it/s]45056it [00:43, 1040.86it/s]45312it [00:43, 1042.50it/s]45568it [00:44, 1043.93it/s]45824it [00:44, 1043.53it/s]46080it [00:44, 1042.87it/s]46336it [00:44, 1041.47it/s]46592it [00:45, 1042.24it/s]46848it [00:45, 1042.40it/s]47104it [00:45, 1041.95it/s]47360it [00:45, 1042.26it/s]47616it [00:46, 1044.44it/s]47872it [00:46, 1043.87it/s]48128it [00:46, 1045.60it/s]48384it [00:46, 1045.19it/s]48640it [00:47, 1045.81it/s]48896it [00:47, 1045.22it/s]49152it [00:47, 1045.70it/s]49408it [00:47, 1044.49it/s]49664it [00:48, 1044.89it/s]49920it [00:48, 1044.04it/s]50176it [00:48, 1041.50it/s]50432it [00:48, 1042.41it/s]50688it [00:49, 1045.37it/s]50944it [00:49, 1045.36it/s]51200it [00:49, 1046.00it/s]51456it [00:49, 1045.17it/s]51712it [00:50, 1046.27it/s]51968it [00:50, 1044.89it/s]52224it [00:50, 1045.29it/s]52480it [00:50, 1045.41it/s]52736it [00:51, 1046.25it/s]52992it [00:51, 1045.16it/s]53248it [00:51, 1045.85it/s]53504it [00:51, 1040.02it/s]53760it [00:52, 1040.75it/s]54016it [00:52, 1039.60it/s]54272it [00:52, 1040.10it/s]54528it [00:52, 1038.66it/s]54784it [00:53, 1039.67it/s]55040it [00:53, 1039.61it/s]55296it [00:53, 1039.05it/s]55552it [00:53, 1036.37it/s]55808it [00:54, 1037.15it/s]56064it [00:54, 1038.55it/s]56320it [00:54, 1039.33it/s]56576it [00:54, 1041.48it/s]56832it [00:55, 1042.98it/s]57088it [00:55, 1039.38it/s]57344it [00:55, 1040.87it/s]57600it [00:55, 1039.23it/s]57856it [00:56, 1039.48it/s]58112it [00:56, 1039.73it/s]58368it [00:56, 1041.04it/s]58624it [00:56, 1038.40it/s]58880it [00:57, 1039.15it/s]59136it [00:57, 1039.28it/s]59392it [00:57, 1039.87it/s]59648it [00:57, 1038.08it/s]59904it [00:57, 1039.33it/s]60160it [00:58, 1038.20it/s]60416it [00:58, 1037.19it/s]60672it [00:58, 1038.72it/s]60928it [00:58, 1039.84it/s]61184it [00:59, 1040.53it/s]61440it [00:59, 1041.54it/s]61696it [00:59, 1040.43it/s]61952it [00:59, 1038.86it/s]62208it [01:00, 1038.91it/s]62464it [01:00, 1039.65it/s]62720it [01:00, 1039.90it/s]62976it [01:00, 1040.51it/s]63232it [01:01, 1040.75it/s]63488it [01:01, 1040.67it/s]63744it [01:01, 1038.67it/s]64000it [01:01, 1036.67it/s]64256it [01:02, 1038.85it/s]64512it [01:02, 1041.65it/s]64768it [01:02, 1043.34it/s]65024it [01:02, 1043.96it/s]65280it [01:03, 1040.23it/s]65536it [01:03, 1041.90it/s]65792it [01:03, 1042.95it/s]66048it [01:03, 1043.83it/s]66304it [01:04, 1045.88it/s]66560it [01:04, 1047.07it/s]66816it [01:04, 1047.52it/s]67072it [01:04, 1041.31it/s]67328it [01:05, 1044.00it/s]67584it [01:05, 1047.80it/s]67840it [01:05, 1046.14it/s]68096it [01:05, 1048.15it/s]68352it [01:06, 1048.43it/s]68608it [01:06, 1046.58it/s]68864it [01:06, 1046.84it/s]69120it [01:06, 980.25it/s] 69376it [01:07, 881.99it/s]69632it [01:07, 928.90it/s]69888it [01:07, 959.96it/s]70144it [01:07, 980.91it/s]70400it [01:08, 997.78it/s]70656it [01:08, 1014.44it/s]70912it [01:08, 1025.06it/s]71168it [01:08, 1035.70it/s]71424it [01:09, 1043.12it/s]71680it [01:09, 1044.06it/s]71936it [01:09, 1042.83it/s]72192it [01:09, 1042.43it/s]72448it [01:10, 1040.43it/s]72704it [01:10, 1040.55it/s]72960it [01:10, 1040.19it/s]73216it [01:10, 1041.03it/s]73472it [01:11, 1041.69it/s]73728it [01:11, 1041.35it/s]73984it [01:11, 1038.97it/s]74240it [01:11, 1041.62it/s]74496it [01:12, 1040.57it/s]74752it [01:12, 1040.35it/s]75008it [01:12, 1040.27it/s]75264it [01:12, 1040.13it/s]75520it [01:13, 1039.07it/s]75776it [01:13, 1040.32it/s]76032it [01:13, 1039.38it/s]76288it [01:13, 1041.98it/s]76544it [01:14, 1041.39it/s]76800it [01:14, 1041.53it/s]77056it [01:14, 1040.29it/s]77312it [01:14, 1042.97it/s]77568it [01:15, 1043.74it/s]77824it [01:15, 1045.45it/s]78080it [01:15, 1042.61it/s]78336it [01:15, 1041.58it/s]78592it [01:16, 1041.52it/s]78848it [01:16, 1042.44it/s]79104it [01:16, 1042.39it/s]79360it [01:16, 1041.50it/s]79616it [01:17, 1039.46it/s]79872it [01:17, 1040.48it/s]80128it [01:17, 1040.11it/s]80384it [01:17, 1041.70it/s]80640it [01:18, 1041.08it/s]80896it [01:18, 1042.20it/s]81152it [01:18, 1041.76it/s]81408it [01:18, 1045.01it/s]81664it [01:19, 1046.96it/s]81920it [01:19, 1050.00it/s]82176it [01:19, 1051.21it/s]82432it [01:19, 1052.19it/s]82688it [01:19, 1053.36it/s]82944it [01:20, 1055.17it/s]83200it [01:20, 1058.08it/s]83456it [01:20, 1058.34it/s]83712it [01:20, 1053.68it/s]83968it [01:21, 1053.71it/s]84224it [01:21, 1053.32it/s]84480it [01:21, 1057.97it/s]84736it [01:21, 1055.49it/s]84992it [01:22, 1059.85it/s]85248it [01:22, 1062.51it/s]85504it [01:22, 1064.33it/s]85760it [01:22, 1064.41it/s]86016it [01:23, 1066.47it/s]86272it [01:23, 1066.14it/s]86528it [01:23, 1068.64it/s]86784it [01:23, 1067.40it/s]87040it [01:24, 1067.56it/s]87296it [01:24, 1060.30it/s]87552it [01:24, 1059.35it/s]87808it [01:24, 1055.83it/s]88064it [01:25, 1056.36it/s]88320it [01:25, 1049.65it/s]88576it [01:25, 1047.78it/s]88832it [01:25, 1052.28it/s]89088it [01:26, 1058.65it/s]89344it [01:26, 1061.77it/s]89600it [01:26, 1066.08it/s]89856it [01:26, 1069.00it/s]90112it [01:27, 740.20it/s] 90368it [01:27, 814.78it/s]90624it [01:27, 877.80it/s]90880it [01:28, 927.85it/s]91136it [01:28, 966.26it/s]91392it [01:28, 996.99it/s]91648it [01:28, 1017.60it/s]91904it [01:29, 1033.03it/s]92160it [01:29, 1045.14it/s]92416it [01:29, 1052.78it/s]92672it [01:29, 1059.28it/s]92928it [01:29, 1061.41it/s]93184it [01:30, 1061.20it/s]93440it [01:30, 1060.35it/s]93696it [01:30, 1059.66it/s]93952it [01:30, 1057.94it/s]94208it [01:31, 1057.91it/s]94464it [01:31, 1055.65it/s]94720it [01:31, 1056.88it/s]94976it [01:31, 1056.01it/s]95232it [01:32, 1055.84it/s]95488it [01:32, 1056.50it/s]95744it [01:32, 1055.46it/s]96000it [01:32, 1050.44it/s]96216it [01:33, 1047.09it/s]96216it [01:33, 1033.55it/s]
+[53/55] us_births/D
+  short: 20 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]20it [00:00, 428.04it/s]
+/home/agvallet/work/venvs/reverso/lib/python3.11/site-packages/gluonts/time_feature/seasonality.py:47: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  offset = pd.tseries.frequencies.to_offset(freq)
+/home/agvallet/work/gift-eval-code/src/gift_eval/data.py:151: FutureWarning: 'M' is deprecated and will be removed in a future version, please use 'ME' instead.
+  freq = norm_freq_str(to_offset(self.freq).name)
+[54/55] us_births/M
+  short: 2 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]2it [00:00, 292.08it/s]
+[55/55] us_births/W
+  short: 14 instances
+  checkpoint step 150000  weights: EMA (41 tensors)  trained k=4 beta=0.25  -> EVAL k=1 beta=0.25
+  stream_sha256 8bece5b4efdda856...
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+0it [00:00, ?it/s]14it [00:00, 795.33it/s]
+
+Results saved to: results/R1_k1/all_results_20261011_153114.csv
+=== FINI R1_k1 So 11 Okt 2026 16:09:58 CEST ===

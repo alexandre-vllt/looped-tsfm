@@ -1,0 +1,40 @@
+batch 512, 12s timed window per setting (after draining nw*2+4 prefetched batches), p_real 0.5, alpha 0.5
+independent estimate to check against: the batch-64 smoke runs both read 2.31 M pts/s
+  (= ~1100 win/s) while bench_real says k=4 at batch 64 should do ~1122 win/s -- so k=4 was fed,
+  k=1 was starved, and the loader ceiling at 8 workers is ~1100 win/s.
+GPU appetite at batch 512 (bench_real.py): k=1 needs 5626 win/s, k=4 needs 1384
+
+   workers  warmup  windows/s  M pts/s   GB/s   k=1   k=4
+         8      20     134506   281.92   1.05  100%  100%
+        16      36     172943   362.49   1.35  100%  100%
+        32      68     209389   438.88   1.63  100%  100%
+
+======================================================================
+ VERDICT
+======================================================================
+  best: 209389 windows/s at --workers 32
+  k=1 (R0): loader supplies 100% of demand
+  k=4 (R1): loader supplies 100% of demand
+
+  IF BOTH REACH 100 %  -> launch as is; the 4.06x ratio will show up in
+      wall-clock and R0-vs-R1 timings mean what they look like.
+
+  IF k=1 IS STARVED    -> the measured ratio will understate the loop's cost and
+      R0 will waste most of a GPU slot. In order of cost:
+        1. raise --workers to the best value above
+        2. warm the page cache before launching, which costs one sequential
+           read of each corpus:
+             cat $WORK/synth/*.npy $WORK/real/*.npy > /dev/null
+           10.6 GB, well inside a DGX's RAM. Re-run this probe after.
+        3. if still starved, the bottleneck is random-access I/O, not workers:
+           every sample is an 8.4 KB scattered memmap read. Options then are a
+           larger --batch-size (amortises per-batch overhead, not per-window
+           I/O), or drawing several windows per series per batch -- but that
+           CHANGES THE SAMPLING DISTRIBUTION and therefore stream_sha256, so it
+           is a data decision, not a tuning knob, and both arms would have to be
+           regenerated together.
+
+  Whatever is chosen, --workers does NOT affect stream_sha256: that was the
+  point of the Philox counter-based mapping, and data.py --verify-only proved
+  it at 0, 2 and 8 workers.
+

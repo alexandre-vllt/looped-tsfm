@@ -1,0 +1,54 @@
+Current Triton version 3.2.0 is below the recommended 3.3.0 version. Errors may occur and these issues will not be fixed. Please consider upgrading Triton.
+======================================================================
+ data
+======================================================================
+  synthetic: 825,000 series x 2304, 9 files, corpus_sha256 461e38ff4aef031e... [full]
+  real: 406,452 series x 2304, 34 files, alpha 0.5, corpus_sha256 28a2bb1811aabfeb... [full]
+
+  stream_sha256 (first 5 batches) 013470cedddc54603ef75a708d89b90383135931da0841c8d051045fe952e955
+  BOTH ARMS MUST REPORT THIS NUMBER.
+  It is a function of (seed 0, p_real 0.5, alpha 0.5, batch 64, both corpus hashes) -- so it is comparable only between runs that share all of those. A smoke hash at batch 64 will NOT equal the production hash at batch 512.
+
+======================================================================
+ model
+======================================================================
+  swapped 1 AttentionBlock -> fla.DeltaNet(mode='chunk')
+  reverso_nano: 189,881 params | seq 2048 -> 48 | k=4 beta=0.25 | batch 64 (0.13 M points/step)
+
+  TRAINING OBJECTIVE: normalised  (deviation from paper 2.1 -- done.md 9)
+  held-out: 256 windows from ordinal 34,359,738,368 (disjoint from training)
+  baselines  raw        last 31.69928   mean 64.11012   drift 165.76959
+             scale-free last 0.10869   mean 0.17627   drift 0.76962
+  the model must get below these or it is not learning.
+  JUDGE ON THE SCALE-FREE ROW -- the raw row is dominated by whichever windows have the largest range (see scale_free()).
+
+======================================================================
+ training  0 -> 200
+======================================================================
+  step      20  loss 0.22423  L^k 0.20429  ema 0.29624  lr 5.00e-04  0.10 M pts/s  |g| 1.20
+  step      40  loss 0.17938  L^k 0.18281  ema 0.29310  lr 5.00e-04  2.30 M pts/s  |g| 1.55
+  step      50  HELD-OUT raw 319.58276  scale-free 0.18319
+      diag fp32=True  |h| 225.4 -> 1235.6 (x5.5)  update_magnitude[t1] 1.747  convergence[t1] 1.723  cka[t0_t1] 0.787
+  step      60  loss 0.18111  L^k 0.18864  ema 0.29033  lr 5.00e-04  2.29 M pts/s  |g| 3.28  val* 0.18319
+  step      80  loss 0.15672  L^k 0.13865  ema 0.28662  lr 5.00e-04  2.31 M pts/s  |g| 2.01  val* 0.18319
+  step     100  HELD-OUT raw 235.31327  scale-free 0.15909
+  step     100  loss 0.14768  L^k 0.15764  ema 0.28288  lr 5.00e-04  2.31 M pts/s  |g| 2.15  val* 0.15909
+      diag fp32=True  |h| 225.1 -> 1236.1 (x5.5)  update_magnitude[t1] 1.741  convergence[t1] 1.731  cka[t0_t1] 0.818
+  step     120  loss 0.14775  L^k 0.14662  ema 0.27921  lr 5.00e-04  2.31 M pts/s  |g| 1.21  val* 0.15909
+  step     140  loss 0.14644  L^k 0.16848  ema 0.27565  lr 5.00e-04  2.31 M pts/s  |g| 3.16  val* 0.15909
+  step     150  HELD-OUT raw 128.84357  scale-free 0.12504
+      diag fp32=True  |h| 224.8 -> 1230.2 (x5.5)  update_magnitude[t1] 1.737  convergence[t1] 1.662  cka[t0_t1] 0.820
+  step     160  loss 0.13083  L^k 0.13073  ema 0.27170  lr 5.00e-04  2.30 M pts/s  |g| 1.72  val* 0.12504
+  step     180  loss 0.12707  L^k 0.12870  ema 0.26776  lr 2.50e-04  2.31 M pts/s  |g| 1.91  val* 0.12504
+  step     200  HELD-OUT raw 71.24906  scale-free 0.10887
+  step     200  loss 0.11781  L^k 0.10922  ema 0.26363  lr 0.00e+00  2.31 M pts/s  |g| 0.59  val* 0.10887
+      diag fp32=True  |h| 224.8 -> 1261.2 (x5.6)  update_magnitude[t1] 1.745  convergence[t1] 1.714  cka[t0_t1] 0.820
+
+======================================================================
+  held-out (256 windows)
+    raw        weights  71.24906   EMA weights  86.28178
+    scale-free weights  0.10887   EMA weights  0.10930   <- JUDGE ON THIS ROW
+  baselines  raw        last 31.69928  mean 64.11012  drift 165.76959
+             scale-free last 0.10869  mean 0.17627  drift 0.76962
+  EVALUATION USES THE EMA WEIGHTS (see the header).
+  stream_sha256 013470cedddc54603ef75a708d89b90383135931da0841c8d051045fe952e955

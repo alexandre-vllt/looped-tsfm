@@ -1,0 +1,43 @@
+\section{Remaining work}
+\label{sec:remaining}
+
+In priority order, with the decision each one informs.
+
+\paragraph{1. Close the composition question.} Evaluate \texttt{AUGNEG} and
+\texttt{AUGNEGS1}. If the composed arm lands near $\AugNegPrediction$ the
+levers are independent and the recipe is additive; if it lands near the better
+single lever they share a mechanism, and the report's conclusion becomes
+sharper rather than weaker. \emph{Blocked only on GPU availability.}
+
+\paragraph{2. Signed channel-wise decay.} Implement the complex-eigenvalue
+variant of \citet{ckda2026} on top of \texttt{allow\_neg\_eigval} and train one
+arm against \texttt{D1}. This is the direction the per-horizon evidence points
+at, the implementation is a modification of kernels already in use, and the
+pre-registered prediction is specific: the gain should concentrate on seasonal
+datasets and grow with horizon. \emph{The most promising remaining experiment.}
+
+\paragraph{3. Measure \texttt{V2L}'s own annealing point.} The fifteen
+snapshots exist; scoring them on the validation split costs one GPU-hour and
+removes the one confound in the \texttt{V2C}/\texttt{V2M} pair that carries the
+``looping does not survive v2'' claim (\S\ref{sec:protocol}).
+
+\paragraph{4. Probabilistic evaluation.} Read out the full $97$-row CRPS of the
+quantile head. Note that MSIS is not comparable: it needs the $0.025$ and
+$0.975$ quantiles, which the nine-level head does not produce.
+
+\paragraph{5. Enumerated sampler with augmentation.} The v2 sampler and
+\texttt{--augment} are currently mutually exclusive by an explicit guard, which
+is conservative rather than fundamental --- the enumerated path does build a
+per-sample Philox generator. Lifting it (roughly twenty lines) is what makes a
+genuine three-lever arm possible.
+
+\paragraph{6. Adaptive $k$ at inference.} Untested, and the only remaining
+version of the looping hypothesis that the current results do not speak to: if
+the value of looping is per-input adaptivity rather than depth, a fixed-$k$
+sweep could not have found it.
+
+\todo{by the end of the semester}{%
+  Sections \S\ref{sec:results} and \S\ref{sec:discussion} to be extended with
+  items 1--3; a scaling paragraph if a larger configuration becomes affordable;
+  and a short note on inference-time cost in the deployed setting, which is
+  where the $k\times$ factor actually bites.}

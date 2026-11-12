@@ -1,0 +1,198 @@
+13 shards
+
+passe 1/2 : longueurs par source
+  1/13
+  2/13
+  3/13
+  4/13
+  5/13
+  6/13
+  7/13
+  8/13
+  9/13
+  10/13
+  11/13
+  12/13
+  13/13
+
+=== plan : 87 sources ===
+  source                              series   >=min  mediane  L stocke
+  alibaba_cluster_trace_2018          46,520  43,412    1,728     2,304
+  favorita_sales                      40,026  25,547    1,322     2,304
+  extended_web_traffic_with_missing   40,001  40,001    2,557     2,304
+  buildings_900k                      39,931  39,931    8,192     4,608
+  taxi_30min                          39,917   9,943      797     2,304
+  kaggle_web_traffic_weekly           39,806       0      114     2,304
+  wiki-rolling_nips                   38,195       0      852     2,304
+  borg_cluster_data_2011              37,044  33,756    7,776     4,608
+  Q-TRAFFIC                           36,144  36,144    5,856     4,608
+  azure_vm_traces_2017                29,022  24,908    8,064     4,608
+  m5                                  24,280  24,280    1,913     2,304
+  cmip6_1990                          18,020  18,020    7,300     4,608
+  era5_2010                           14,760  14,760    8,192     4,608
+  godaddy                              4,998       0       41     2,304
+  london_smart_meters_with_missing     4,415   4,415    8,192     4,608
+  largest_2019                         4,329   4,329    8,192     4,608
+  subseasonal                          2,724   2,724    8,192     4,608
+  weather                              2,369   2,369    8,192     4,608
+  china_air_quality                    2,118   2,118    8,192     4,608
+  rideshare_with_missing               1,851       0      373     2,304
+  monash_m3_monthly                    1,132       0      115     2,304
+  project_tycho                          998     466      936     2,304
+  PEMS04                                 759     759    8,192     4,608
+  PEMS07                                 693     693    8,192     4,608
+  traffic_weekly                         690       0       96     2,304
+  subseasonal_precip                     684     684    8,192     4,608
+  traffic_hourly                         681     681    8,192     4,608
+  residential_load_power                 609     606    8,192     4,608
+  monash_m3_quarterly                    599       0       52     2,304
+  lcl                                    555     553    8,192     4,608
+  residential_pv_power                   543     543    8,192     4,608
+  monash_m3_yearly                       528       0       25     2,304
+  m1_monthly                             504       0       66     2,304
+  SHMETRO                                448     448    8,192     4,608
+  BEIJING_SUBWAY_30MIN                   428     428    1,572     2,304
+  PEMS08                                 420     420    8,192     4,608
+  tourism_quarterly                      343       0      103     2,304
+  tourism_yearly                         333       0       27     2,304
+  cdc_fluview_ilinet                     305      75      680     2,304
+  covid_mobility                         299       0      413     2,304
+  tourism_monthly                        290       0      306     2,304
+  PEMS03                                 289     289    8,192     4,608
+  wind_farms_with_missing                269     269    8,192     4,608
+  vehicle_trips_with_missing             262       0       92     2,304
+  PEMS_BAY                               251     251    8,192     4,608
+  cdc_fluview_who_nrevss                 236      56      270     2,304
+  bdg-2_rat                              232     232    8,192     4,608
+  uber_tlc_hourly                        203     203    4,344     2,304
+  uber_tlc_daily                         200       0      181     2,304
+  ideal                                  178     171    5,136     2,304
+  LOS_LOOP                               167     167    8,192     4,608
+  m1_quarterly                           162       0       48     2,304
+  monash_m3_other                        145       0       63     2,304
+  HZMETRO                                126     126    2,377     2,304
+  beijing_air_quality                    110     110    8,192     4,608
+  bdg-2_fox                              106     106    8,192     4,608
+  kdd2022                                106     106    8,192     4,608
+  bdg-2_panther                           88      88    8,192     4,608
+  fred_md                                 88       0      716     2,304
+  nn5_weekly                              86       0      105     2,304
+  nn5_daily_with_missing                  85       0      735     2,304
+  m1_yearly                               78       0       27     2,304
+  bdg-2_bear                              72      72    8,192     4,608
+  pedestrian_counts                       54      53    8,192     4,608
+  favorita_transactions                   46      41    1,687     2,304
+  cif_2016_12                             42       0      108     2,304
+  bull                                    34      34    8,192     4,608
+  hog                                     19      19    8,192     4,608
+  gfc12_load                              16      16    8,192     4,608
+  borealis                                14      14    5,438     4,608
+  bitcoin_with_missing                    13      13    4,551     2,304
+  cif_2016_6                              13       0       38     2,304
+  oikolab_weather                          8       8    8,192     4,608
+  gfc17_load                               6       6    8,192     4,608
+  australian_electricity_demand            5       5    8,192     4,608
+  smart                                    2       2    8,192     4,608
+  cockatoo                                 1       1    8,192     4,608
+  covid19_energy                           1       1    8,192     4,608
+  elecdemand                               1       1    8,192     4,608
+  elf                                      1       1    8,192     4,608
+  gfc14_load                               1       1    8,192     4,608
+  pdb                                      1       1    8,192     4,608
+  sceaux                                   1       1    8,192     4,608
+  solar_power                              1       1    8,192     4,608
+  spain                                    1       1    8,192     4,608
+  sunspot_with_missing                     1       1    8,192     4,608
+  wind_power                               1       1    8,192     4,608
+
+  longueurs retenues : 2304 -> 37 sources, 4608 -> 50 sources
+
+  !! LONGUEURS MELANGEES : Corpus.__init__ de data.py leve aujourd'hui
+     sur ce cas ("one Corpus must hold one length"). Le patch est court
+     -- draw() doit lire self.lengths[g] au lieu de self.series_len --
+     mais il doit etre fait AVANT d'entrainer sur ce corpus.
+
+=== totaux estimes ===
+  sources retenues                    52 / 87
+  chunks                         507,867
+  points                    2,005,579,008
+  sur disque                       8.02 Go
+  (avant rejet NaN > 10 %, qui n'est connu qu'en passe 2)
+
+  reference v1 : 406 575 chunks / 0.94 G points / 3.49 Go, 34 sources
+  gain         : x1.25 chunks, x2.13 points, x1.53 sources
+
+=== steps par epoch, batch 512, une fenetre par chunk ===
+  p_real        fenetres/epoch   steps/epoch
+  0.30               1,692,890         3,306
+  0.25               2,031,468         3,968
+  0.20               2,539,335         4,960
+  0.15               3,385,780         6,613
+
+passe 2/2 : conversion vers /home/agvallet/work/real_v2
+  shard 1/13  chunks 42,166  10s
+  shard 2/13  chunks 90,910  20s
+  shard 3/13  chunks 141,248  30s
+  shard 4/13  chunks 175,076  42s
+  shard 5/13  chunks 209,796  53s
+  shard 6/13  chunks 244,788  64s
+  shard 7/13  chunks 276,638  75s
+  shard 8/13  chunks 306,276  86s
+  shard 9/13  chunks 341,706  98s
+  shard 10/13  chunks 375,640  110s
+  shard 11/13  chunks 413,687  120s
+  shard 12/13  chunks 457,373  130s
+  shard 13/13  chunks 483,280  140s
+
+ecriture de 87 fichiers
+  skip BEIJING_SUBWAY_30MIN           0 chunks
+  skip HZMETRO                        0 chunks
+  skip SHMETRO                        0 chunks
+  skip cif_2016_12                    0 chunks
+  skip cif_2016_6                     0 chunks
+  skip cockatoo                       2 chunks
+  skip covid19_energy                 2 chunks
+  skip covid_mobility                 0 chunks
+  skip elecdemand                     2 chunks
+  skip elf                            2 chunks
+  skip fred_md                        0 chunks
+  skip gfc14_load                     2 chunks
+  skip godaddy                        0 chunks
+  skip kaggle_web_traffic_weekly      0 chunks
+  skip m1_monthly                     0 chunks
+  skip m1_quarterly                   0 chunks
+  skip m1_yearly                      0 chunks
+  skip monash_m3_monthly              0 chunks
+  skip monash_m3_other                0 chunks
+  skip monash_m3_quarterly            0 chunks
+  skip monash_m3_yearly               0 chunks
+  skip nn5_daily_with_missing         0 chunks
+  skip nn5_weekly                     0 chunks
+  skip pdb                            2 chunks
+  skip rideshare_with_missing         0 chunks
+  skip sceaux                         2 chunks
+  skip smart                          4 chunks
+  skip solar_power                    2 chunks
+  skip spain                          2 chunks
+  skip sunspot_with_missing           2 chunks
+  skip tourism_monthly                0 chunks
+  skip tourism_quarterly              0 chunks
+  skip tourism_yearly                 0 chunks
+  skip traffic_weekly                 0 chunks
+  skip uber_tlc_daily                 0 chunks
+  skip vehicle_trips_with_missing     0 chunks
+  skip wiki-rolling_nips              0 chunks
+  skip wind_power                     2 chunks
+
+=== resultat ===
+  channel_series           482,133
+  kept                     483,280
+  nan_dropped               24,613
+  nan_repaired              93,985
+  sources_skipped               38
+  too_short                146,652
+  sources ecrites               49
+  series                   483,254
+  corpus_sha256         e5a0468567c84499...
+
+  v1 : 406 452 series, 34 sources

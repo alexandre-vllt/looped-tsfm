@@ -1,0 +1,65 @@
+% =====================================================================
+%  Looped Time Series Foundation Models
+%  Semester project (12 ECTS), MSc Data Science, EPFL
+%  LIONS -- Prof. Volkan Cevher.  Supervision: Arber Zela, David Berghaus.
+%
+%  Compiles with pdflatex + bibtex (Overleaf default).
+%  Tables under tables/ are GENERATED -- run  python analysis/make_tables.py
+%  after editing report/data/*.csv.  Never edit tables/*.tex by hand.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue]{hyperref}
+
+\definecolor{linkblue}{HTML}{1F4E79}
+\definecolor{todogrey}{HTML}{6B6B6B}
+
+% Dated placeholder for a section that is not yet written.  Every one of
+% these is a commitment with a date on it; none should survive to the final
+% report.
+\newcommand{\todo}[2]{%
+  \par\medskip\noindent\colorbox{todogrey!12}{%
+    \begin{minipage}{0.97\linewidth}\small\color{todogrey}%
+      \textbf{TO WRITE (#1).}\ #2
+    \end{minipage}}\par\medskip}
+
+\input{tables/macros}
+
+\title{\textbf{Looped Time Series Foundation Models}\\[0.35em]
+       \large Does weight-tied depth buy anything that cheaper interventions do not?}
+\author{Alexandre Vallet\\
+        \small MSc Data Science, EPFL \\
+        \small Supervision: Arber Zela, David Berghaus --- LIONS, Prof.\ Volkan Cevher}
+\date{Mid-semester report --- \today}
+
+\begin{document}
+\maketitle
+
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_background}
+\input{sections/03_method}
+\input{sections/04_protocol}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_remaining}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\appendix
+\input{sections/08_appendix}
+
+\end{document}

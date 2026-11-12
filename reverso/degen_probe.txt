@@ -1,0 +1,58 @@
+
+==============================================================================
+ SYNTHETIC  --  9 sources, 3000 random windows each
+==============================================================================
+  source                               degen%  flat>flat  flat>jump  worst |y~|
+  (9 sources with no degenerate windows, not listed)
+
+  mean degenerate rate across sources 0.000%
+  of the degenerate windows: 0 flat->flat (benign), 0 flat->jump (pathological)
+
+==============================================================================
+ REAL (GEP-L)  --  34 sources, 3000 random windows each
+==============================================================================
+  source                               degen%  flat>flat  flat>jump  worst |y~|
+  cmip6_1990                            6.50%        195          0           0
+  era5_2010                             2.90%         86          1        1.22
+  lcl                                   0.17%          3          2    1.05e+04
+  london_smart_meters_with_missing      0.07%          2          0           0
+  residential_load_power                5.50%        165          0           0
+  residential_pv_power                  9.17%        275          0           0
+  uber_tlc_hourly                       0.63%         19          0           0
+  weather                               0.67%         20          0           0
+  wind_farms_with_missing              24.20%        724          2    8.02e+06
+  (25 sources with no degenerate windows, not listed)
+
+  mean degenerate rate across sources 1.465%
+  of the degenerate windows: 1489 flat->flat (benign), 5 flat->jump (pathological)
+  benign share 99.7%
+
+==============================================================================
+ VERDICT
+==============================================================================
+  worst sources by degenerate rate:
+    wind_farms_with_missing               24.20%  (807 series)
+    residential_pv_power                   9.17%  (1,014 series)
+    cmip6_1990                             6.50%  (54,060 series)
+    residential_load_power                 5.50%  (1,149 series)
+    era5_2010                              2.90%  (44,280 series)
+    weather                                0.67%  (6,296 series)
+    uber_tlc_hourly                        0.63%  (203 series)
+    lcl                                    0.17%  (1,627 series)
+
+  benign (flat->flat) 1489   pathological (flat->jump) 5
+
+  HOW TO DECIDE
+
+  If MOST degenerate windows are flat->flat, the guard is throwing away free
+  correct predictions. Better: keep them and give the scale a floor so the
+  normalised target stays 0 -- they then contribute loss 0 and teach "flat
+  stays flat", while only flat->jump windows are excluded.
+
+  If MOST are flat->jump, the guard is doing its job and dropping ~0.6 % of
+  windows is the correct, cheap answer.
+
+  Either way: if the drops concentrate in one or two sources, say so in
+  done.md 9.1 next to the alpha = 0.5 weighting, because the effective
+  per-source mixture is then not the one that decision chose.
+

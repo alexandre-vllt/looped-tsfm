@@ -1,0 +1,135 @@
+\section{Results}
+\label{sec:results}
+
+All numbers are the geometric mean of MASE over the $97$ GIFT-Eval rows, lower
+is better. Significance is a two-sided sign test on per-row wins against the
+reference. $\star$ marks the two references: \texttt{R0} for v1 arms,
+\texttt{D1} for v2 arms.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{All trained arms, sorted by MASE. The published \texttt{nano}
+  checkpoint scores $1.0742$; our reproduction is \ReproGap\,\% behind it, so
+  every comparison below is internal.}
+  \label{tab:arms}
+  \begin{tabular}{lcclrrrr}
+    \toprule
+    arm & $k$ & $\beta$ & corpus & MASE & vs \texttt{R0} (\%) & wins/97 & $p$ \\
+    \midrule
+    \input{tables/arms}
+  \end{tabular}
+\end{table}
+
+\subsection{Looping clears the noise floor by very little}
+
+The two $k=4$ seeds average \LoopMean, which is \LoopGain\,\% better than the
+$k=1$ baseline. The two seeds differ from each other by
+\NoiseFloorKFour\,\%. The effect is therefore of the same order as the
+measurement error: it is positive in both seeds, which is worth something, but
+a single-seed claim of ``$+2.1\,\%$ at $k=4$'' would have been an artefact of
+reporting the luckier seed.
+
+The sweep over $k$ does not help the case. $k=2$ is indistinguishable from the
+baseline ($-0.12\,\%$, $p=0.69$) and $k=8$ gives $+0.99\,\%$ at $p=0.10$ --- so
+there is no monotone trend in $k$ to extrapolate, which is what one would
+expect if additional iterations were doing additional work. The flow-time
+control behaves as predicted: $\beta=1/\sqrt{k}$, which overshoots $T=1$, is
+the worst arm in the table.
+
+\subsection{The cost is not small}
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Measured training cost of the identical recipe at $k=1$ and $k=4$
+  (same corpus, same steps, same hardware). Inference cost scales the same
+  way, and is paid on every forecast.}
+  \label{tab:cost}
+  \begin{tabular}{lcclrr}
+    \toprule
+    run & $k$ & $\beta$ & steps & wall-clock & Mpts/s \\
+    \midrule
+    \input{tables/cost}
+  \end{tabular}
+\end{table}
+
+The wall-clock ratio is \CostRatio$\times$ and the throughput ratio
+\ThroughputRatio$\times$, both within $1\,\%$ of the ideal $k$. Looping is
+exactly as expensive as stacking $k$ blocks and saves only parameters, which
+are not the binding constraint at this scale.
+
+\subsection{Looping does not survive a better pipeline}
+
+\texttt{V2C} and \texttt{V2M} are the cleanest single-variable pair in the
+project: same corpus, same sampler, same schedule, same annealing step, $k=1$
+versus $k=4$. The looped arm is \VtwoLoopPenalty\,\% \emph{worse}. The
+per-horizon split (Table~\ref{tab:perterm}) shows where it goes: $+0.57\,\%$
+short, $-4.17\,\%$ medium, $-1.70\,\%$ long. Whatever looping contributed on
+the v1 pipeline, a sampler that shows every window exactly once contributes
+more, and the two do not add.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Per-horizon decomposition, $55$ short / $21$ medium / $21$ long
+  rows. Read within a column only: the three subsets are different data.}
+  \label{tab:perterm}
+  \begin{tabular}{lrrrr}
+    \toprule
+    arm & all 97 & short (55) & medium (21) & long (21) \\
+    \midrule
+    \input{tables/perterm}
+  \end{tabular}
+\end{table}
+
+\subsection{Each cheap lever beats looping}
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{The three non-architectural levers, each against \texttt{D1}
+  (\DOneMase) with one variable changed. Positive is better.}
+  \label{tab:levers}
+  \begin{tabular}{llrrrr}
+    \toprule
+    lever & flag & all (\%) & short (\%) & medium (\%) & long (\%) \\
+    \midrule
+    \input{tables/levers}
+  \end{tabular}
+\end{table}
+
+Augmentation gives $+3.41\,\%$, the negative-eigenvalue gate $+2.22\,\%$, the
+exact-once sampler $+1.70\,\%$ --- against looping's \LoopGain\,\% at
+\CostRatio$\times$ the compute. The first and third are essentially free; the
+second costs nothing at inference and, per \citet{ckda2026}, $3$--$4\,\%$ of
+kernel throughput.
+
+\subsection{Only the eigenvalue lever behaves like a representational change}
+
+The per-horizon columns of Table~\ref{tab:levers} separate the three levers by
+\emph{mechanism}, which is the result we consider most interesting.
+Augmentation helps most at short horizon and decays with length
+($+4.14 / +2.60 / +2.29$), the signature of regularisation: it improves each
+individual patch, and the gain dilutes along the autoregressive rollout. The
+sampler is flat ($+1.69 / +1.58 / +1.84$) --- it simply trains on more of the
+data. Only \texttt{allow\_neg\_eigval} \emph{grows} with horizon
+($+2.07 / +1.73 / +3.10$), and it is the only lever for which that pattern was
+predicted in advance, from the argument in \S\ref{sec:background} that
+reflections are what let a linear recurrence carry alternating structure across
+many steps.
+
+This is a single arm and one should not over-read it. But it is the one place
+in the project where a pre-registered mechanistic prediction was confirmed, and
+it points at the spectrum of the transition rather than the depth of the stack.
+
+\subsection{Composition (in progress)}
+
+Two seeds of the composed arm \texttt{AUGNEG} (augmentation $+$
+\texttt{allow\_neg\_eigval}, v2 corpus, $k=1$) have finished training; the
+evaluations are pending. If the two levers are independent, the multiplicative
+prediction is $\AugNegPrediction$; adding the v2 sampler would predict
+$\TripleLeverPrediction$. The data streams were verified identical to
+\texttt{AUG}'s by \texttt{stream\_sha256} and the model flag verified set, so
+the arm tests composition and not an accidental third difference.
+
+\todo{as soon as a GPU frees}{%
+  \texttt{AUGNEG} / \texttt{AUGNEGS1} benchmark numbers, and the full
+  $97$-row CRPS of the quantile head (\texttt{R1Q}), whose smoke test on
+  \texttt{m4\_weekly} gave $-11.1\,\%$ CRPS at unchanged MASE.}
