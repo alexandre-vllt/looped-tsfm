@@ -347,34 +347,98 @@ The report also gets the *interpretation* while it is fresh. A result recorded
 in `done.md` and not reflected in `report/sections/` is half a result: `done.md`
 is the log, `report/` is the argument.
 
-## 12. Our absolute MASE is not on the paper's scale — never put them side by side
+## 12. Our absolute MASE is not on the paper's scale — MEASURED, 12 Nov 2026
 
 The paper reports `Reverso-Nano` at **0.757** on full GIFT-Eval. Our harness
-scores **their own published checkpoint** at **1.0742** — a factor of 1.419 on
-identical weights. No training difference explains that; it is a property of
-the harness.
+scores **their own published checkpoint** at **1.0742**. `analysis/harness_scale.py`
+settles where that factor comes from, on the 97 rows both sides share:
 
-The likely cause is the aggregation convention: GIFT-Eval's leaderboard divides
-each row's MASE by the seasonal-naive baseline's before taking the geometric
-mean, and an average seasonal-naive MASE of 1.42 is ordinary. If so, every
-*relative* number we report is untouched, because a per-row divisor cancels in
-a ratio of geometric means: `geo(A/S)/geo(B/S) = geo(A)/geo(B)`.
+```
+geo mean, our raw MASE           1.0742
+geo mean, seasonal-naive MASE    1.3979    <- the factor
+geo mean, ours / seasonal-naive  0.7684    <- vs the paper's 0.757
+  short   55 rows   raw 1.1204   normalised 0.7594
+  medium  21 rows   raw 0.9988   normalised 0.7731
+  long    21 rows   raw 1.0346   normalised 0.7877   <- vs the paper's 0.766
+```
 
-Until that is **measured** — divide our 97 per-row `NANO_pub` values by
-GIFT-Eval's seasonal-naive scores and check the geometric mean lands on 0.757 —
-the rule is absolute: state percentages against baselines we trained ourselves,
-and never print one of our MASE values next to a number from the paper or from
-a leaderboard. `done.md` once rationalised this gap ("MASE > 1 is a property of
-the metric/protocol pair") instead of diagnosing it; that sentence was wrong to
-accept.
+**The units question is closed.** GIFT-Eval's leaderboard divides each row's
+MASE by the seasonal-naive baseline's before taking the geometric mean; we
+report raw MASE. Raw MASE exceeds 1 for everyone because its denominator is a
+one-step in-sample error while its numerator is a 48-step out-of-sample one.
+Row perimeters are identical: 97 on both sides, all 97 in common.
 
-Hardware is **not** a candidate explanation for a 42 % gap: our fp32 identity
-tests hold to 1.9e-9. We have only ever run on A100-SXM4-40GB (nala) and V100
-(izar); no H100 has ever been touched, and the paper mentions them only as a
-unit of budget. Comparing the same checkpoint across two card types remains a
-legitimate cheap check, but it is not where this discrepancy comes from.
+Every **relative** number we report is unaffected, because a per-row divisor
+cancels in a ratio of geometric means: `geo(A/S)/geo(B/S) = geo(A)/geo(B)`.
 
-## 13. Never pass `--delete` to rsync against a copy you have not diffed first
+**But a residual remains and it is not noise.** Normalised, we score their
+checkpoint **+1.51 % worse** than they publish (0.7684 vs 0.757), and
+**+2.84 % worse** on the long horizon (0.7877 vs 0.766). The discrepancy
+**grows with horizon**. See §13 — it has a concrete cause.
+
+Rule, unchanged: state percentages against baselines we trained ourselves, and
+never print one of our MASE values next to a number from the paper or a
+leaderboard. When an absolute figure is needed, report the normalised one and
+say which convention it is in.
+
+## 13. We have never evaluated the model with the authors' implementation
+
+`example/eval_gift.py` defaults to **`reverso_torch`**, our own re-implementation,
+not the authors' `reverso` package. The default was flipped on 11 Oct because
+`reverso` imports FlashFFTConv at module load and the system nvcc (11.7) does not
+match torch's CUDA (12.4), so the import crashed. `--flashfft` is still accepted
+as an opt-in, **and has never once been run.**
+
+Loading is sound, so this is not a weight problem: `reverso_torch.forecast.
+load_checkpoint` strips only the `flashfftconv.*` buffers and then calls
+`load_state_dict(..., strict=True)`, exactly as upstream does. Nothing is
+silently dropped.
+
+The difference is the long convolution. Theirs (`reverso/model.py` 72–90) is
+`FlashFFTConv(seq_len, dtype=torch.bfloat16)` with the pre-gate fused into the
+kernel. Ours (`reverso_torch/model.py` 97–103) is
+
+```python
+X = torch.fft.rfft(x_gated, n=self.seq_len, dim=-1)        # n = N
+out = torch.fft.irfft(X * K.unsqueeze(0), n=self.seq_len, dim=-1)
+```
+
+with the comment *"matches FlashFFTConv behaviour"*. **That comment has never
+been tested, and it is probably false.** `n = N` is a **circular** convolution:
+it wraps the oldest part of the context onto the most recent positions. The
+long convolutions FlashFFTConv was built for (H3/Hyena) are **causal** — zero-pad
+to `2N`, keep the first `N`. If that is what the kernel does, the correct torch
+equivalent is
+
+```python
+n = 2 * self.seq_len
+X = torch.fft.rfft(x_gated, n=n, dim=-1)
+K = torch.fft.rfft(self.k.float(), n=n, dim=-1)
+out = torch.fft.irfft(X * K.unsqueeze(0), n=n, dim=-1)[..., :self.seq_len]
+```
+
+Two things make this more than a curiosity. A boundary artifact contaminates
+the **end** of the context, which is where a forecaster looks hardest, and it
+compounds along the autoregressive rollout — which predicts a discrepancy that
+**grows with horizon**, which is what §12 measures. And `looped.py` iterates
+`self.layers[loop_start:loop_end]`, which by default is the **whole stack
+including CNNBlock**, so at k=4 the artifact is applied four times. It is
+therefore a potential confound for the project's central claim, not a constant
+offset.
+
+The decisive test needs no FlashFFTConv and no retraining: change the conv to
+the zero-padded form and re-evaluate **the published checkpoint**. If the
+normalised score moves from 0.7684 toward 0.757 and the long term from 0.7877
+toward 0.766, the bug is real. One evaluation, about two GPU-hours.
+
+If it is confirmed, do **not** re-score our trained arms under the new conv:
+they were trained with the circular one and adapted to it, so that would repeat
+the §4c mistake of evaluating a checkpoint under mechanics it never saw. The
+honest conclusion would be that our results are internally consistent but
+describe looping in a model that differs from the paper's — a limitation to
+state, not a reason to discard twelve runs.
+
+## 14. Never pass `--delete` to rsync against a copy you have not diffed first
 
 On 12 November 2026 an `rsync -av --delete nala: → Mac` destroyed 38 files that
 existed only on the Mac. Twenty-five of them existed nowhere else — not on

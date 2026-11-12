@@ -24,33 +24,86 @@ $1.5$--$2$ H100-equivalent hours, so we train \texttt{nano} at
 \ReproGap\,\% behind their published checkpoint in our harness
 (Table~\ref{tab:arms}), and closing that gap is not what this project is about.
 
-Second, and more importantly, \textbf{our absolute MASE is not on the same
-scale as the paper's}. The paper reports \texttt{Reverso-Nano} at $0.757$ on
-full GIFT-Eval; our harness scores \emph{their own published checkpoint} at
-$1.0742$ --- a factor of $1.419$ on identical weights, which no training
-difference can explain. The likely cause is the aggregation convention:
-GIFT-Eval's leaderboard divides each row's MASE by the seasonal-naive
-baseline's before taking the geometric mean, while we report raw MASE, and an
-average seasonal-naive MASE of $1.42$ is entirely ordinary.
+Second, \textbf{our absolute MASE is not on the same scale as the paper's},
+and this we have measured. The paper reports \texttt{Reverso-Nano} at $0.757$
+on full GIFT-Eval; our harness scores \emph{their own published checkpoint} at
+$1.0742$. Dividing our $97$ per-row values by GIFT-Eval's seasonal-naive
+scores, on the $97$ rows both sides share, gives
 
-If that is the explanation, then every \emph{relative} number in this report is
-untouched, because a per-row divisor cancels in a ratio of geometric means:
-with $\mathrm{MASE}_{\text{norm}} = \mathrm{MASE}/S$ we have
+\begin{center}\small
+\begin{tabular}{lrr}
+  \toprule
+   & raw & normalised \\
+  \midrule
+  all 97 rows & 1.0742 & 0.7684 \\
+  short (55)  & 1.1204 & 0.7594 \\
+  medium (21) & 0.9988 & 0.7731 \\
+  long (21)   & 1.0346 & 0.7877 \\
+  \midrule
+  seasonal-naive baseline & 1.3979 & --- \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+So the factor is the benchmark's aggregation convention: GIFT-Eval's
+leaderboard divides each row's MASE by the seasonal-naive baseline's before
+taking the geometric mean, while we report raw MASE. Raw MASE exceeds $1$ for
+every model because its denominator is a one-step \emph{in-sample} error while
+its numerator is a $48$-step \emph{out-of-sample} one. Nothing about our
+training is implicated.
+
+This matters for presentation only, never for a comparison, because a per-row
+divisor cancels in a ratio of geometric means: with
+$\mathrm{MASE}_{\text{norm}} = \mathrm{MASE}/S$ we have
 $\operatorname{geo}(A/S) = \operatorname{geo}(A)/\operatorname{geo}(S)$, so
 \[
   \frac{\operatorname{geo}(A/S)}{\operatorname{geo}(B/S)}
   \;=\; \frac{\operatorname{geo}(A)}{\operatorname{geo}(B)} .
 \]
-Only the level is affected, never a comparison. We therefore report no absolute
-number alongside the paper's, and state percentages against baselines we
-trained ourselves.
+Every percentage in this report is therefore invariant to the convention. We
+report raw MASE throughout, and print no absolute figure beside a published
+one.
 
-\todo{before the final report}{%
-  Confirm the factor directly: divide our $97$ per-row \texttt{NANO\_pub} MASE
-  values by GIFT-Eval's seasonal-naive scores and check that the geometric mean
-  lands on $0.757$. If it does not, the harness differs from the benchmark's in
-  some other way and that becomes the project's first priority. The check costs
-  minutes and no GPU.}
+\subsection{A residual we cannot yet explain, and where it probably comes from}
+\label{sec:background:backend}
+
+The normalisation does not close the gap entirely. Normalised, we score the
+authors' checkpoint $1.51\,\%$ worse than they publish ($0.7684$ against
+$0.757$), and $2.84\,\%$ worse on the long horizon ($0.7877$ against their
+$0.766$) --- a discrepancy that \emph{grows with horizon}. That is larger than
+the looping effect this report measures, so it deserves naming rather than
+rounding away.
+
+It has a concrete candidate. We have never evaluated with the authors'
+implementation: \texttt{eval\_gift.py} runs our own \texttt{reverso\_torch}
+re-implementation, because the official package imports FlashFFTConv at module
+load and the cluster's \texttt{nvcc}~11.7 does not match torch's CUDA~12.4. The
+weights load soundly --- only the \texttt{flashfftconv.*} buffers are stripped,
+then \texttt{strict=True}, exactly as upstream --- so nothing is silently
+dropped. What differs is the long convolution. Theirs is
+\texttt{FlashFFTConv(seq\_len)} with the pre-gate fused into the kernel; ours is
+an FFT product at length $N$, that is a \emph{circular} convolution, carrying a
+comment asserting it matches the kernel. The long convolutions FlashFFTConv was
+designed for are \emph{causal}: zero-pad to $2N$, keep the first $N$. If that is
+the kernel's semantics, our version wraps the oldest part of the context onto
+the most recent positions --- precisely where a forecaster looks hardest, and
+precisely the error that compounds along an autoregressive rollout, which is
+what a horizon-growing discrepancy looks like.
+
+It is also not a constant offset, because the loop iterates the whole layer
+stack, convolution included: at $k{=}4$ the artifact is applied four times. So
+it is a candidate confound for \S\ref{sec:results}, not merely a calibration
+issue.
+
+\todo{next experiment, before the final report}{%
+  Re-evaluate the \emph{published} checkpoint with the zero-padded
+  ($n = 2N$, first $N$) convolution. No retraining and no FlashFFTConv needed;
+  one evaluation, about two GPU-hours. If the normalised score moves toward
+  $0.757$ and the long term toward $0.766$, the comment is wrong and the
+  finding belongs in \S\ref{sec:discussion} as a limitation on what model these
+  results describe. Our own arms must \emph{not} be re-scored under the new
+  convolution --- they were trained with the circular one
+  (\S\ref{sec:protocol}).}
 
 \subsection{The delta rule and its spectrum}
 

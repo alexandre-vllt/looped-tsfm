@@ -51,12 +51,17 @@ schedule length --- then conclusions about looping could change at the
 published operating point. This is the single largest threat and we cannot
 currently rule it out.
 
-\paragraph{Harness scale.} Separately, our absolute MASE is a factor of
-$1.419$ above the paper's for the \emph{same} checkpoint
-(\S\ref{sec:background}). We argue this is an aggregation convention and show
-that it cancels in every ratio we report, but the argument is algebra, not a
-measurement; the measurement is pending. Until it is done, no absolute number
-here should be read next to a published leaderboard.
+\paragraph{Harness scale, and an unexplained $1.5\,\%$.} Our absolute MASE is
+raw where the paper's is divided by the seasonal-naive baseline; the factor is
+measured ($1.3979$) and cancels in every ratio we report
+(\S\ref{sec:background}). What does \emph{not} cancel is the residual: we score
+the authors' checkpoint $1.51\,\%$ worse than they publish, growing to
+$2.84\,\%$ at long horizon. That is of the same order as the looping effect.
+\S\ref{sec:background:backend} names the likely cause --- a circular
+convolution where the authors' kernel is probably causal, inside a block the
+loop iterates $k$ times --- which would make it a confound for
+\S\ref{sec:results} rather than an offset. The test is cheap and is the next
+experiment we will run.
 
 \paragraph{Single seeds.} Only $k=4$ has two seeds. The lever arms are
 single-seed, so the $1.70$--$3.41\,\%$ figures are larger than the $k=1$ seed
